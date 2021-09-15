@@ -12,3 +12,7 @@ extension MediaType: Equatable {
     lhs.type == rhs.type && lhs.subType == rhs.subType
   }
 }
+
+extension MediaType: CustomStringConvertible {
+  public var description: String { "\(type)/\(subType)" }
+}
