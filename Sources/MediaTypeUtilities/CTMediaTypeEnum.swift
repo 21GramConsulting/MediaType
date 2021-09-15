@@ -1,9 +1,13 @@
 import Foundation
 import MediaTypeEnums
 
-public protocol CTMediaTypeEnum {
+public protocol CTMediaTypeEnum: CustomStringConvertible {
   associatedtype SubMedia: CTMediaSubtypeEnum where SubMedia.Media == Self, SubMedia: CustomStringConvertible
   static var rawValue: MediaTypeEnum { get }
+}
+
+extension CTMediaTypeEnum {
+  public var description: String { Self.rawValue.description }
 }
 
 public extension MediaTypeEnum {
