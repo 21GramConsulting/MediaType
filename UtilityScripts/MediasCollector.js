@@ -22,3 +22,12 @@ JSON.stringify(Array
             video: []
         })
 )
+
+// Run this script in the browser on https://www.iana.org/assignments/media-type-structured-suffix/media-type-structured-suffix.xml
+JSON.stringify(
+    Array.from(document.querySelectorAll('td'))
+        .filter(td => /^\+/.test(td.textContent))
+        .map(td => td.textContent)
+        .filter(s => !s.includes(' '))
+        .map(s => s.trim())
+)

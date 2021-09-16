@@ -2,137 +2,212 @@
 
 import {readFileSync, writeFileSync} from 'fs';
 
+String.prototype.snakeToCamel = function () {
+    return this.replace(/-(.)/g, (_, m) => m.toUpperCase())
+};
+String.prototype.firstNumberTreated = function () {
+    return this.replace(/^\d/, (m) => '_'.concat(m))
+}
+
+/** @typedef RawMedia {[key:string]:Array<string>} */
+/**
+ * @typedef RawMediaRecord {{
+ *     type       : string,
+ *     tree       : Array<string>,
+ * }}
+ */
+/**
+ * @typedef SwiftEnumRecord ({
+ *     name  : string,
+ *     cases : Array<{
+ *         case: string,
+ *         value: string
+ *     }>
+ * })
+ */
+
+/** @type {RawMedia}*/
 const medias = JSON.parse(readFileSync('./Medias.json').toString());
 
-/** @typedef Case {{rawValue:string,caseName:string}} */
-/** @typedef CaseRecord {{caseColumn:string,returnColumn:string}}  */
-/** @type {CaseRecord} */
-const otherCase = {caseColumn: 'case .other(let other):', returnColumn: 'return other'};
-/** @type {CaseRecord} */
-const otherCaseInit = {caseColumn: 'default:', returnColumn: 'self = .other(rawValue)'};
-/** @type {CaseRecord} */
-const anyCase = {caseColumn: 'case .any:', returnColumn: 'return "*"'};
-/** @type {CaseRecord} */
-const anyCaseInit = {caseColumn: 'case "*":', returnColumn: 'self = .any'};
-/** @typedef RenderableCaseRecord {CaseRecord & {longestCaseColumnLength:number}} */
-/** @type {function(CaseRecord, number, Array<CaseRecord>): RenderableCaseRecord} */
-const decorateLongestCaseColumnLength = (record, _, records) => ({
-    ...record,
-    longestCaseColumnLength: records
-        .concat()
-        .sort((a, b) => b.caseColumn.length - a.caseColumn.length)[0]
-        .caseColumn
-        .length + 1
+/** @type {function({type:string, subtypes:string}): RawMediaRecord} */
+const toMediaRecord = ({type, subtype}) => ({
+    type,
+    tree: subtype.split(';')[0].split('+')[0].split('.')
 });
-/** @type {function(RenderableCaseRecord):string} */
-const renderRecord = record => record
-    .caseColumn
-    .concat(
-        Array(record.longestCaseColumnLength - record.caseColumn.length)
-            .fill(' ')
-            .join('')
-    )
-    .concat(record.returnColumn);
-/** @type {function(Case, Case):number} */
-const alphabetically = (a, b) => a.caseName.charCodeAt(0) - b.caseName.charCodeAt(0)
 
-Object
-    .keys(medias)
-    .map(media => ({
-        key: media,
-        typeName: media.replace(/^./, c => c.toUpperCase())
-    }))
-    .map(record => ({
-        ...record,
-        fileName: record.typeName.concat('.swift')
-    }))
-    .map(record => ({
-        ...record,
-        cases: medias[record.key]
-            .map(c => c.split("+").shift())
-            .map(c => c.split(";").shift())
-            .filter((c, i, l) => l.indexOf(c) === i)
-            .map(c => ({
-                rawValue: c,
-                caseName: c
-                    .replace(/-(.)/g, (_, m) => m.toUpperCase())
-                    .replace(/^\d/, (m) => '_'.concat(m))
-            }))
-            .filter(c => !c.caseName.includes("."))
-    }))
-    .map(record => ({
-        ...record,
+const mediaRecords = Object.freeze(
+    Object
+        .keys(medias)
+        .map(key => medias[key].map(subtype => ({type: key, subtype: subtype})))
+        .reduce((l, r) => l.concat(r), [])
+        .map(toMediaRecord)
+        .filter(r => r.tree.length === 1) // TODO: Rework when support for tree subtypes is added.
+);
+
+/** @type {Array<{pascalCase:string,lowerCase:string}>} */
+const types = mediaRecords
+    .filter((r, _, l) => l.find(_r => _r.type === r.type) === r)
+    .map(r => r.type)
+    .map(type => ({lowerCase: type, pascalCase: type.replace(/^(.)/, (_, m) => m.toUpperCase())}));
+
+/** @type {function([string,string], number, Array<[string, string]>>): string} */
+const toFormattedSwitchCase = ([caseColumn, returnColumn], _, l) => caseColumn
+    .concat(
+        Array(l
+            .concat()
+            .sort(([c1], [c2]) => c2.length - c1.length)[0][0]
+            .length - caseColumn.length
+        ).fill(" ").join("")
+    )
+    .concat(returnColumn);
+
+types
+    .map(({pascalCase, lowerCase}) => ({
+        fileName: pascalCase.concat('.swift'),
         code: `import Foundation
 
-public extension MediaTypeEnum {
-  enum ${record.typeName} {
+public enum ${pascalCase} {
 ${
-            record
-                .cases
-                .concat()
-                .sort((a, b) => a.caseName.charCodeAt(0) - b.caseName.charCodeAt(0))
-                .map(c => `case ${c.caseName}`)
-                .map(row => '    ' + row)
+            mediaRecords
+                .filter(r => r.type === lowerCase)
+                .map(r => r.tree[0].snakeToCamel().firstNumberTreated())
+                .filter((c, i, l) => l.indexOf(c) === i)
+                .map(caseName => `  case ${caseName}(Suffix? = nil, Parameters? = nil)`)
+                .slice()
+                .sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0))
+                .concat('  case other(String, Suffix? = nil, Parameters? = nil)')
+                .concat('  case anything(Suffix? = nil, Parameters? = nil)')
                 .join('\n')
         }
-    case other(String)
-    case any
-  }
 }
 
-extension MediaTypeEnum.${record.typeName}: CustomStringConvertible {
-  public var description: String { rawValue }
-}
-
-extension MediaTypeEnum.${record.typeName}: ExpressibleByStringLiteral {
-  public init(stringLiteral value: String) { self.init(rawValue: value) }
-}
-
-extension MediaTypeEnum.${record.typeName}: RawRepresentable {
-  public init(rawValue: String) {
-    switch rawValue {
-${
-            record
-                .cases
-                .concat()
-                .sort(alphabetically)
-                .map(c => ({
-                    caseColumn: `case "${c.rawValue}":`,
-                    returnColumn: `self = .${c.caseName}`
-                }))
-                .concat(anyCaseInit)
-                .concat(otherCaseInit)
-                .map(decorateLongestCaseColumnLength)
-                .map(renderRecord)
-                .map(row => '    ' + row)
-                .join('\n')
-        }
-    }
-  }
-
-  public var rawValue: String {
+extension ${pascalCase}: CustomStringConvertible { 
+  public var description: String {
     switch self {
 ${
-            record
-                .cases
-                .concat()
-                .sort(alphabetically)
-                .map(c => ({
-                    caseColumn: `case .${c.caseName}:`,
-                    returnColumn: `return "${c.rawValue}"`
+            mediaRecords
+                .filter(r => r.type === lowerCase)
+                .map(r => ({
+                    caseName: r.tree[0].snakeToCamel().firstNumberTreated(),
+                    value: r.tree[0]
                 }))
-                .concat(otherCase)
-                .concat(anyCase)
-                .map(decorateLongestCaseColumnLength)
-                .map(renderRecord)
-                .map(row => '    ' + row)
+                .filter((r, i, l) => i === l.findIndex(_r => _r.caseName === r.caseName))
+                .map(({caseName, value}) => [
+                    `    case .${caseName}(let suffix, let parameters): `,
+                    `return "${value}\\(suffix)\\(parameters)"`
+                ])
+                .concat([[
+                    '    case .other(let value, let suffix, let parameters): ',
+                    'return "\\(value)\\(suffix)\\(parameters)"'
+                ]])
+                .concat([[
+                    '    case .anything(let suffix, let parameters): ',
+                    'return "*\\(suffix)\\(parameters)"'
+                ]])
+                .slice()
+                .sort(([a], [b]) => a.charCodeAt(0) - b.charCodeAt(0))
+                .map(toFormattedSwitchCase)
                 .join('\n')
         }
     }
   }
 }
+
+extension ${pascalCase}: MediaSubtype { public var type: MediaType { .${lowerCase}(self) } }
 `
     }))
-    .forEach(record => {
-        writeFileSync(record.fileName, record.code);
-    })
+    .forEach(r => writeFileSync(r.fileName, r.code))
+
+writeFileSync(
+    'MediaType.swift',
+    `import Foundation
+
+public enum MediaType {
+${
+        types
+            .map(({lowerCase, pascalCase}) => `  case ${lowerCase}(${pascalCase})`)
+            .join('\n')
+    }
+  case other(type: String, subtype: String, Suffix? = nil, Parameters? = nil)
+  case anything(Anything)
+}
+
+extension MediaType: CustomStringConvertible {
+  public var description: String {
+    switch self {
+${
+        types
+            .map(({lowerCase}) => [
+                `    case .${lowerCase}(let subtype):`,
+                `return "${lowerCase}/\\(subtype)"`
+            ])
+            .concat([[
+                '    case .other(let type, let subtype, let suffix, let parameters):',
+                'return "\\(type)/\\(subtype)\\(suffix)\\(parameters)"'
+            ]])
+            .concat([[
+                '    case .anything(let anything):',
+                'return "*/\\(anything)"'
+            ]])
+            .slice()
+            .sort(([a], [b]) => a.charCodeAt(0) - b.charCodeAt(0))
+            .map(toFormattedSwitchCase)
+            .join('\n')
+    } 
+    }
+  }
+}
+
+`);
+
+writeFileSync(
+    'Anything.swift',
+    `import Foundation
+
+public enum Anything {
+  case other(CustomStringConvertible, Suffix? = nil, Parameters? = nil)
+  case anything(Suffix? = nil, Parameters? = nil)
+}
+
+extension Anything: CustomStringConvertible {
+  public var description: String { 
+    switch self {
+    case .other(let subtype, let suffix, let params): return "\\(subtype)\\(suffix)\\(params)"
+    case .anything(let suffix, let params):           return "*\\(suffix)\\(params)"
+    }
+  }
+}
+
+extension Anything: MediaSubtype { public var type: MediaType { .anything(self) } }
+
+`);
+
+writeFileSync(
+    'Parameters.swift',
+    `import Foundation
+
+public typealias Parameters = [String: CustomStringConvertible?]
+
+internal extension DefaultStringInterpolation {
+  @inlinable mutating func appendInterpolation(_ value: Parameters?) {
+    guard let parameters = value else { return }
+    if parameters.isEmpty { return }
+    for (key, value) in parameters {
+      appendLiteral(";")
+      appendLiteral(key)
+      guard let value = value else { continue }
+      appendLiteral("=")
+      appendLiteral(value.description)
+    }
+  }
+}
+`);
+
+writeFileSync(
+    'MediaSubtype.swift',
+    `import Foundation
+
+public protocol MediaSubtype {
+  var type: MediaType { get }
+}
+`);
