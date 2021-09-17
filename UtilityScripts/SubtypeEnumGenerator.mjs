@@ -479,9 +479,7 @@ internal func convert(string rawValue: String) -> RawSubtype {
   )
 }
 
-func ==(lhs: Parameters?, rhs: Parameters?) -> Bool {
-  guard case let .some(lhs) = lhs else { return rhs == .none }
-  guard case let .some(rhs) = rhs else { return false }
+func ==(lhs: Parameters, rhs: Parameters) -> Bool {
   if lhs.keys != rhs.keys { return false }
   for (lhsKey, lhsValue) in lhs {
     guard let rhsValue = rhs[lhsKey] else {
@@ -495,6 +493,17 @@ func ==(lhs: Parameters?, rhs: Parameters?) -> Bool {
     if lhsValue.description != rhsValue!.description { return false }
   }
   return true
+}
+
+func !=(lhs: Parameters, rhs: Parameters) -> Bool { !(lhs == rhs) }
+
+func ==(lhs: Parameters?, rhs: Parameters?) -> Bool {
+  var leftIsNil = false
+  var rightIsNil = false
+  if case .none = lhs { leftIsNil = true }
+  if case .none = rhs { rightIsNil = true }
+  if leftIsNil || rightIsNil { return leftIsNil == rightIsNil }
+  return lhs! == rhs!
 }
 
 func !=(lhs: Parameters?, rhs: Parameters?) -> Bool { !(lhs == rhs) }
