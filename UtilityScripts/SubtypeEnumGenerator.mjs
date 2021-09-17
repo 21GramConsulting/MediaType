@@ -461,8 +461,8 @@ internal func convert(string rawValue: String) -> RawSubtype {
     .map { $0.split(separator: "=") }
     .reduce(into: [:]) { (result, parameterChunk) in
       if parameterChunk.isEmpty { return }
-      result?[String(parameterChunk.first!)] = parameterChunk.indices.contains(1)
-        ? parameterChunk[1]
+      result?[String(parameterChunk.first!).trimmingCharacters(in: .whitespacesAndNewlines)] = parameterChunk.indices.contains(1)
+        ? parameterChunk[1].trimmingCharacters(in: .whitespacesAndNewlines)
         : nil
     }
   let suffixedChunks = chunks.first?.split(separator: "+")
