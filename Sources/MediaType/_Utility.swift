@@ -33,7 +33,7 @@ internal func convert(string rawValue: String) -> RawSubtype {
 }
 
 func ==(lhs: Parameters?, rhs: Parameters?) -> Bool {
-  guard let lhs = lhs else { return rhs == nil }
+  guard let lhs = lhs else { return rhs == .none }
   guard let rhs = rhs else { return false }
   if lhs.keys != rhs.keys { return false }
   for (lhsKey, lhsValue) in lhs {
