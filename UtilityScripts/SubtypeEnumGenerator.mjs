@@ -510,7 +510,7 @@ func !=(lhs: Parameters?, rhs: Parameters?) -> Bool { !(lhs == rhs) }
 
 extension Hasher {
   @inlinable mutating func combine(_ value: Parameters?) {
-    guard let value = value else { return combine(nil) }
+    guard let value = value else { return }
     for (key, value) in value {
       combine(key)
       combine(value?.description)
