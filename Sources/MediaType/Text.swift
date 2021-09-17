@@ -14,6 +14,7 @@ public enum Text {
   case dns(Suffix? = nil, Parameters? = nil)
   case ecmascript(Suffix? = nil, Parameters? = nil)
   case encaprtp(Suffix? = nil, Parameters? = nil)
+  case enriched(Suffix? = nil, Parameters? = nil)
   case example(Suffix? = nil, Parameters? = nil)
   case fhirpath(Suffix? = nil, Parameters? = nil)
   case flexfec(Suffix? = nil, Parameters? = nil)
@@ -28,10 +29,12 @@ public enum Text {
   case n3(Suffix? = nil, Parameters? = nil)
   case parameters(Suffix? = nil, Parameters? = nil)
   case parityfec(Suffix? = nil, Parameters? = nil)
+  case plain(Suffix? = nil, Parameters? = nil)
   case provenanceNotation(Suffix? = nil, Parameters? = nil)
   case raptorfec(Suffix? = nil, Parameters? = nil)
   case RED(Suffix? = nil, Parameters? = nil)
   case rfc822Headers(Suffix? = nil, Parameters? = nil)
+  case richtext(Suffix? = nil, Parameters? = nil)
   case rtf(Suffix? = nil, Parameters? = nil)
   case rtpEncAescm128(Suffix? = nil, Parameters? = nil)
   case rtploopback(Suffix? = nil, Parameters? = nil)
@@ -77,6 +80,7 @@ extension Text: RawRepresentable {
     case "dns":                        self = .dns(suffix, parameters)
     case "ecmascript":                 self = .ecmascript(suffix, parameters)
     case "encaprtp":                   self = .encaprtp(suffix, parameters)
+    case "enriched":                   self = .enriched(suffix, parameters)
     case "example":                    self = .example(suffix, parameters)
     case "fhirpath":                   self = .fhirpath(suffix, parameters)
     case "flexfec":                    self = .flexfec(suffix, parameters)
@@ -91,10 +95,12 @@ extension Text: RawRepresentable {
     case "n3":                         self = .n3(suffix, parameters)
     case "parameters":                 self = .parameters(suffix, parameters)
     case "parityfec":                  self = .parityfec(suffix, parameters)
+    case "plain":                      self = .plain(suffix, parameters)
     case "provenance-notation":        self = .provenanceNotation(suffix, parameters)
     case "raptorfec":                  self = .raptorfec(suffix, parameters)
     case "RED":                        self = .RED(suffix, parameters)
     case "rfc822-headers":             self = .rfc822Headers(suffix, parameters)
+    case "richtext":                   self = .richtext(suffix, parameters)
     case "rtf":                        self = .rtf(suffix, parameters)
     case "rtp-enc-aescm128":           self = .rtpEncAescm128(suffix, parameters)
     case "rtploopback":                self = .rtploopback(suffix, parameters)
@@ -134,6 +140,7 @@ extension Text: RawRepresentable {
     case .dns(let suffix, let parameters):                     return "dns\(suffix)\(parameters)"
     case .ecmascript(let suffix, let parameters):              return "ecmascript\(suffix)\(parameters)"
     case .encaprtp(let suffix, let parameters):                return "encaprtp\(suffix)\(parameters)"
+    case .enriched(let suffix, let parameters):                return "enriched\(suffix)\(parameters)"
     case .example(let suffix, let parameters):                 return "example\(suffix)\(parameters)"
     case .fhirpath(let suffix, let parameters):                return "fhirpath\(suffix)\(parameters)"
     case .flexfec(let suffix, let parameters):                 return "flexfec\(suffix)\(parameters)"
@@ -148,10 +155,12 @@ extension Text: RawRepresentable {
     case .n3(let suffix, let parameters):                      return "n3\(suffix)\(parameters)"
     case .parameters(let suffix, let parameters):              return "parameters\(suffix)\(parameters)"
     case .parityfec(let suffix, let parameters):               return "parityfec\(suffix)\(parameters)"
+    case .plain(let suffix, let parameters):                   return "plain\(suffix)\(parameters)"
     case .provenanceNotation(let suffix, let parameters):      return "provenance-notation\(suffix)\(parameters)"
     case .raptorfec(let suffix, let parameters):               return "raptorfec\(suffix)\(parameters)"
     case .RED(let suffix, let parameters):                     return "RED\(suffix)\(parameters)"
     case .rfc822Headers(let suffix, let parameters):           return "rfc822-headers\(suffix)\(parameters)"
+    case .richtext(let suffix, let parameters):                return "richtext\(suffix)\(parameters)"
     case .rtf(let suffix, let parameters):                     return "rtf\(suffix)\(parameters)"
     case .rtpEncAescm128(let suffix, let parameters):          return "rtp-enc-aescm128\(suffix)\(parameters)"
     case .rtploopback(let suffix, let parameters):             return "rtploopback\(suffix)\(parameters)"

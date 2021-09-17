@@ -32,6 +32,7 @@ public enum Video {
   case mp4(Suffix? = nil, Parameters? = nil)
   case MP4VES(Suffix? = nil, Parameters? = nil)
   case MPV(Suffix? = nil, Parameters? = nil)
+  case mpeg(Suffix? = nil, Parameters? = nil)
   case mpeg4Generic(Suffix? = nil, Parameters? = nil)
   case nv(Suffix? = nil, Parameters? = nil)
   case ogg(Suffix? = nil, Parameters? = nil)
@@ -95,6 +96,7 @@ extension Video: RawRepresentable {
     case "mp4":                      self = .mp4(suffix, parameters)
     case "MP4V-ES":                  self = .MP4VES(suffix, parameters)
     case "MPV":                      self = .MPV(suffix, parameters)
+    case "mpeg":                     self = .mpeg(suffix, parameters)
     case "mpeg4-generic":            self = .mpeg4Generic(suffix, parameters)
     case "nv":                       self = .nv(suffix, parameters)
     case "ogg":                      self = .ogg(suffix, parameters)
@@ -152,6 +154,7 @@ extension Video: RawRepresentable {
     case .mp4(let suffix, let parameters):                     return "mp4\(suffix)\(parameters)"
     case .MP4VES(let suffix, let parameters):                  return "MP4V-ES\(suffix)\(parameters)"
     case .MPV(let suffix, let parameters):                     return "MPV\(suffix)\(parameters)"
+    case .mpeg(let suffix, let parameters):                    return "mpeg\(suffix)\(parameters)"
     case .mpeg4Generic(let suffix, let parameters):            return "mpeg4-generic\(suffix)\(parameters)"
     case .nv(let suffix, let parameters):                      return "nv\(suffix)\(parameters)"
     case .ogg(let suffix, let parameters):                     return "ogg\(suffix)\(parameters)"

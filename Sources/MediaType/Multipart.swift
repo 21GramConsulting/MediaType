@@ -1,13 +1,17 @@
 import Foundation
 
 public enum Multipart {
+  case alternative(Suffix? = nil, Parameters? = nil)
   case appledouble(Suffix? = nil, Parameters? = nil)
   case byteranges(Suffix? = nil, Parameters? = nil)
+  case digest(Suffix? = nil, Parameters? = nil)
   case encrypted(Suffix? = nil, Parameters? = nil)
   case example(Suffix? = nil, Parameters? = nil)
   case formData(Suffix? = nil, Parameters? = nil)
   case headerSet(Suffix? = nil, Parameters? = nil)
+  case mixed(Suffix? = nil, Parameters? = nil)
   case multilingual(Suffix? = nil, Parameters? = nil)
+  case parallel(Suffix? = nil, Parameters? = nil)
   case related(Suffix? = nil, Parameters? = nil)
   case report(Suffix? = nil, Parameters? = nil)
   case signed(Suffix? = nil, Parameters? = nil)
@@ -26,13 +30,17 @@ extension Multipart: RawRepresentable {
   public init(rawValue: String) {
     let (subtype, suffix, parameters) = convert(string: rawValue)
     switch subtype {
+    case "alternative":     self = .alternative(suffix, parameters)
     case "appledouble":     self = .appledouble(suffix, parameters)
     case "byteranges":      self = .byteranges(suffix, parameters)
+    case "digest":          self = .digest(suffix, parameters)
     case "encrypted":       self = .encrypted(suffix, parameters)
     case "example":         self = .example(suffix, parameters)
     case "form-data":       self = .formData(suffix, parameters)
     case "header-set":      self = .headerSet(suffix, parameters)
+    case "mixed":           self = .mixed(suffix, parameters)
     case "multilingual":    self = .multilingual(suffix, parameters)
+    case "parallel":        self = .parallel(suffix, parameters)
     case "related":         self = .related(suffix, parameters)
     case "report":          self = .report(suffix, parameters)
     case "signed":          self = .signed(suffix, parameters)
@@ -45,13 +53,17 @@ extension Multipart: RawRepresentable {
 
   public var rawValue: String {
     switch self {
+    case .alternative(let suffix, let parameters):      return "alternative\(suffix)\(parameters)"
     case .appledouble(let suffix, let parameters):      return "appledouble\(suffix)\(parameters)"
     case .byteranges(let suffix, let parameters):       return "byteranges\(suffix)\(parameters)"
+    case .digest(let suffix, let parameters):           return "digest\(suffix)\(parameters)"
     case .encrypted(let suffix, let parameters):        return "encrypted\(suffix)\(parameters)"
     case .example(let suffix, let parameters):          return "example\(suffix)\(parameters)"
     case .formData(let suffix, let parameters):         return "form-data\(suffix)\(parameters)"
     case .headerSet(let suffix, let parameters):        return "header-set\(suffix)\(parameters)"
+    case .mixed(let suffix, let parameters):            return "mixed\(suffix)\(parameters)"
     case .multilingual(let suffix, let parameters):     return "multilingual\(suffix)\(parameters)"
+    case .parallel(let suffix, let parameters):         return "parallel\(suffix)\(parameters)"
     case .related(let suffix, let parameters):          return "related\(suffix)\(parameters)"
     case .report(let suffix, let parameters):           return "report\(suffix)\(parameters)"
     case .signed(let suffix, let parameters):           return "signed\(suffix)\(parameters)"

@@ -5,6 +5,7 @@ public enum Message {
   case deliveryStatus(Suffix? = nil, Parameters? = nil)
   case dispositionNotification(Suffix? = nil, Parameters? = nil)
   case example(Suffix? = nil, Parameters? = nil)
+  case externalBody(Suffix? = nil, Parameters? = nil)
   case feedbackReport(Suffix? = nil, Parameters? = nil)
   case global(Suffix? = nil, Parameters? = nil)
   case globalDeliveryStatus(Suffix? = nil, Parameters? = nil)
@@ -13,6 +14,8 @@ public enum Message {
   case http(Suffix? = nil, Parameters? = nil)
   case imdn(Suffix? = nil, Parameters? = nil)
   case news(Suffix? = nil, Parameters? = nil)
+  case partial(Suffix? = nil, Parameters? = nil)
+  case rfc822(Suffix? = nil, Parameters? = nil)
   case sHttp(Suffix? = nil, Parameters? = nil)
   case sip(Suffix? = nil, Parameters? = nil)
   case sipfrag(Suffix? = nil, Parameters? = nil)
@@ -34,6 +37,7 @@ extension Message: RawRepresentable {
     case "delivery-status":                 self = .deliveryStatus(suffix, parameters)
     case "disposition-notification":        self = .dispositionNotification(suffix, parameters)
     case "example":                         self = .example(suffix, parameters)
+    case "external-body":                   self = .externalBody(suffix, parameters)
     case "feedback-report":                 self = .feedbackReport(suffix, parameters)
     case "global":                          self = .global(suffix, parameters)
     case "global-delivery-status":          self = .globalDeliveryStatus(suffix, parameters)
@@ -42,6 +46,8 @@ extension Message: RawRepresentable {
     case "http":                            self = .http(suffix, parameters)
     case "imdn":                            self = .imdn(suffix, parameters)
     case "news":                            self = .news(suffix, parameters)
+    case "partial":                         self = .partial(suffix, parameters)
+    case "rfc822":                          self = .rfc822(suffix, parameters)
     case "s-http":                          self = .sHttp(suffix, parameters)
     case "sip":                             self = .sip(suffix, parameters)
     case "sipfrag":                         self = .sipfrag(suffix, parameters)
@@ -57,6 +63,7 @@ extension Message: RawRepresentable {
     case .deliveryStatus(let suffix, let parameters):                return "delivery-status\(suffix)\(parameters)"
     case .dispositionNotification(let suffix, let parameters):       return "disposition-notification\(suffix)\(parameters)"
     case .example(let suffix, let parameters):                       return "example\(suffix)\(parameters)"
+    case .externalBody(let suffix, let parameters):                  return "external-body\(suffix)\(parameters)"
     case .feedbackReport(let suffix, let parameters):                return "feedback-report\(suffix)\(parameters)"
     case .global(let suffix, let parameters):                        return "global\(suffix)\(parameters)"
     case .globalDeliveryStatus(let suffix, let parameters):          return "global-delivery-status\(suffix)\(parameters)"
@@ -65,6 +72,8 @@ extension Message: RawRepresentable {
     case .http(let suffix, let parameters):                          return "http\(suffix)\(parameters)"
     case .imdn(let suffix, let parameters):                          return "imdn\(suffix)\(parameters)"
     case .news(let suffix, let parameters):                          return "news\(suffix)\(parameters)"
+    case .partial(let suffix, let parameters):                       return "partial\(suffix)\(parameters)"
+    case .rfc822(let suffix, let parameters):                        return "rfc822\(suffix)\(parameters)"
     case .sHttp(let suffix, let parameters):                         return "s-http\(suffix)\(parameters)"
     case .sip(let suffix, let parameters):                           return "sip\(suffix)\(parameters)"
     case .sipfrag(let suffix, let parameters):                       return "sipfrag\(suffix)\(parameters)"
