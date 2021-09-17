@@ -47,3 +47,81 @@ extension Font: RawRepresentable {
 }
 
 extension Font: MediaSubtype { public var type: MediaType { .font(self) } }
+
+extension Font: Hashable {
+  public static func ==(lhs: Self, rhs: Self) -> Bool {
+    switch lhs {
+    case .collection(let lhsSuffix, let lhsParameters):
+      guard case let .collection(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .otf(let lhsSuffix, let lhsParameters):
+      guard case let .otf(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .sfnt(let lhsSuffix, let lhsParameters):
+      guard case let .sfnt(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .ttf(let lhsSuffix, let lhsParameters):
+      guard case let .ttf(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .woff(let lhsSuffix, let lhsParameters):
+      guard case let .woff(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .woff2(let lhsSuffix, let lhsParameters):
+      guard case let .woff2(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .other(let lhsSubtype, let lhsSuffix, let lhsParameters):
+      guard case let .other(rhsSubtype, rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSubtype.description != rhsSubtype.description { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .anything(let lhsSuffix, let lhsParameters):
+      guard case let .anything(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    }
+  }
+
+  public func hash(into hasher: inout Hasher) {
+    switch self {
+    case .collection(let suffix, let parameters):
+      hasher.combine(0)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .otf(let suffix, let parameters):
+      hasher.combine(1)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .sfnt(let suffix, let parameters):
+      hasher.combine(2)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .ttf(let suffix, let parameters):
+      hasher.combine(3)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .woff(let suffix, let parameters):
+      hasher.combine(4)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .woff2(let suffix, let parameters):
+      hasher.combine(5)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .other(let subtype, let suffix, let parameters):
+      hasher.combine(-1)
+      hasher.combine(subtype.description)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .anything(let suffix, let parameters):
+      hasher.combine(-2)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    }
+  }
+}

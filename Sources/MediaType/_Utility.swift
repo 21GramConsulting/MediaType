@@ -31,3 +31,33 @@ internal func convert(string rawValue: String) -> RawSubtype {
     parameters: parameters
   )
 }
+
+func ==(lhs: Parameters?, rhs: Parameters?) -> Bool {
+  guard let lhs = lhs else { return rhs == nil }
+  guard let rhs = rhs else { return false }
+  if lhs.keys != rhs.keys { return false }
+  for (lhsKey, lhsValue) in lhs {
+    guard let rhsValue = rhs[lhsKey] else {
+      if lhsValue != nil {
+        return false
+      } else {
+        continue
+      }
+    }
+    guard let lhsValue = lhsValue else { return false }
+    if lhsValue.description != rhsValue!.description { return false }
+  }
+  return true
+}
+
+func !=(lhs: Parameters?, rhs: Parameters?) -> Bool { !(lhs == rhs) }
+
+extension Hasher {
+  @inlinable mutating func combine(_ value: Parameters?) {
+    guard let value = value else { return combine(nil) }
+    for (key, value) in value {
+      combine(key)
+      combine(value?.description)
+    }
+  }
+}

@@ -82,3 +82,47 @@ extension Suffix: ExpressibleByStringLiteral {
     self.init(rawValue: value)
   }
 }
+
+extension Suffix: Hashable {
+  public static func ==(lhs: Self, rhs: Self) -> Bool {
+    switch lhs {
+      case .xml:                  if case .xml = rhs { return true } else { return false }
+      case .json:                 if case .json = rhs { return true } else { return false }
+      case .ber:                  if case .ber = rhs { return true } else { return false }
+      case .cbor:                 if case .cbor = rhs { return true } else { return false }
+      case .der:                  if case .der = rhs { return true } else { return false }
+      case .fastinfoset:          if case .fastinfoset = rhs { return true } else { return false }
+      case .wbxml:                if case .wbxml = rhs { return true } else { return false }
+      case .zip:                  if case .zip = rhs { return true } else { return false }
+      case .tlv:                  if case .tlv = rhs { return true } else { return false }
+      case .jsonSeq:              if case .jsonSeq = rhs { return true } else { return false }
+      case .sqlite3:              if case .sqlite3 = rhs { return true } else { return false }
+      case .jwt:                  if case .jwt = rhs { return true } else { return false }
+      case .gzip:                 if case .gzip = rhs { return true } else { return false }
+      case .cborSeq:              if case .cborSeq = rhs { return true } else { return false }
+      case .zstd:                 if case .zstd = rhs { return true } else { return false }
+      case .other(let lhsSuffix): if case let .other(rhsSuffix) = rhs { return lhsSuffix.description == rhsSuffix.description } else { return false }
+    }
+  }
+
+  public func hash(into hasher: inout Hasher) {
+    switch self {
+          case .xml:              hasher.combine(0)
+      case .json:             hasher.combine(1)
+      case .ber:              hasher.combine(2)
+      case .cbor:             hasher.combine(3)
+      case .der:              hasher.combine(4)
+      case .fastinfoset:      hasher.combine(5)
+      case .wbxml:            hasher.combine(6)
+      case .zip:              hasher.combine(7)
+      case .tlv:              hasher.combine(8)
+      case .jsonSeq:          hasher.combine(9)
+      case .sqlite3:          hasher.combine(10)
+      case .jwt:              hasher.combine(11)
+      case .gzip:             hasher.combine(12)
+      case .cborSeq:          hasher.combine(13)
+      case .zstd:             hasher.combine(14)
+      case .other(let other): hasher.combine(other.description)
+    }
+  }
+}

@@ -188,3 +188,457 @@ extension Text: RawRepresentable {
 }
 
 extension Text: MediaSubtype { public var type: MediaType { .text(self) } }
+
+extension Text: Hashable {
+  public static func ==(lhs: Self, rhs: Self) -> Bool {
+    switch lhs {
+    case .RED(let lhsSuffix, let lhsParameters):
+      guard case let .RED(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .SGML(let lhsSuffix, let lhsParameters):
+      guard case let .SGML(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case ._1dInterleavedParityfec(let lhsSuffix, let lhsParameters):
+      guard case let ._1dInterleavedParityfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .cacheManifest(let lhsSuffix, let lhsParameters):
+      guard case let .cacheManifest(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .calendar(let lhsSuffix, let lhsParameters):
+      guard case let .calendar(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .cql(let lhsSuffix, let lhsParameters):
+      guard case let .cql(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .cqlExpression(let lhsSuffix, let lhsParameters):
+      guard case let .cqlExpression(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .cqlIdentifier(let lhsSuffix, let lhsParameters):
+      guard case let .cqlIdentifier(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .css(let lhsSuffix, let lhsParameters):
+      guard case let .css(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .csv(let lhsSuffix, let lhsParameters):
+      guard case let .csv(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .csvSchema(let lhsSuffix, let lhsParameters):
+      guard case let .csvSchema(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .directory(let lhsSuffix, let lhsParameters):
+      guard case let .directory(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .dns(let lhsSuffix, let lhsParameters):
+      guard case let .dns(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .ecmascript(let lhsSuffix, let lhsParameters):
+      guard case let .ecmascript(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .encaprtp(let lhsSuffix, let lhsParameters):
+      guard case let .encaprtp(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .enriched(let lhsSuffix, let lhsParameters):
+      guard case let .enriched(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .example(let lhsSuffix, let lhsParameters):
+      guard case let .example(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .fhirpath(let lhsSuffix, let lhsParameters):
+      guard case let .fhirpath(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .flexfec(let lhsSuffix, let lhsParameters):
+      guard case let .flexfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .fwdred(let lhsSuffix, let lhsParameters):
+      guard case let .fwdred(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .gff3(let lhsSuffix, let lhsParameters):
+      guard case let .gff3(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .grammarRefList(let lhsSuffix, let lhsParameters):
+      guard case let .grammarRefList(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .html(let lhsSuffix, let lhsParameters):
+      guard case let .html(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .javascript(let lhsSuffix, let lhsParameters):
+      guard case let .javascript(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .jcrCnd(let lhsSuffix, let lhsParameters):
+      guard case let .jcrCnd(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .markdown(let lhsSuffix, let lhsParameters):
+      guard case let .markdown(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .mizar(let lhsSuffix, let lhsParameters):
+      guard case let .mizar(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .n3(let lhsSuffix, let lhsParameters):
+      guard case let .n3(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .parameters(let lhsSuffix, let lhsParameters):
+      guard case let .parameters(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .parityfec(let lhsSuffix, let lhsParameters):
+      guard case let .parityfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .plain(let lhsSuffix, let lhsParameters):
+      guard case let .plain(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .provenanceNotation(let lhsSuffix, let lhsParameters):
+      guard case let .provenanceNotation(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .raptorfec(let lhsSuffix, let lhsParameters):
+      guard case let .raptorfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .rfc822Headers(let lhsSuffix, let lhsParameters):
+      guard case let .rfc822Headers(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .richtext(let lhsSuffix, let lhsParameters):
+      guard case let .richtext(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .rtf(let lhsSuffix, let lhsParameters):
+      guard case let .rtf(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .rtpEncAescm128(let lhsSuffix, let lhsParameters):
+      guard case let .rtpEncAescm128(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .rtploopback(let lhsSuffix, let lhsParameters):
+      guard case let .rtploopback(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .rtx(let lhsSuffix, let lhsParameters):
+      guard case let .rtx(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .shaclc(let lhsSuffix, let lhsParameters):
+      guard case let .shaclc(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .shex(let lhsSuffix, let lhsParameters):
+      guard case let .shex(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .spdx(let lhsSuffix, let lhsParameters):
+      guard case let .spdx(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .strings(let lhsSuffix, let lhsParameters):
+      guard case let .strings(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .t140(let lhsSuffix, let lhsParameters):
+      guard case let .t140(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .tabSeparatedValues(let lhsSuffix, let lhsParameters):
+      guard case let .tabSeparatedValues(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .troff(let lhsSuffix, let lhsParameters):
+      guard case let .troff(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .turtle(let lhsSuffix, let lhsParameters):
+      guard case let .turtle(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .ulpfec(let lhsSuffix, let lhsParameters):
+      guard case let .ulpfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .uriList(let lhsSuffix, let lhsParameters):
+      guard case let .uriList(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .vcard(let lhsSuffix, let lhsParameters):
+      guard case let .vcard(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .vtt(let lhsSuffix, let lhsParameters):
+      guard case let .vtt(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .xml(let lhsSuffix, let lhsParameters):
+      guard case let .xml(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .xmlExternalParsedEntity(let lhsSuffix, let lhsParameters):
+      guard case let .xmlExternalParsedEntity(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .other(let lhsSubtype, let lhsSuffix, let lhsParameters):
+      guard case let .other(rhsSubtype, rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSubtype.description != rhsSubtype.description { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .anything(let lhsSuffix, let lhsParameters):
+      guard case let .anything(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    }
+  }
+
+  public func hash(into hasher: inout Hasher) {
+    switch self {
+    case .RED(let suffix, let parameters):
+      hasher.combine(0)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .SGML(let suffix, let parameters):
+      hasher.combine(1)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case ._1dInterleavedParityfec(let suffix, let parameters):
+      hasher.combine(2)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .cacheManifest(let suffix, let parameters):
+      hasher.combine(3)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .calendar(let suffix, let parameters):
+      hasher.combine(4)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .cql(let suffix, let parameters):
+      hasher.combine(5)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .cqlExpression(let suffix, let parameters):
+      hasher.combine(6)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .cqlIdentifier(let suffix, let parameters):
+      hasher.combine(7)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .css(let suffix, let parameters):
+      hasher.combine(8)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .csv(let suffix, let parameters):
+      hasher.combine(9)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .csvSchema(let suffix, let parameters):
+      hasher.combine(10)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .directory(let suffix, let parameters):
+      hasher.combine(11)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .dns(let suffix, let parameters):
+      hasher.combine(12)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .ecmascript(let suffix, let parameters):
+      hasher.combine(13)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .encaprtp(let suffix, let parameters):
+      hasher.combine(14)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .enriched(let suffix, let parameters):
+      hasher.combine(15)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .example(let suffix, let parameters):
+      hasher.combine(16)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .fhirpath(let suffix, let parameters):
+      hasher.combine(17)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .flexfec(let suffix, let parameters):
+      hasher.combine(18)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .fwdred(let suffix, let parameters):
+      hasher.combine(19)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .gff3(let suffix, let parameters):
+      hasher.combine(20)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .grammarRefList(let suffix, let parameters):
+      hasher.combine(21)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .html(let suffix, let parameters):
+      hasher.combine(22)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .javascript(let suffix, let parameters):
+      hasher.combine(23)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .jcrCnd(let suffix, let parameters):
+      hasher.combine(24)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .markdown(let suffix, let parameters):
+      hasher.combine(25)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .mizar(let suffix, let parameters):
+      hasher.combine(26)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .n3(let suffix, let parameters):
+      hasher.combine(27)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .parameters(let suffix, let parameters):
+      hasher.combine(28)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .parityfec(let suffix, let parameters):
+      hasher.combine(29)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .plain(let suffix, let parameters):
+      hasher.combine(30)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .provenanceNotation(let suffix, let parameters):
+      hasher.combine(31)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .raptorfec(let suffix, let parameters):
+      hasher.combine(32)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .rfc822Headers(let suffix, let parameters):
+      hasher.combine(33)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .richtext(let suffix, let parameters):
+      hasher.combine(34)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .rtf(let suffix, let parameters):
+      hasher.combine(35)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .rtpEncAescm128(let suffix, let parameters):
+      hasher.combine(36)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .rtploopback(let suffix, let parameters):
+      hasher.combine(37)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .rtx(let suffix, let parameters):
+      hasher.combine(38)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .shaclc(let suffix, let parameters):
+      hasher.combine(39)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .shex(let suffix, let parameters):
+      hasher.combine(40)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .spdx(let suffix, let parameters):
+      hasher.combine(41)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .strings(let suffix, let parameters):
+      hasher.combine(42)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .t140(let suffix, let parameters):
+      hasher.combine(43)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .tabSeparatedValues(let suffix, let parameters):
+      hasher.combine(44)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .troff(let suffix, let parameters):
+      hasher.combine(45)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .turtle(let suffix, let parameters):
+      hasher.combine(46)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .ulpfec(let suffix, let parameters):
+      hasher.combine(47)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .uriList(let suffix, let parameters):
+      hasher.combine(48)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .vcard(let suffix, let parameters):
+      hasher.combine(49)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .vtt(let suffix, let parameters):
+      hasher.combine(50)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .xml(let suffix, let parameters):
+      hasher.combine(51)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .xmlExternalParsedEntity(let suffix, let parameters):
+      hasher.combine(52)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .other(let subtype, let suffix, let parameters):
+      hasher.combine(-1)
+      hasher.combine(subtype.description)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .anything(let suffix, let parameters):
+      hasher.combine(-2)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    }
+  }
+}

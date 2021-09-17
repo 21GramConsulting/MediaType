@@ -182,3 +182,441 @@ extension Video: RawRepresentable {
 }
 
 extension Video: MediaSubtype { public var type: MediaType { .video(self) } }
+
+extension Video: Hashable {
+  public static func ==(lhs: Self, rhs: Self) -> Bool {
+    switch lhs {
+    case .AV1(let lhsSuffix, let lhsParameters):
+      guard case let .AV1(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .BMPEG(let lhsSuffix, let lhsParameters):
+      guard case let .BMPEG(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .BT656(let lhsSuffix, let lhsParameters):
+      guard case let .BT656(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .CelB(let lhsSuffix, let lhsParameters):
+      guard case let .CelB(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .DV(let lhsSuffix, let lhsParameters):
+      guard case let .DV(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .FFV1(let lhsSuffix, let lhsParameters):
+      guard case let .FFV1(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .H261(let lhsSuffix, let lhsParameters):
+      guard case let .H261(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .H263(let lhsSuffix, let lhsParameters):
+      guard case let .H263(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .H2631998(let lhsSuffix, let lhsParameters):
+      guard case let .H2631998(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .H2632000(let lhsSuffix, let lhsParameters):
+      guard case let .H2632000(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .H264(let lhsSuffix, let lhsParameters):
+      guard case let .H264(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .H264RCDO(let lhsSuffix, let lhsParameters):
+      guard case let .H264RCDO(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .H264SVC(let lhsSuffix, let lhsParameters):
+      guard case let .H264SVC(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .H265(let lhsSuffix, let lhsParameters):
+      guard case let .H265(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .JPEG(let lhsSuffix, let lhsParameters):
+      guard case let .JPEG(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .MP1S(let lhsSuffix, let lhsParameters):
+      guard case let .MP1S(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .MP2P(let lhsSuffix, let lhsParameters):
+      guard case let .MP2P(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .MP2T(let lhsSuffix, let lhsParameters):
+      guard case let .MP2T(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .MP4VES(let lhsSuffix, let lhsParameters):
+      guard case let .MP4VES(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .MPV(let lhsSuffix, let lhsParameters):
+      guard case let .MPV(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .SMPTE292M(let lhsSuffix, let lhsParameters):
+      guard case let .SMPTE292M(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .VP8(let lhsSuffix, let lhsParameters):
+      guard case let .VP8(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .VP9(let lhsSuffix, let lhsParameters):
+      guard case let .VP9(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case ._1dInterleavedParityfec(let lhsSuffix, let lhsParameters):
+      guard case let ._1dInterleavedParityfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case ._3gpp(let lhsSuffix, let lhsParameters):
+      guard case let ._3gpp(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case ._3gpp2(let lhsSuffix, let lhsParameters):
+      guard case let ._3gpp2(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case ._3gppTt(let lhsSuffix, let lhsParameters):
+      guard case let ._3gppTt(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .encaprtp(let lhsSuffix, let lhsParameters):
+      guard case let .encaprtp(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .example(let lhsSuffix, let lhsParameters):
+      guard case let .example(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .flexfec(let lhsSuffix, let lhsParameters):
+      guard case let .flexfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .jpeg2000(let lhsSuffix, let lhsParameters):
+      guard case let .jpeg2000(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .jxsv(let lhsSuffix, let lhsParameters):
+      guard case let .jxsv(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .mj2(let lhsSuffix, let lhsParameters):
+      guard case let .mj2(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .mp4(let lhsSuffix, let lhsParameters):
+      guard case let .mp4(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .mpeg(let lhsSuffix, let lhsParameters):
+      guard case let .mpeg(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .mpeg4Generic(let lhsSuffix, let lhsParameters):
+      guard case let .mpeg4Generic(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .nv(let lhsSuffix, let lhsParameters):
+      guard case let .nv(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .ogg(let lhsSuffix, let lhsParameters):
+      guard case let .ogg(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .parityfec(let lhsSuffix, let lhsParameters):
+      guard case let .parityfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .pointer(let lhsSuffix, let lhsParameters):
+      guard case let .pointer(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .quicktime(let lhsSuffix, let lhsParameters):
+      guard case let .quicktime(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .raptorfec(let lhsSuffix, let lhsParameters):
+      guard case let .raptorfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .raw(let lhsSuffix, let lhsParameters):
+      guard case let .raw(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .rtpEncAescm128(let lhsSuffix, let lhsParameters):
+      guard case let .rtpEncAescm128(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .rtploopback(let lhsSuffix, let lhsParameters):
+      guard case let .rtploopback(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .rtx(let lhsSuffix, let lhsParameters):
+      guard case let .rtx(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .scip(let lhsSuffix, let lhsParameters):
+      guard case let .scip(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .smpte291(let lhsSuffix, let lhsParameters):
+      guard case let .smpte291(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .ulpfec(let lhsSuffix, let lhsParameters):
+      guard case let .ulpfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .vc1(let lhsSuffix, let lhsParameters):
+      guard case let .vc1(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .vc2(let lhsSuffix, let lhsParameters):
+      guard case let .vc2(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .other(let lhsSubtype, let lhsSuffix, let lhsParameters):
+      guard case let .other(rhsSubtype, rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSubtype.description != rhsSubtype.description { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .anything(let lhsSuffix, let lhsParameters):
+      guard case let .anything(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    }
+  }
+
+  public func hash(into hasher: inout Hasher) {
+    switch self {
+    case .AV1(let suffix, let parameters):
+      hasher.combine(0)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .BMPEG(let suffix, let parameters):
+      hasher.combine(1)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .BT656(let suffix, let parameters):
+      hasher.combine(2)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .CelB(let suffix, let parameters):
+      hasher.combine(3)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .DV(let suffix, let parameters):
+      hasher.combine(4)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .FFV1(let suffix, let parameters):
+      hasher.combine(5)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .H261(let suffix, let parameters):
+      hasher.combine(6)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .H263(let suffix, let parameters):
+      hasher.combine(7)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .H2631998(let suffix, let parameters):
+      hasher.combine(8)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .H2632000(let suffix, let parameters):
+      hasher.combine(9)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .H264(let suffix, let parameters):
+      hasher.combine(10)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .H264RCDO(let suffix, let parameters):
+      hasher.combine(11)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .H264SVC(let suffix, let parameters):
+      hasher.combine(12)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .H265(let suffix, let parameters):
+      hasher.combine(13)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .JPEG(let suffix, let parameters):
+      hasher.combine(14)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .MP1S(let suffix, let parameters):
+      hasher.combine(15)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .MP2P(let suffix, let parameters):
+      hasher.combine(16)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .MP2T(let suffix, let parameters):
+      hasher.combine(17)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .MP4VES(let suffix, let parameters):
+      hasher.combine(18)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .MPV(let suffix, let parameters):
+      hasher.combine(19)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .SMPTE292M(let suffix, let parameters):
+      hasher.combine(20)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .VP8(let suffix, let parameters):
+      hasher.combine(21)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .VP9(let suffix, let parameters):
+      hasher.combine(22)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case ._1dInterleavedParityfec(let suffix, let parameters):
+      hasher.combine(23)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case ._3gpp(let suffix, let parameters):
+      hasher.combine(24)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case ._3gpp2(let suffix, let parameters):
+      hasher.combine(25)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case ._3gppTt(let suffix, let parameters):
+      hasher.combine(26)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .encaprtp(let suffix, let parameters):
+      hasher.combine(27)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .example(let suffix, let parameters):
+      hasher.combine(28)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .flexfec(let suffix, let parameters):
+      hasher.combine(29)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .jpeg2000(let suffix, let parameters):
+      hasher.combine(30)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .jxsv(let suffix, let parameters):
+      hasher.combine(31)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .mj2(let suffix, let parameters):
+      hasher.combine(32)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .mp4(let suffix, let parameters):
+      hasher.combine(33)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .mpeg(let suffix, let parameters):
+      hasher.combine(34)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .mpeg4Generic(let suffix, let parameters):
+      hasher.combine(35)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .nv(let suffix, let parameters):
+      hasher.combine(36)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .ogg(let suffix, let parameters):
+      hasher.combine(37)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .parityfec(let suffix, let parameters):
+      hasher.combine(38)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .pointer(let suffix, let parameters):
+      hasher.combine(39)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .quicktime(let suffix, let parameters):
+      hasher.combine(40)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .raptorfec(let suffix, let parameters):
+      hasher.combine(41)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .raw(let suffix, let parameters):
+      hasher.combine(42)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .rtpEncAescm128(let suffix, let parameters):
+      hasher.combine(43)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .rtploopback(let suffix, let parameters):
+      hasher.combine(44)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .rtx(let suffix, let parameters):
+      hasher.combine(45)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .scip(let suffix, let parameters):
+      hasher.combine(46)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .smpte291(let suffix, let parameters):
+      hasher.combine(47)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .ulpfec(let suffix, let parameters):
+      hasher.combine(48)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .vc1(let suffix, let parameters):
+      hasher.combine(49)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .vc2(let suffix, let parameters):
+      hasher.combine(50)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .other(let subtype, let suffix, let parameters):
+      hasher.combine(-1)
+      hasher.combine(subtype.description)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .anything(let suffix, let parameters):
+      hasher.combine(-2)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    }
+  }
+}

@@ -74,3 +74,153 @@ extension Model: RawRepresentable {
 }
 
 extension Model: MediaSubtype { public var type: MediaType { .model(self) } }
+
+extension Model: Hashable {
+  public static func ==(lhs: Self, rhs: Self) -> Bool {
+    switch lhs {
+    case ._3mf(let lhsSuffix, let lhsParameters):
+      guard case let ._3mf(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .e57(let lhsSuffix, let lhsParameters):
+      guard case let .e57(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .example(let lhsSuffix, let lhsParameters):
+      guard case let .example(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .gltfBinary(let lhsSuffix, let lhsParameters):
+      guard case let .gltfBinary(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .gltf(let lhsSuffix, let lhsParameters):
+      guard case let .gltf(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .iges(let lhsSuffix, let lhsParameters):
+      guard case let .iges(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .mesh(let lhsSuffix, let lhsParameters):
+      guard case let .mesh(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .mtl(let lhsSuffix, let lhsParameters):
+      guard case let .mtl(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .obj(let lhsSuffix, let lhsParameters):
+      guard case let .obj(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .step(let lhsSuffix, let lhsParameters):
+      guard case let .step(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .stepXml(let lhsSuffix, let lhsParameters):
+      guard case let .stepXml(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .stl(let lhsSuffix, let lhsParameters):
+      guard case let .stl(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .vrml(let lhsSuffix, let lhsParameters):
+      guard case let .vrml(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .x3dVrml(let lhsSuffix, let lhsParameters):
+      guard case let .x3dVrml(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .x3d(let lhsSuffix, let lhsParameters):
+      guard case let .x3d(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .other(let lhsSubtype, let lhsSuffix, let lhsParameters):
+      guard case let .other(rhsSubtype, rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSubtype.description != rhsSubtype.description { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .anything(let lhsSuffix, let lhsParameters):
+      guard case let .anything(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    }
+  }
+
+  public func hash(into hasher: inout Hasher) {
+    switch self {
+    case ._3mf(let suffix, let parameters):
+      hasher.combine(0)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .e57(let suffix, let parameters):
+      hasher.combine(1)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .example(let suffix, let parameters):
+      hasher.combine(2)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .gltfBinary(let suffix, let parameters):
+      hasher.combine(3)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .gltf(let suffix, let parameters):
+      hasher.combine(4)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .iges(let suffix, let parameters):
+      hasher.combine(5)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .mesh(let suffix, let parameters):
+      hasher.combine(6)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .mtl(let suffix, let parameters):
+      hasher.combine(7)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .obj(let suffix, let parameters):
+      hasher.combine(8)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .step(let suffix, let parameters):
+      hasher.combine(9)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .stepXml(let suffix, let parameters):
+      hasher.combine(10)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .stl(let suffix, let parameters):
+      hasher.combine(11)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .vrml(let suffix, let parameters):
+      hasher.combine(12)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .x3dVrml(let suffix, let parameters):
+      hasher.combine(13)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .x3d(let suffix, let parameters):
+      hasher.combine(14)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .other(let subtype, let suffix, let parameters):
+      hasher.combine(-1)
+      hasher.combine(subtype.description)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .anything(let suffix, let parameters):
+      hasher.combine(-2)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    }
+  }
+}

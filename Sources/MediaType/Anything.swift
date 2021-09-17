@@ -30,3 +30,32 @@ extension Anything: RawRepresentable {
 
 }
 
+extension Anything: Hashable {
+  public static func ==(lhs: Self, rhs: Self) -> Bool {
+    switch lhs {
+    case .other(let lhsSubtype, let lhsSuffix, let lhsParameters):
+      guard case let .other(rhsSubtype, rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSubtype.description != rhsSubtype.description { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .anything(let lhsSuffix, let lhsParameters):
+      guard case let .anything(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    }
+  }
+
+  public func hash(into hasher: inout Hasher) {
+    switch self {
+    case .other(let subtype, let suffix, let parameters):
+      hasher.combine(-1)
+      hasher.combine(subtype.description)
+      hasher.combine(suffix.description)
+      hasher.combine(parameters)
+    case .anything(let suffix, let parameters):
+      hasher.combine(-2)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    }
+  }
+}

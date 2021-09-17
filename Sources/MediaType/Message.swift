@@ -86,3 +86,185 @@ extension Message: RawRepresentable {
 }
 
 extension Message: MediaSubtype { public var type: MediaType { .message(self) } }
+
+extension Message: Hashable {
+  public static func ==(lhs: Self, rhs: Self) -> Bool {
+    switch lhs {
+    case .CPIM(let lhsSuffix, let lhsParameters):
+      guard case let .CPIM(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .deliveryStatus(let lhsSuffix, let lhsParameters):
+      guard case let .deliveryStatus(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .dispositionNotification(let lhsSuffix, let lhsParameters):
+      guard case let .dispositionNotification(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .example(let lhsSuffix, let lhsParameters):
+      guard case let .example(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .externalBody(let lhsSuffix, let lhsParameters):
+      guard case let .externalBody(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .feedbackReport(let lhsSuffix, let lhsParameters):
+      guard case let .feedbackReport(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .global(let lhsSuffix, let lhsParameters):
+      guard case let .global(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .globalDeliveryStatus(let lhsSuffix, let lhsParameters):
+      guard case let .globalDeliveryStatus(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .globalDispositionNotification(let lhsSuffix, let lhsParameters):
+      guard case let .globalDispositionNotification(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .globalHeaders(let lhsSuffix, let lhsParameters):
+      guard case let .globalHeaders(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .http(let lhsSuffix, let lhsParameters):
+      guard case let .http(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .imdn(let lhsSuffix, let lhsParameters):
+      guard case let .imdn(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .news(let lhsSuffix, let lhsParameters):
+      guard case let .news(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .partial(let lhsSuffix, let lhsParameters):
+      guard case let .partial(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .rfc822(let lhsSuffix, let lhsParameters):
+      guard case let .rfc822(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .sHttp(let lhsSuffix, let lhsParameters):
+      guard case let .sHttp(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .sip(let lhsSuffix, let lhsParameters):
+      guard case let .sip(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .sipfrag(let lhsSuffix, let lhsParameters):
+      guard case let .sipfrag(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .trackingStatus(let lhsSuffix, let lhsParameters):
+      guard case let .trackingStatus(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .other(let lhsSubtype, let lhsSuffix, let lhsParameters):
+      guard case let .other(rhsSubtype, rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSubtype.description != rhsSubtype.description { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .anything(let lhsSuffix, let lhsParameters):
+      guard case let .anything(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    }
+  }
+
+  public func hash(into hasher: inout Hasher) {
+    switch self {
+    case .CPIM(let suffix, let parameters):
+      hasher.combine(0)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .deliveryStatus(let suffix, let parameters):
+      hasher.combine(1)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .dispositionNotification(let suffix, let parameters):
+      hasher.combine(2)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .example(let suffix, let parameters):
+      hasher.combine(3)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .externalBody(let suffix, let parameters):
+      hasher.combine(4)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .feedbackReport(let suffix, let parameters):
+      hasher.combine(5)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .global(let suffix, let parameters):
+      hasher.combine(6)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .globalDeliveryStatus(let suffix, let parameters):
+      hasher.combine(7)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .globalDispositionNotification(let suffix, let parameters):
+      hasher.combine(8)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .globalHeaders(let suffix, let parameters):
+      hasher.combine(9)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .http(let suffix, let parameters):
+      hasher.combine(10)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .imdn(let suffix, let parameters):
+      hasher.combine(11)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .news(let suffix, let parameters):
+      hasher.combine(12)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .partial(let suffix, let parameters):
+      hasher.combine(13)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .rfc822(let suffix, let parameters):
+      hasher.combine(14)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .sHttp(let suffix, let parameters):
+      hasher.combine(15)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .sip(let suffix, let parameters):
+      hasher.combine(16)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .sipfrag(let suffix, let parameters):
+      hasher.combine(17)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .trackingStatus(let suffix, let parameters):
+      hasher.combine(18)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .other(let subtype, let suffix, let parameters):
+      hasher.combine(-1)
+      hasher.combine(subtype.description)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .anything(let suffix, let parameters):
+      hasher.combine(-2)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    }
+  }
+}

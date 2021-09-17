@@ -141,6 +141,80 @@ ${
 }
 
 extension ${pascalCase}: MediaSubtype { public var type: MediaType { .${lowerCase}(self) } }
+
+extension ${pascalCase}: Hashable {
+  public static func ==(lhs: Self, rhs: Self) -> Bool {
+    switch lhs {
+${
+            mediaRecords
+                .filter(r => r.type === lowerCase)
+                .map(r => ({
+                    caseName: r.tree[0].snakeToCamel().firstNumberTreated(),
+                    value: r.tree[0]
+                }))
+                .filter((r, i, l) => i === l.findIndex(_r => _r.caseName === r.caseName))
+                .slice()
+                .sort((a, b) => a.caseName.charCodeAt(0) - b.caseName.charCodeAt(0))
+                .map(({caseName, value}) => [
+                    `    case .${caseName}(let lhsSuffix, let lhsParameters):`,
+                    `      guard case let .${caseName}(rhsSuffix, rhsParameters) = rhs else { return false }`,
+                    `      if lhsSuffix != rhsSuffix { return false }`,
+                    `      return lhsParameters == rhsParameters`
+                ].join('\n'))
+                .concat([
+                    '    case .other(let lhsSubtype, let lhsSuffix, let lhsParameters):',
+                    '      guard case let .other(rhsSubtype, rhsSuffix, rhsParameters) = rhs else { return false }',
+                    '      if lhsSubtype.description != rhsSubtype.description { return false }',
+                    '      if lhsSuffix != rhsSuffix { return false }',
+                    '      return lhsParameters == rhsParameters'
+                ].join('\n'))
+                .concat([
+                    '    case .anything(let lhsSuffix, let lhsParameters):',
+                    '      guard case let .anything(rhsSuffix, rhsParameters) = rhs else { return false }',
+                    '      if lhsSuffix != rhsSuffix { return false }',
+                    '      return lhsParameters == rhsParameters'
+                ].join('\n'))
+                .join('\n')
+        }
+    }
+  }
+
+  public func hash(into hasher: inout Hasher) {
+    switch self {
+${
+            mediaRecords
+                .filter(r => r.type === lowerCase)
+                .map(r => ({
+                    caseName: r.tree[0].snakeToCamel().firstNumberTreated(),
+                    value: r.tree[0]
+                }))
+                .filter((r, i, l) => i === l.findIndex(_r => _r.caseName === r.caseName))
+                .slice()
+                .sort((a, b) => a.caseName.charCodeAt(0) - b.caseName.charCodeAt(0))
+                .map(({caseName}, i) => [
+                    `    case .${caseName}(let suffix, let parameters):`,
+                    `      hasher.combine(${i})`,
+                    `      hasher.combine(suffix)`,
+                    `      hasher.combine(parameters)`
+                ].join('\n'))
+                .concat([
+                    '    case .other(let subtype, let suffix, let parameters):',
+                    `      hasher.combine(-1)`,
+                    `      hasher.combine(subtype.description)`,
+                    `      hasher.combine(suffix)`,
+                    `      hasher.combine(parameters)`
+                ].join('\n'))
+                .concat([
+                    '    case .anything(let suffix, let parameters):',
+                    `      hasher.combine(-2)`,
+                    `      hasher.combine(suffix)`,
+                    `      hasher.combine(parameters)`
+                ].join('\n'))
+                .join('\n')
+        }
+    }
+  }
+}
 `
     }))
     .forEach(r => writeFileSync(r.fileName, r.code))
@@ -155,7 +229,7 @@ ${
             .map(({lowerCase, pascalCase}) => `  case ${lowerCase}(${pascalCase})`)
             .join('\n')
     }
-  case other(type: String, subtype: String, Suffix? = nil, Parameters? = nil)
+  case other(type: CustomStringConvertible, subtype: CustomStringConvertible, Suffix? = nil, Parameters? = nil)
   case anything(Anything)
 }
 
@@ -213,13 +287,73 @@ ${
             .sort(([a], [b]) => a.charCodeAt(0) - b.charCodeAt(0))
             .map(toFormattedSwitchCase)
             .join('\n')
-    } 
+    }
     }
   }
 }
 
 extension MediaType:ExpressibleByStringLiteral {
   public init(stringLiteral value: String) { self.init(rawValue: value) }
+}
+
+extension MediaType: Hashable {
+  public static func ==(lhs: Self, rhs: Self) -> Bool {
+    switch lhs {
+${
+        types
+            .slice()
+            .sort((a, b) => a.lowerCase.charCodeAt(0) - b.lowerCase.charCodeAt(0))
+            .map(({lowerCase}) => [
+                `    case .${lowerCase}(let lhs): `,
+                `if case let .${lowerCase}(rhs) = rhs { return lhs == rhs } else { return false }`
+            ])
+            .concat([[
+                '    case .anything(let lhs): ',
+                `if case let .anything(rhs) = rhs { return lhs == rhs } else { return false }`
+            ]])
+            .map(toFormattedSwitchCase)
+            .concat([
+                '    case .other(let lhsType, let lhsSubtype, let lhsSuffix, let lhsParameters):',
+                '      guard case let .other(rhsType, rhsSubtype, rhsSuffix, rhsParameters) = rhs else { return false }',
+                '      if (lhsType.description != rhsType.description) { return false }',
+                '      if (lhsSubtype.description != rhsSubtype.description) { return false }',
+                '      if (lhsSuffix != rhsSuffix) { return false }',
+                '      if (lhsParameters != rhsParameters) { return false }',
+                '      return true'
+            ].join('\n'))
+            .join('\n')
+    }
+    }
+  }
+
+  public func hash(into hasher: inout Hasher) {
+    switch self {
+${
+        types
+            .slice()
+            .sort((a, b) => a.lowerCase.charCodeAt(0) - b.lowerCase.charCodeAt(0))
+            .map(({lowerCase}, i) => [
+                `    case .${lowerCase}(let subtype): `,
+                `      hasher.combine(${i})`,
+                '      hasher.combine(subtype)'
+            ].join('\n'))
+            .concat([
+                '    case .anything(let subtype):',
+                `      hasher.combine(-1)`,
+                '      hasher.combine(subtype)'
+            ].join('\n'))
+            .concat([
+                '    case .other(let type, let subtype, let suffix, let parameters):',
+                '      hasher.combine(-2)',
+                '      hasher.combine(type.description)',
+                '      hasher.combine(subtype.description)',
+                '      hasher.combine(suffix)',
+                '      hasher.combine(parameters)'
+            ].join('\n'))
+            .join('\n')
+    }
+    }
+  }
 }
 `);
 
@@ -257,6 +391,35 @@ extension Anything: RawRepresentable {
 
 }
 
+extension Anything: Hashable {
+  public static func ==(lhs: Self, rhs: Self) -> Bool {
+    switch lhs {
+    case .other(let lhsSubtype, let lhsSuffix, let lhsParameters):
+      guard case let .other(rhsSubtype, rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSubtype.description != rhsSubtype.description { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .anything(let lhsSuffix, let lhsParameters):
+      guard case let .anything(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    }
+  }
+
+  public func hash(into hasher: inout Hasher) {
+    switch self {
+    case .other(let subtype, let suffix, let parameters):
+      hasher.combine(-1)
+      hasher.combine(subtype.description)
+      hasher.combine(suffix.description)
+      hasher.combine(parameters)
+    case .anything(let suffix, let parameters):
+      hasher.combine(-2)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    }
+  }
+}
 `);
 
 writeFileSync(
@@ -314,5 +477,35 @@ internal func convert(string rawValue: String) -> RawSubtype {
     suffix: suffix,
     parameters: parameters
   )
+}
+
+func ==(lhs: Parameters?, rhs: Parameters?) -> Bool {
+  guard let lhs = lhs else { return rhs == nil }
+  guard let rhs = rhs else { return false }
+  if lhs.keys != rhs.keys { return false }
+  for (lhsKey, lhsValue) in lhs {
+    guard let rhsValue = rhs[lhsKey] else {
+      if lhsValue != nil {
+        return false
+      } else {
+        continue
+      }
+    }
+    guard let lhsValue = lhsValue else { return false }
+    if lhsValue.description != rhsValue!.description { return false }
+  }
+  return true
+}
+
+func !=(lhs: Parameters?, rhs: Parameters?) -> Bool { !(lhs == rhs) }
+
+extension Hasher {
+  @inlinable mutating func combine(_ value: Parameters?) {
+    guard let value = value else { return combine(nil) }
+    for (key, value) in value {
+      combine(key)
+      combine(value?.description)
+    }
+  }
 }
 `);

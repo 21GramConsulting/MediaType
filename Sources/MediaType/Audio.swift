@@ -377,3 +377,961 @@ extension Audio: RawRepresentable {
 }
 
 extension Audio: MediaSubtype { public var type: MediaType { .audio(self) } }
+
+extension Audio: Hashable {
+  public static func ==(lhs: Self, rhs: Self) -> Bool {
+    switch lhs {
+    case .AMR(let lhsSuffix, let lhsParameters):
+      guard case let .AMR(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .AMRWB(let lhsSuffix, let lhsParameters):
+      guard case let .AMRWB(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .ATRACADVANCEDLOSSLESS(let lhsSuffix, let lhsParameters):
+      guard case let .ATRACADVANCEDLOSSLESS(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .ATRACX(let lhsSuffix, let lhsParameters):
+      guard case let .ATRACX(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .ATRAC3(let lhsSuffix, let lhsParameters):
+      guard case let .ATRAC3(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .BV16(let lhsSuffix, let lhsParameters):
+      guard case let .BV16(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .BV32(let lhsSuffix, let lhsParameters):
+      guard case let .BV32(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .CN(let lhsSuffix, let lhsParameters):
+      guard case let .CN(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .DAT12(let lhsSuffix, let lhsParameters):
+      guard case let .DAT12(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .DV(let lhsSuffix, let lhsParameters):
+      guard case let .DV(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .DVI4(let lhsSuffix, let lhsParameters):
+      guard case let .DVI4(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .EVRC(let lhsSuffix, let lhsParameters):
+      guard case let .EVRC(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .EVRCQCP(let lhsSuffix, let lhsParameters):
+      guard case let .EVRCQCP(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .EVRC0(let lhsSuffix, let lhsParameters):
+      guard case let .EVRC0(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .EVRC1(let lhsSuffix, let lhsParameters):
+      guard case let .EVRC1(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .EVRCB(let lhsSuffix, let lhsParameters):
+      guard case let .EVRCB(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .EVRCB0(let lhsSuffix, let lhsParameters):
+      guard case let .EVRCB0(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .EVRCB1(let lhsSuffix, let lhsParameters):
+      guard case let .EVRCB1(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .EVRCNW(let lhsSuffix, let lhsParameters):
+      guard case let .EVRCNW(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .EVRCNW0(let lhsSuffix, let lhsParameters):
+      guard case let .EVRCNW0(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .EVRCNW1(let lhsSuffix, let lhsParameters):
+      guard case let .EVRCNW1(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .EVRCWB(let lhsSuffix, let lhsParameters):
+      guard case let .EVRCWB(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .EVRCWB0(let lhsSuffix, let lhsParameters):
+      guard case let .EVRCWB0(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .EVRCWB1(let lhsSuffix, let lhsParameters):
+      guard case let .EVRCWB1(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .EVS(let lhsSuffix, let lhsParameters):
+      guard case let .EVS(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .G7110(let lhsSuffix, let lhsParameters):
+      guard case let .G7110(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .G719(let lhsSuffix, let lhsParameters):
+      guard case let .G719(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .G7221(let lhsSuffix, let lhsParameters):
+      guard case let .G7221(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .G722(let lhsSuffix, let lhsParameters):
+      guard case let .G722(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .G723(let lhsSuffix, let lhsParameters):
+      guard case let .G723(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .G72616(let lhsSuffix, let lhsParameters):
+      guard case let .G72616(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .G72624(let lhsSuffix, let lhsParameters):
+      guard case let .G72624(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .G72632(let lhsSuffix, let lhsParameters):
+      guard case let .G72632(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .G72640(let lhsSuffix, let lhsParameters):
+      guard case let .G72640(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .G728(let lhsSuffix, let lhsParameters):
+      guard case let .G728(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .G729(let lhsSuffix, let lhsParameters):
+      guard case let .G729(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .G7291(let lhsSuffix, let lhsParameters):
+      guard case let .G7291(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .G729D(let lhsSuffix, let lhsParameters):
+      guard case let .G729D(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .G729E(let lhsSuffix, let lhsParameters):
+      guard case let .G729E(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .GSM(let lhsSuffix, let lhsParameters):
+      guard case let .GSM(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .GSMEFR(let lhsSuffix, let lhsParameters):
+      guard case let .GSMEFR(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .GSMHR08(let lhsSuffix, let lhsParameters):
+      guard case let .GSMHR08(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .L8(let lhsSuffix, let lhsParameters):
+      guard case let .L8(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .L16(let lhsSuffix, let lhsParameters):
+      guard case let .L16(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .L20(let lhsSuffix, let lhsParameters):
+      guard case let .L20(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .L24(let lhsSuffix, let lhsParameters):
+      guard case let .L24(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .LPC(let lhsSuffix, let lhsParameters):
+      guard case let .LPC(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .MELP(let lhsSuffix, let lhsParameters):
+      guard case let .MELP(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .MELP600(let lhsSuffix, let lhsParameters):
+      guard case let .MELP600(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .MELP1200(let lhsSuffix, let lhsParameters):
+      guard case let .MELP1200(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .MELP2400(let lhsSuffix, let lhsParameters):
+      guard case let .MELP2400(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .MPA(let lhsSuffix, let lhsParameters):
+      guard case let .MPA(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .MP4ALATM(let lhsSuffix, let lhsParameters):
+      guard case let .MP4ALATM(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .PCMA(let lhsSuffix, let lhsParameters):
+      guard case let .PCMA(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .PCMAWB(let lhsSuffix, let lhsParameters):
+      guard case let .PCMAWB(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .PCMU(let lhsSuffix, let lhsParameters):
+      guard case let .PCMU(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .PCMUWB(let lhsSuffix, let lhsParameters):
+      guard case let .PCMUWB(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .QCELP(let lhsSuffix, let lhsParameters):
+      guard case let .QCELP(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .RED(let lhsSuffix, let lhsParameters):
+      guard case let .RED(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .SMV(let lhsSuffix, let lhsParameters):
+      guard case let .SMV(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .SMV0(let lhsSuffix, let lhsParameters):
+      guard case let .SMV0(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .SMVQCP(let lhsSuffix, let lhsParameters):
+      guard case let .SMVQCP(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .TETRA_ACELP(let lhsSuffix, let lhsParameters):
+      guard case let .TETRA_ACELP(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .TETRA_ACELP_BB(let lhsSuffix, let lhsParameters):
+      guard case let .TETRA_ACELP_BB(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .TSVCIS(let lhsSuffix, let lhsParameters):
+      guard case let .TSVCIS(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .UEMCLIP(let lhsSuffix, let lhsParameters):
+      guard case let .UEMCLIP(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .VDVI(let lhsSuffix, let lhsParameters):
+      guard case let .VDVI(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .VMRWB(let lhsSuffix, let lhsParameters):
+      guard case let .VMRWB(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case ._1dInterleavedParityfec(let lhsSuffix, let lhsParameters):
+      guard case let ._1dInterleavedParityfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case ._32kadpcm(let lhsSuffix, let lhsParameters):
+      guard case let ._32kadpcm(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case ._3gpp(let lhsSuffix, let lhsParameters):
+      guard case let ._3gpp(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case ._3gpp2(let lhsSuffix, let lhsParameters):
+      guard case let ._3gpp2(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .aac(let lhsSuffix, let lhsParameters):
+      guard case let .aac(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .ac3(let lhsSuffix, let lhsParameters):
+      guard case let .ac3(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .amrWb(let lhsSuffix, let lhsParameters):
+      guard case let .amrWb(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .aptx(let lhsSuffix, let lhsParameters):
+      guard case let .aptx(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .asc(let lhsSuffix, let lhsParameters):
+      guard case let .asc(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .basic(let lhsSuffix, let lhsParameters):
+      guard case let .basic(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .clearmode(let lhsSuffix, let lhsParameters):
+      guard case let .clearmode(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .dls(let lhsSuffix, let lhsParameters):
+      guard case let .dls(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .dsrEs201108(let lhsSuffix, let lhsParameters):
+      guard case let .dsrEs201108(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .dsrEs202050(let lhsSuffix, let lhsParameters):
+      guard case let .dsrEs202050(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .dsrEs202211(let lhsSuffix, let lhsParameters):
+      guard case let .dsrEs202211(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .dsrEs202212(let lhsSuffix, let lhsParameters):
+      guard case let .dsrEs202212(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .eac3(let lhsSuffix, let lhsParameters):
+      guard case let .eac3(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .encaprtp(let lhsSuffix, let lhsParameters):
+      guard case let .encaprtp(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .example(let lhsSuffix, let lhsParameters):
+      guard case let .example(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .flexfec(let lhsSuffix, let lhsParameters):
+      guard case let .flexfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .fwdred(let lhsSuffix, let lhsParameters):
+      guard case let .fwdred(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .iLBC(let lhsSuffix, let lhsParameters):
+      guard case let .iLBC(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .mhas(let lhsSuffix, let lhsParameters):
+      guard case let .mhas(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .mobileXmf(let lhsSuffix, let lhsParameters):
+      guard case let .mobileXmf(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .mp4(let lhsSuffix, let lhsParameters):
+      guard case let .mp4(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .mpaRobust(let lhsSuffix, let lhsParameters):
+      guard case let .mpaRobust(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .mpeg(let lhsSuffix, let lhsParameters):
+      guard case let .mpeg(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .mpeg4Generic(let lhsSuffix, let lhsParameters):
+      guard case let .mpeg4Generic(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .ogg(let lhsSuffix, let lhsParameters):
+      guard case let .ogg(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .opus(let lhsSuffix, let lhsParameters):
+      guard case let .opus(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .parityfec(let lhsSuffix, let lhsParameters):
+      guard case let .parityfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .raptorfec(let lhsSuffix, let lhsParameters):
+      guard case let .raptorfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .rtpEncAescm128(let lhsSuffix, let lhsParameters):
+      guard case let .rtpEncAescm128(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .rtploopback(let lhsSuffix, let lhsParameters):
+      guard case let .rtploopback(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .rtpMidi(let lhsSuffix, let lhsParameters):
+      guard case let .rtpMidi(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .rtx(let lhsSuffix, let lhsParameters):
+      guard case let .rtx(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .scip(let lhsSuffix, let lhsParameters):
+      guard case let .scip(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .sofa(let lhsSuffix, let lhsParameters):
+      guard case let .sofa(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .spMidi(let lhsSuffix, let lhsParameters):
+      guard case let .spMidi(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .speex(let lhsSuffix, let lhsParameters):
+      guard case let .speex(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .t140c(let lhsSuffix, let lhsParameters):
+      guard case let .t140c(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .t38(let lhsSuffix, let lhsParameters):
+      guard case let .t38(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .telephoneEvent(let lhsSuffix, let lhsParameters):
+      guard case let .telephoneEvent(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .tone(let lhsSuffix, let lhsParameters):
+      guard case let .tone(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .ulpfec(let lhsSuffix, let lhsParameters):
+      guard case let .ulpfec(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .usac(let lhsSuffix, let lhsParameters):
+      guard case let .usac(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .vorbis(let lhsSuffix, let lhsParameters):
+      guard case let .vorbis(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .vorbisConfig(let lhsSuffix, let lhsParameters):
+      guard case let .vorbisConfig(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .other(let lhsSubtype, let lhsSuffix, let lhsParameters):
+      guard case let .other(rhsSubtype, rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSubtype.description != rhsSubtype.description { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    case .anything(let lhsSuffix, let lhsParameters):
+      guard case let .anything(rhsSuffix, rhsParameters) = rhs else { return false }
+      if lhsSuffix != rhsSuffix { return false }
+      return lhsParameters == rhsParameters
+    }
+  }
+
+  public func hash(into hasher: inout Hasher) {
+    switch self {
+    case .AMR(let suffix, let parameters):
+      hasher.combine(0)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .AMRWB(let suffix, let parameters):
+      hasher.combine(1)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .ATRACADVANCEDLOSSLESS(let suffix, let parameters):
+      hasher.combine(2)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .ATRACX(let suffix, let parameters):
+      hasher.combine(3)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .ATRAC3(let suffix, let parameters):
+      hasher.combine(4)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .BV16(let suffix, let parameters):
+      hasher.combine(5)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .BV32(let suffix, let parameters):
+      hasher.combine(6)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .CN(let suffix, let parameters):
+      hasher.combine(7)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .DAT12(let suffix, let parameters):
+      hasher.combine(8)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .DV(let suffix, let parameters):
+      hasher.combine(9)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .DVI4(let suffix, let parameters):
+      hasher.combine(10)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .EVRC(let suffix, let parameters):
+      hasher.combine(11)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .EVRCQCP(let suffix, let parameters):
+      hasher.combine(12)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .EVRC0(let suffix, let parameters):
+      hasher.combine(13)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .EVRC1(let suffix, let parameters):
+      hasher.combine(14)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .EVRCB(let suffix, let parameters):
+      hasher.combine(15)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .EVRCB0(let suffix, let parameters):
+      hasher.combine(16)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .EVRCB1(let suffix, let parameters):
+      hasher.combine(17)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .EVRCNW(let suffix, let parameters):
+      hasher.combine(18)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .EVRCNW0(let suffix, let parameters):
+      hasher.combine(19)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .EVRCNW1(let suffix, let parameters):
+      hasher.combine(20)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .EVRCWB(let suffix, let parameters):
+      hasher.combine(21)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .EVRCWB0(let suffix, let parameters):
+      hasher.combine(22)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .EVRCWB1(let suffix, let parameters):
+      hasher.combine(23)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .EVS(let suffix, let parameters):
+      hasher.combine(24)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .G7110(let suffix, let parameters):
+      hasher.combine(25)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .G719(let suffix, let parameters):
+      hasher.combine(26)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .G7221(let suffix, let parameters):
+      hasher.combine(27)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .G722(let suffix, let parameters):
+      hasher.combine(28)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .G723(let suffix, let parameters):
+      hasher.combine(29)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .G72616(let suffix, let parameters):
+      hasher.combine(30)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .G72624(let suffix, let parameters):
+      hasher.combine(31)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .G72632(let suffix, let parameters):
+      hasher.combine(32)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .G72640(let suffix, let parameters):
+      hasher.combine(33)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .G728(let suffix, let parameters):
+      hasher.combine(34)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .G729(let suffix, let parameters):
+      hasher.combine(35)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .G7291(let suffix, let parameters):
+      hasher.combine(36)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .G729D(let suffix, let parameters):
+      hasher.combine(37)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .G729E(let suffix, let parameters):
+      hasher.combine(38)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .GSM(let suffix, let parameters):
+      hasher.combine(39)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .GSMEFR(let suffix, let parameters):
+      hasher.combine(40)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .GSMHR08(let suffix, let parameters):
+      hasher.combine(41)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .L8(let suffix, let parameters):
+      hasher.combine(42)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .L16(let suffix, let parameters):
+      hasher.combine(43)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .L20(let suffix, let parameters):
+      hasher.combine(44)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .L24(let suffix, let parameters):
+      hasher.combine(45)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .LPC(let suffix, let parameters):
+      hasher.combine(46)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .MELP(let suffix, let parameters):
+      hasher.combine(47)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .MELP600(let suffix, let parameters):
+      hasher.combine(48)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .MELP1200(let suffix, let parameters):
+      hasher.combine(49)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .MELP2400(let suffix, let parameters):
+      hasher.combine(50)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .MPA(let suffix, let parameters):
+      hasher.combine(51)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .MP4ALATM(let suffix, let parameters):
+      hasher.combine(52)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .PCMA(let suffix, let parameters):
+      hasher.combine(53)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .PCMAWB(let suffix, let parameters):
+      hasher.combine(54)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .PCMU(let suffix, let parameters):
+      hasher.combine(55)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .PCMUWB(let suffix, let parameters):
+      hasher.combine(56)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .QCELP(let suffix, let parameters):
+      hasher.combine(57)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .RED(let suffix, let parameters):
+      hasher.combine(58)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .SMV(let suffix, let parameters):
+      hasher.combine(59)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .SMV0(let suffix, let parameters):
+      hasher.combine(60)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .SMVQCP(let suffix, let parameters):
+      hasher.combine(61)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .TETRA_ACELP(let suffix, let parameters):
+      hasher.combine(62)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .TETRA_ACELP_BB(let suffix, let parameters):
+      hasher.combine(63)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .TSVCIS(let suffix, let parameters):
+      hasher.combine(64)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .UEMCLIP(let suffix, let parameters):
+      hasher.combine(65)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .VDVI(let suffix, let parameters):
+      hasher.combine(66)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .VMRWB(let suffix, let parameters):
+      hasher.combine(67)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case ._1dInterleavedParityfec(let suffix, let parameters):
+      hasher.combine(68)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case ._32kadpcm(let suffix, let parameters):
+      hasher.combine(69)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case ._3gpp(let suffix, let parameters):
+      hasher.combine(70)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case ._3gpp2(let suffix, let parameters):
+      hasher.combine(71)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .aac(let suffix, let parameters):
+      hasher.combine(72)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .ac3(let suffix, let parameters):
+      hasher.combine(73)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .amrWb(let suffix, let parameters):
+      hasher.combine(74)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .aptx(let suffix, let parameters):
+      hasher.combine(75)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .asc(let suffix, let parameters):
+      hasher.combine(76)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .basic(let suffix, let parameters):
+      hasher.combine(77)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .clearmode(let suffix, let parameters):
+      hasher.combine(78)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .dls(let suffix, let parameters):
+      hasher.combine(79)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .dsrEs201108(let suffix, let parameters):
+      hasher.combine(80)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .dsrEs202050(let suffix, let parameters):
+      hasher.combine(81)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .dsrEs202211(let suffix, let parameters):
+      hasher.combine(82)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .dsrEs202212(let suffix, let parameters):
+      hasher.combine(83)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .eac3(let suffix, let parameters):
+      hasher.combine(84)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .encaprtp(let suffix, let parameters):
+      hasher.combine(85)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .example(let suffix, let parameters):
+      hasher.combine(86)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .flexfec(let suffix, let parameters):
+      hasher.combine(87)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .fwdred(let suffix, let parameters):
+      hasher.combine(88)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .iLBC(let suffix, let parameters):
+      hasher.combine(89)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .mhas(let suffix, let parameters):
+      hasher.combine(90)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .mobileXmf(let suffix, let parameters):
+      hasher.combine(91)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .mp4(let suffix, let parameters):
+      hasher.combine(92)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .mpaRobust(let suffix, let parameters):
+      hasher.combine(93)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .mpeg(let suffix, let parameters):
+      hasher.combine(94)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .mpeg4Generic(let suffix, let parameters):
+      hasher.combine(95)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .ogg(let suffix, let parameters):
+      hasher.combine(96)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .opus(let suffix, let parameters):
+      hasher.combine(97)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .parityfec(let suffix, let parameters):
+      hasher.combine(98)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .raptorfec(let suffix, let parameters):
+      hasher.combine(99)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .rtpEncAescm128(let suffix, let parameters):
+      hasher.combine(100)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .rtploopback(let suffix, let parameters):
+      hasher.combine(101)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .rtpMidi(let suffix, let parameters):
+      hasher.combine(102)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .rtx(let suffix, let parameters):
+      hasher.combine(103)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .scip(let suffix, let parameters):
+      hasher.combine(104)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .sofa(let suffix, let parameters):
+      hasher.combine(105)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .spMidi(let suffix, let parameters):
+      hasher.combine(106)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .speex(let suffix, let parameters):
+      hasher.combine(107)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .t140c(let suffix, let parameters):
+      hasher.combine(108)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .t38(let suffix, let parameters):
+      hasher.combine(109)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .telephoneEvent(let suffix, let parameters):
+      hasher.combine(110)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .tone(let suffix, let parameters):
+      hasher.combine(111)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .ulpfec(let suffix, let parameters):
+      hasher.combine(112)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .usac(let suffix, let parameters):
+      hasher.combine(113)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .vorbis(let suffix, let parameters):
+      hasher.combine(114)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .vorbisConfig(let suffix, let parameters):
+      hasher.combine(115)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .other(let subtype, let suffix, let parameters):
+      hasher.combine(-1)
+      hasher.combine(subtype.description)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    case .anything(let suffix, let parameters):
+      hasher.combine(-2)
+      hasher.combine(suffix)
+      hasher.combine(parameters)
+    }
+  }
+}

@@ -84,6 +84,46 @@ extension Suffix: ExpressibleByStringLiteral {
     self.init(rawValue: value)
   }
 }
+
+extension Suffix: Hashable {
+  public static func ==(lhs: Self, rhs: Self) -> Bool {
+    switch lhs {
+${
+    records
+        .map(({caseName}) => [
+            `      case .${caseName}: `,
+            `if case .${caseName} = rhs { return true } else { return false }`
+        ])
+        .sort(([a], [b]) => a.charCodeAt(0) - b.charCodeAt(0))
+        .concat([[
+            `      case .other(let lhsSuffix): `,
+            `if case let .other(rhsSuffix) = rhs { return lhsSuffix.description == rhsSuffix.description } else { return false }`
+        ]])
+        .map(toFormattedSwitchCase)
+        .join('\n')
+}
+    }
+  }
+
+  public func hash(into hasher: inout Hasher) {
+    switch self {
+    ${
+    records
+        .map(({caseName}, i) => [
+            `      case .${caseName}: `,
+            `hasher.combine(${i})`
+        ])
+        .sort(([a], [b]) => a.charCodeAt(0) - b.charCodeAt(0))
+        .concat([[
+            `      case .other(let other): `,
+            `hasher.combine(other.description)`
+        ]])
+        .map(toFormattedSwitchCase)
+        .join('\n')
+}
+    }
+  }
+}
 `
 
 writeFileSync('Suffix.swift', code);
