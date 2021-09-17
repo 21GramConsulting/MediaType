@@ -5,11 +5,11 @@ import XCTest
 class MediaTypeTest: XCTestCase {
 
   func baba(_ type: MediaType) {
-    print(type)
+    print("Received: \(type)")
+    dump(type)
   }
 
   func testYolo() {
-    baba(.application(.json(nil, ["charset": "utf-8"])))
-    baba(.text(.other("plain")))
+    baba("application/json; charset=utf-8")
   }
 }

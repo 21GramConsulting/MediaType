@@ -46,7 +46,60 @@ public enum Image {
 }
 
 extension Image: CustomStringConvertible { 
-  public var description: String {
+  public var description: String { rawValue }
+}
+
+extension Image: RawRepresentable {
+
+  public init(rawValue: String) {
+    let (subtype, suffix, parameters) = convert(string: rawValue)
+    switch subtype {
+    case "aces":          self = .aces(suffix, parameters)
+    case "avci":          self = .avci(suffix, parameters)
+    case "avcs":          self = .avcs(suffix, parameters)
+    case "avif":          self = .avif(suffix, parameters)
+    case "bmp":           self = .bmp(suffix, parameters)
+    case "cgm":           self = .cgm(suffix, parameters)
+    case "dicom-rle":     self = .dicomRle(suffix, parameters)
+    case "emf":           self = .emf(suffix, parameters)
+    case "example":       self = .example(suffix, parameters)
+    case "fits":          self = .fits(suffix, parameters)
+    case "g3fax":         self = .g3fax(suffix, parameters)
+    case "heic":          self = .heic(suffix, parameters)
+    case "heic-sequence": self = .heicSequence(suffix, parameters)
+    case "heif":          self = .heif(suffix, parameters)
+    case "heif-sequence": self = .heifSequence(suffix, parameters)
+    case "hej2k":         self = .hej2k(suffix, parameters)
+    case "hsj2":          self = .hsj2(suffix, parameters)
+    case "jls":           self = .jls(suffix, parameters)
+    case "jp2":           self = .jp2(suffix, parameters)
+    case "jph":           self = .jph(suffix, parameters)
+    case "jphc":          self = .jphc(suffix, parameters)
+    case "jpm":           self = .jpm(suffix, parameters)
+    case "jpx":           self = .jpx(suffix, parameters)
+    case "jxr":           self = .jxr(suffix, parameters)
+    case "jxrA":          self = .jxrA(suffix, parameters)
+    case "jxrS":          self = .jxrS(suffix, parameters)
+    case "jxs":           self = .jxs(suffix, parameters)
+    case "jxsc":          self = .jxsc(suffix, parameters)
+    case "jxsi":          self = .jxsi(suffix, parameters)
+    case "jxss":          self = .jxss(suffix, parameters)
+    case "ktx":           self = .ktx(suffix, parameters)
+    case "ktx2":          self = .ktx2(suffix, parameters)
+    case "naplps":        self = .naplps(suffix, parameters)
+    case "png":           self = .png(suffix, parameters)
+    case "pwg-raster":    self = .pwgRaster(suffix, parameters)
+    case "svg":           self = .svg(suffix, parameters)
+    case "t38":           self = .t38(suffix, parameters)
+    case "tiff":          self = .tiff(suffix, parameters)
+    case "tiff-fx":       self = .tiffFx(suffix, parameters)
+    case "wmf":           self = .wmf(suffix, parameters)
+    case "*":             self = .anything(suffix, parameters)
+    default:              self = .other(subtype, suffix, parameters)
+    }
+  }
+
+  public var rawValue: String {
     switch self {
     case .aces(let suffix, let parameters):             return "aces\(suffix)\(parameters)"
     case .avci(let suffix, let parameters):             return "avci\(suffix)\(parameters)"
@@ -92,6 +145,7 @@ extension Image: CustomStringConvertible {
     case .anything(let suffix, let parameters):         return "*\(suffix)\(parameters)"
     }
   }
+
 }
 
 extension Image: MediaSubtype { public var type: MediaType { .image(self) } }

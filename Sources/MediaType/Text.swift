@@ -56,7 +56,70 @@ public enum Text {
 }
 
 extension Text: CustomStringConvertible { 
-  public var description: String {
+  public var description: String { rawValue }
+}
+
+extension Text: RawRepresentable {
+
+  public init(rawValue: String) {
+    let (subtype, suffix, parameters) = convert(string: rawValue)
+    switch subtype {
+    case "1d-interleaved-parityfec":   self = ._1dInterleavedParityfec(suffix, parameters)
+    case "cache-manifest":             self = .cacheManifest(suffix, parameters)
+    case "calendar":                   self = .calendar(suffix, parameters)
+    case "cql":                        self = .cql(suffix, parameters)
+    case "cql-expression":             self = .cqlExpression(suffix, parameters)
+    case "cql-identifier":             self = .cqlIdentifier(suffix, parameters)
+    case "css":                        self = .css(suffix, parameters)
+    case "csv":                        self = .csv(suffix, parameters)
+    case "csv-schema":                 self = .csvSchema(suffix, parameters)
+    case "directory":                  self = .directory(suffix, parameters)
+    case "dns":                        self = .dns(suffix, parameters)
+    case "ecmascript":                 self = .ecmascript(suffix, parameters)
+    case "encaprtp":                   self = .encaprtp(suffix, parameters)
+    case "example":                    self = .example(suffix, parameters)
+    case "fhirpath":                   self = .fhirpath(suffix, parameters)
+    case "flexfec":                    self = .flexfec(suffix, parameters)
+    case "fwdred":                     self = .fwdred(suffix, parameters)
+    case "gff3":                       self = .gff3(suffix, parameters)
+    case "grammar-ref-list":           self = .grammarRefList(suffix, parameters)
+    case "html":                       self = .html(suffix, parameters)
+    case "javascript":                 self = .javascript(suffix, parameters)
+    case "jcr-cnd":                    self = .jcrCnd(suffix, parameters)
+    case "markdown":                   self = .markdown(suffix, parameters)
+    case "mizar":                      self = .mizar(suffix, parameters)
+    case "n3":                         self = .n3(suffix, parameters)
+    case "parameters":                 self = .parameters(suffix, parameters)
+    case "parityfec":                  self = .parityfec(suffix, parameters)
+    case "provenance-notation":        self = .provenanceNotation(suffix, parameters)
+    case "raptorfec":                  self = .raptorfec(suffix, parameters)
+    case "RED":                        self = .RED(suffix, parameters)
+    case "rfc822-headers":             self = .rfc822Headers(suffix, parameters)
+    case "rtf":                        self = .rtf(suffix, parameters)
+    case "rtp-enc-aescm128":           self = .rtpEncAescm128(suffix, parameters)
+    case "rtploopback":                self = .rtploopback(suffix, parameters)
+    case "rtx":                        self = .rtx(suffix, parameters)
+    case "SGML":                       self = .SGML(suffix, parameters)
+    case "shaclc":                     self = .shaclc(suffix, parameters)
+    case "shex":                       self = .shex(suffix, parameters)
+    case "spdx":                       self = .spdx(suffix, parameters)
+    case "strings":                    self = .strings(suffix, parameters)
+    case "t140":                       self = .t140(suffix, parameters)
+    case "tab-separated-values":       self = .tabSeparatedValues(suffix, parameters)
+    case "troff":                      self = .troff(suffix, parameters)
+    case "turtle":                     self = .turtle(suffix, parameters)
+    case "ulpfec":                     self = .ulpfec(suffix, parameters)
+    case "uri-list":                   self = .uriList(suffix, parameters)
+    case "vcard":                      self = .vcard(suffix, parameters)
+    case "vtt":                        self = .vtt(suffix, parameters)
+    case "xml":                        self = .xml(suffix, parameters)
+    case "xml-external-parsed-entity": self = .xmlExternalParsedEntity(suffix, parameters)
+    case "*":                          self = .anything(suffix, parameters)
+    default:                           self = .other(subtype, suffix, parameters)
+    }
+  }
+
+  public var rawValue: String {
     switch self {
     case ._1dInterleavedParityfec(let suffix, let parameters): return "1d-interleaved-parityfec\(suffix)\(parameters)"
     case .cacheManifest(let suffix, let parameters):           return "cache-manifest\(suffix)\(parameters)"
@@ -112,6 +175,7 @@ extension Text: CustomStringConvertible {
     case .anything(let suffix, let parameters):                return "*\(suffix)\(parameters)"
     }
   }
+
 }
 
 extension Text: MediaSubtype { public var type: MediaType { .text(self) } }

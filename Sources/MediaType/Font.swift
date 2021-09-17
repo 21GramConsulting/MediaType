@@ -12,7 +12,26 @@ public enum Font {
 }
 
 extension Font: CustomStringConvertible { 
-  public var description: String {
+  public var description: String { rawValue }
+}
+
+extension Font: RawRepresentable {
+
+  public init(rawValue: String) {
+    let (subtype, suffix, parameters) = convert(string: rawValue)
+    switch subtype {
+    case "collection": self = .collection(suffix, parameters)
+    case "otf":        self = .otf(suffix, parameters)
+    case "sfnt":       self = .sfnt(suffix, parameters)
+    case "ttf":        self = .ttf(suffix, parameters)
+    case "woff":       self = .woff(suffix, parameters)
+    case "woff2":      self = .woff2(suffix, parameters)
+    case "*":          self = .anything(suffix, parameters)
+    default:           self = .other(subtype, suffix, parameters)
+    }
+  }
+
+  public var rawValue: String {
     switch self {
     case .collection(let suffix, let parameters):       return "collection\(suffix)\(parameters)"
     case .otf(let suffix, let parameters):              return "otf\(suffix)\(parameters)"
@@ -24,6 +43,7 @@ extension Font: CustomStringConvertible {
     case .anything(let suffix, let parameters):         return "*\(suffix)\(parameters)"
     }
   }
+
 }
 
 extension Font: MediaSubtype { public var type: MediaType { .font(self) } }

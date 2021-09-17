@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import {readFileSync, writeFileSync} from 'fs';
+import {toFormattedSwitchCase} from './commonUtility.mjs';
 
 String.prototype.snakeToCamel = function () {
     return this.replace(/-(.)/g, (_, m) => m.toUpperCase())
@@ -50,17 +51,6 @@ const types = mediaRecords
     .map(r => r.type)
     .map(type => ({lowerCase: type, pascalCase: type.replace(/^(.)/, (_, m) => m.toUpperCase())}));
 
-/** @type {function([string,string], number, Array<[string, string]>>): string} */
-const toFormattedSwitchCase = ([caseColumn, returnColumn], _, l) => caseColumn
-    .concat(
-        Array(l
-            .concat()
-            .sort(([c1], [c2]) => c2.length - c1.length)[0][0]
-            .length - caseColumn.length
-        ).fill(" ").join("")
-    )
-    .concat(returnColumn);
-
 types
     .map(({pascalCase, lowerCase}) => ({
         fileName: pascalCase.concat('.swift'),
@@ -82,7 +72,43 @@ ${
 }
 
 extension ${pascalCase}: CustomStringConvertible { 
-  public var description: String {
+  public var description: String { rawValue }
+}
+
+extension ${pascalCase}: RawRepresentable {
+
+  public init(rawValue: String) {
+    let (subtype, suffix, parameters) = convert(string: rawValue)
+    switch subtype {
+${
+            mediaRecords
+                .filter(r => r.type === lowerCase)
+                .map(r => ({
+                    caseName: r.tree[0].snakeToCamel().firstNumberTreated(),
+                    value: r.tree[0]
+                }))
+                .filter((r, i, l) => i === l.findIndex(_r => _r.caseName === r.caseName))
+                .map(({caseName, value}) => [
+                    `    case "${value}": `,
+                    `self = .${caseName}(suffix, parameters)`
+                ])
+                .slice()
+                .sort(([a], [b]) => a.charCodeAt(0) - b.charCodeAt(0))
+                .concat([[
+                    `    case "*": `,
+                    `self = .anything(suffix, parameters)`
+                ]])
+                .concat([[
+                    `    default: `,
+                    `self = .other(subtype, suffix, parameters)`
+                ]])
+                .map(toFormattedSwitchCase)
+                .join('\n')
+        }
+    }
+  }
+
+  public var rawValue: String {
     switch self {
 ${
             mediaRecords
@@ -96,6 +122,8 @@ ${
                     `    case .${caseName}(let suffix, let parameters): `,
                     `return "${value}\\(suffix)\\(parameters)"`
                 ])
+                .slice()
+                .sort(([a], [b]) => a.charCodeAt(0) - b.charCodeAt(0))
                 .concat([[
                     '    case .other(let value, let suffix, let parameters): ',
                     'return "\\(value)\\(suffix)\\(parameters)"'
@@ -104,13 +132,12 @@ ${
                     '    case .anything(let suffix, let parameters): ',
                     'return "*\\(suffix)\\(parameters)"'
                 ]])
-                .slice()
-                .sort(([a], [b]) => a.charCodeAt(0) - b.charCodeAt(0))
                 .map(toFormattedSwitchCase)
                 .join('\n')
         }
     }
   }
+
 }
 
 extension ${pascalCase}: MediaSubtype { public var type: MediaType { .${lowerCase}(self) } }
@@ -133,12 +160,45 @@ ${
 }
 
 extension MediaType: CustomStringConvertible {
-  public var description: String {
+  public var description: String { rawValue }
+}
+
+extension MediaType: RawRepresentable {
+
+  public init(rawValue: String) {
+    let chunks = rawValue.split(separator: "/", maxSplits: 1)
+    let rawType = String(chunks.first ?? "*")
+    let rawSubtype = String(chunks.count > 1 ? chunks[1] : "")
+    let (subtype, suffix, parameters) = convert(string: rawSubtype)
+    switch rawType {
+${
+        types
+            .map(({lowerCase, pascalCase}) => [
+                `    case "${lowerCase}": `,
+                `self = .${lowerCase}(${pascalCase}(rawValue: rawSubtype))`
+            ])
+            .concat([[
+                '    case "*": ',
+                'self = .anything(Anything(rawValue: rawValue))'
+            ]])
+            .concat([[
+                '    default: ',
+                'self = .other(type: rawType, subtype: subtype, suffix, parameters)'
+            ]])
+            .slice()
+            .sort(([a], [b]) => a.charCodeAt(0) - b.charCodeAt(0))
+            .map(toFormattedSwitchCase)
+            .join('\n')
+    }
+    }
+  }
+
+  public var rawValue: String {
     switch self {
 ${
         types
             .map(({lowerCase}) => [
-                `    case .${lowerCase}(let subtype):`,
+                `    case .${lowerCase}(let subtype): `,
                 `return "${lowerCase}/\\(subtype)"`
             ])
             .concat([[
@@ -158,6 +218,9 @@ ${
   }
 }
 
+extension MediaType:ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) { self.init(rawValue: value) }
+}
 `);
 
 writeFileSync(
@@ -170,15 +233,29 @@ public enum Anything {
 }
 
 extension Anything: CustomStringConvertible {
-  public var description: String { 
+  public var description: String { rawValue }
+}
+
+extension Anything: MediaSubtype { public var type: MediaType { .anything(self) } }
+
+extension Anything: RawRepresentable {
+
+  public init(rawValue: String) {
+    let (subtype, suffix, parameters) = convert(string: rawValue)
+    switch subtype {
+    case "*" : self = .anything(suffix, parameters)
+    default  : self = .other(subtype, suffix, parameters)
+    }
+  }
+
+  public var rawValue: String {
     switch self {
     case .other(let subtype, let suffix, let params): return "\\(subtype)\\(suffix)\\(params)"
     case .anything(let suffix, let params):           return "*\\(suffix)\\(params)"
     }
   }
-}
 
-extension Anything: MediaSubtype { public var type: MediaType { .anything(self) } }
+}
 
 `);
 
@@ -204,10 +281,38 @@ internal extension DefaultStringInterpolation {
 `);
 
 writeFileSync(
-    'MediaSubtype.swift',
+    '_Utility.swift',
     `import Foundation
 
-public protocol MediaSubtype {
-  var type: MediaType { get }
+internal typealias RawSubtype = (
+  subtype: String,
+  suffix: Suffix?,
+  parameters: Parameters?
+)
+internal func convert(string rawValue: String) -> RawSubtype {
+  let chunks = rawValue.split(separator: ";")
+  let parameterChunks = chunks[1...]
+  let parameters: Parameters? = parameterChunks.isEmpty
+    ? nil
+    : parameterChunks
+    .map { $0.split(separator: "=") }
+    .reduce(into: [:]) { (result, parameterChunk) in
+      if parameterChunk.isEmpty { return }
+      result?[String(parameterChunk.first!)] = parameterChunk.indices.contains(1)
+        ? parameterChunk[1]
+        : nil
+    }
+  let suffixedChunks = chunks.first?.split(separator: "+")
+  let subType = suffixedChunks?.first ?? "*"
+  let suffix = (suffixedChunks?.count ?? 0) > 1
+    ? suffixedChunks?[1] == nil
+    ? nil
+    : Suffix(rawValue: String(suffixedChunks![1]))
+    : nil
+  return (
+    subtype: String(subType),
+    suffix: suffix,
+    parameters: parameters
+  )
 }
 `);

@@ -15,7 +15,32 @@ public enum MediaType {
 }
 
 extension MediaType: CustomStringConvertible {
-  public var description: String {
+  public var description: String { rawValue }
+}
+
+extension MediaType: RawRepresentable {
+
+  public init(rawValue: String) {
+    let chunks = rawValue.split(separator: "/", maxSplits: 1)
+    let rawType = String(chunks.first ?? "*")
+    let rawSubtype = String(chunks.count > 1 ? chunks[1] : "")
+    let (subtype, suffix, parameters) = convert(string: rawSubtype)
+    switch rawType {
+    case "application": self = .application(Application(rawValue: rawSubtype))
+    case "audio":       self = .audio(Audio(rawValue: rawSubtype))
+    case "font":        self = .font(Font(rawValue: rawSubtype))
+    case "image":       self = .image(Image(rawValue: rawSubtype))
+    case "message":     self = .message(Message(rawValue: rawSubtype))
+    case "model":       self = .model(Model(rawValue: rawSubtype))
+    case "multipart":   self = .multipart(Multipart(rawValue: rawSubtype))
+    case "text":        self = .text(Text(rawValue: rawSubtype))
+    case "video":       self = .video(Video(rawValue: rawSubtype))
+    case "*":           self = .anything(Anything(rawValue: rawValue))
+    default:            self = .other(type: rawType, subtype: subtype, suffix, parameters)
+    }
+  }
+
+  public var rawValue: String {
     switch self {
     case .application(let subtype):                                return "application/\(subtype)"
     case .audio(let subtype):                                      return "audio/\(subtype)"
@@ -32,3 +57,6 @@ extension MediaType: CustomStringConvertible {
   }
 }
 
+extension MediaType:ExpressibleByStringLiteral {
+  public init(stringLiteral value: String) { self.init(rawValue: value) }
+}

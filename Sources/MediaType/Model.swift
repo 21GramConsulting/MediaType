@@ -19,7 +19,33 @@ public enum Model {
 }
 
 extension Model: CustomStringConvertible { 
-  public var description: String {
+  public var description: String { rawValue }
+}
+
+extension Model: RawRepresentable {
+
+  public init(rawValue: String) {
+    let (subtype, suffix, parameters) = convert(string: rawValue)
+    switch subtype {
+    case "3mf":         self = ._3mf(suffix, parameters)
+    case "e57":         self = .e57(suffix, parameters)
+    case "example":     self = .example(suffix, parameters)
+    case "gltf-binary": self = .gltfBinary(suffix, parameters)
+    case "gltf":        self = .gltf(suffix, parameters)
+    case "iges":        self = .iges(suffix, parameters)
+    case "mtl":         self = .mtl(suffix, parameters)
+    case "obj":         self = .obj(suffix, parameters)
+    case "step":        self = .step(suffix, parameters)
+    case "step-xml":    self = .stepXml(suffix, parameters)
+    case "stl":         self = .stl(suffix, parameters)
+    case "x3d-vrml":    self = .x3dVrml(suffix, parameters)
+    case "x3d":         self = .x3d(suffix, parameters)
+    case "*":           self = .anything(suffix, parameters)
+    default:            self = .other(subtype, suffix, parameters)
+    }
+  }
+
+  public var rawValue: String {
     switch self {
     case ._3mf(let suffix, let parameters):             return "3mf\(suffix)\(parameters)"
     case .e57(let suffix, let parameters):              return "e57\(suffix)\(parameters)"
@@ -38,6 +64,7 @@ extension Model: CustomStringConvertible {
     case .anything(let suffix, let parameters):         return "*\(suffix)\(parameters)"
     }
   }
+
 }
 
 extension Model: MediaSubtype { public var type: MediaType { .model(self) } }

@@ -22,7 +22,36 @@ public enum Message {
 }
 
 extension Message: CustomStringConvertible { 
-  public var description: String {
+  public var description: String { rawValue }
+}
+
+extension Message: RawRepresentable {
+
+  public init(rawValue: String) {
+    let (subtype, suffix, parameters) = convert(string: rawValue)
+    switch subtype {
+    case "CPIM":                            self = .CPIM(suffix, parameters)
+    case "delivery-status":                 self = .deliveryStatus(suffix, parameters)
+    case "disposition-notification":        self = .dispositionNotification(suffix, parameters)
+    case "example":                         self = .example(suffix, parameters)
+    case "feedback-report":                 self = .feedbackReport(suffix, parameters)
+    case "global":                          self = .global(suffix, parameters)
+    case "global-delivery-status":          self = .globalDeliveryStatus(suffix, parameters)
+    case "global-disposition-notification": self = .globalDispositionNotification(suffix, parameters)
+    case "global-headers":                  self = .globalHeaders(suffix, parameters)
+    case "http":                            self = .http(suffix, parameters)
+    case "imdn":                            self = .imdn(suffix, parameters)
+    case "news":                            self = .news(suffix, parameters)
+    case "s-http":                          self = .sHttp(suffix, parameters)
+    case "sip":                             self = .sip(suffix, parameters)
+    case "sipfrag":                         self = .sipfrag(suffix, parameters)
+    case "tracking-status":                 self = .trackingStatus(suffix, parameters)
+    case "*":                               self = .anything(suffix, parameters)
+    default:                                self = .other(subtype, suffix, parameters)
+    }
+  }
+
+  public var rawValue: String {
     switch self {
     case .CPIM(let suffix, let parameters):                          return "CPIM\(suffix)\(parameters)"
     case .deliveryStatus(let suffix, let parameters):                return "delivery-status\(suffix)\(parameters)"
@@ -44,6 +73,7 @@ extension Message: CustomStringConvertible {
     case .anything(let suffix, let parameters):                      return "*\(suffix)\(parameters)"
     }
   }
+
 }
 
 extension Message: MediaSubtype { public var type: MediaType { .message(self) } }

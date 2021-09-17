@@ -56,7 +56,70 @@ public enum Video {
 }
 
 extension Video: CustomStringConvertible { 
-  public var description: String {
+  public var description: String { rawValue }
+}
+
+extension Video: RawRepresentable {
+
+  public init(rawValue: String) {
+    let (subtype, suffix, parameters) = convert(string: rawValue)
+    switch subtype {
+    case "1d-interleaved-parityfec": self = ._1dInterleavedParityfec(suffix, parameters)
+    case "3gpp":                     self = ._3gpp(suffix, parameters)
+    case "3gpp2":                    self = ._3gpp2(suffix, parameters)
+    case "3gpp-tt":                  self = ._3gppTt(suffix, parameters)
+    case "AV1":                      self = .AV1(suffix, parameters)
+    case "BMPEG":                    self = .BMPEG(suffix, parameters)
+    case "BT656":                    self = .BT656(suffix, parameters)
+    case "CelB":                     self = .CelB(suffix, parameters)
+    case "DV":                       self = .DV(suffix, parameters)
+    case "encaprtp":                 self = .encaprtp(suffix, parameters)
+    case "example":                  self = .example(suffix, parameters)
+    case "FFV1":                     self = .FFV1(suffix, parameters)
+    case "flexfec":                  self = .flexfec(suffix, parameters)
+    case "H261":                     self = .H261(suffix, parameters)
+    case "H263":                     self = .H263(suffix, parameters)
+    case "H263-1998":                self = .H2631998(suffix, parameters)
+    case "H263-2000":                self = .H2632000(suffix, parameters)
+    case "H264":                     self = .H264(suffix, parameters)
+    case "H264-RCDO":                self = .H264RCDO(suffix, parameters)
+    case "H264-SVC":                 self = .H264SVC(suffix, parameters)
+    case "H265":                     self = .H265(suffix, parameters)
+    case "JPEG":                     self = .JPEG(suffix, parameters)
+    case "jpeg2000":                 self = .jpeg2000(suffix, parameters)
+    case "jxsv":                     self = .jxsv(suffix, parameters)
+    case "mj2":                      self = .mj2(suffix, parameters)
+    case "MP1S":                     self = .MP1S(suffix, parameters)
+    case "MP2P":                     self = .MP2P(suffix, parameters)
+    case "MP2T":                     self = .MP2T(suffix, parameters)
+    case "mp4":                      self = .mp4(suffix, parameters)
+    case "MP4V-ES":                  self = .MP4VES(suffix, parameters)
+    case "MPV":                      self = .MPV(suffix, parameters)
+    case "mpeg4-generic":            self = .mpeg4Generic(suffix, parameters)
+    case "nv":                       self = .nv(suffix, parameters)
+    case "ogg":                      self = .ogg(suffix, parameters)
+    case "parityfec":                self = .parityfec(suffix, parameters)
+    case "pointer":                  self = .pointer(suffix, parameters)
+    case "quicktime":                self = .quicktime(suffix, parameters)
+    case "raptorfec":                self = .raptorfec(suffix, parameters)
+    case "raw":                      self = .raw(suffix, parameters)
+    case "rtp-enc-aescm128":         self = .rtpEncAescm128(suffix, parameters)
+    case "rtploopback":              self = .rtploopback(suffix, parameters)
+    case "rtx":                      self = .rtx(suffix, parameters)
+    case "scip":                     self = .scip(suffix, parameters)
+    case "smpte291":                 self = .smpte291(suffix, parameters)
+    case "SMPTE292M":                self = .SMPTE292M(suffix, parameters)
+    case "ulpfec":                   self = .ulpfec(suffix, parameters)
+    case "vc1":                      self = .vc1(suffix, parameters)
+    case "vc2":                      self = .vc2(suffix, parameters)
+    case "VP8":                      self = .VP8(suffix, parameters)
+    case "VP9":                      self = .VP9(suffix, parameters)
+    case "*":                        self = .anything(suffix, parameters)
+    default:                         self = .other(subtype, suffix, parameters)
+    }
+  }
+
+  public var rawValue: String {
     switch self {
     case ._1dInterleavedParityfec(let suffix, let parameters): return "1d-interleaved-parityfec\(suffix)\(parameters)"
     case ._3gpp(let suffix, let parameters):                   return "3gpp\(suffix)\(parameters)"
@@ -112,6 +175,7 @@ extension Video: CustomStringConvertible {
     case .anything(let suffix, let parameters):                return "*\(suffix)\(parameters)"
     }
   }
+
 }
 
 extension Video: MediaSubtype { public var type: MediaType { .video(self) } }
