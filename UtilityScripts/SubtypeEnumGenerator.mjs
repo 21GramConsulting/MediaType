@@ -480,8 +480,8 @@ internal func convert(string rawValue: String) -> RawSubtype {
 }
 
 func ==(lhs: Parameters?, rhs: Parameters?) -> Bool {
-  guard let lhs = lhs else { return rhs == .none }
-  guard let rhs = rhs else { return false }
+  guard case let .some(lhs) = lhs else { return rhs == .none }
+  guard case let .some(rhs) = rhs else { return false }
   if lhs.keys != rhs.keys { return false }
   for (lhsKey, lhsValue) in lhs {
     guard let rhsValue = rhs[lhsKey] else {
