@@ -454,7 +454,7 @@ internal typealias RawSubtype = (
 )
 internal func convert(string rawValue: String) -> RawSubtype {
   let chunks = rawValue.split(separator: ";")
-  let parameterChunks = chunks[1...]
+  let parameterChunks = chunks.count > 1 ? chunks[1...] : []
   let parameters: Parameters? = parameterChunks.isEmpty
     ? nil
     : parameterChunks
