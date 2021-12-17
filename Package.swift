@@ -11,14 +11,7 @@ let package = Package(
     ),
   ],
   targets: [
-    .target(name: "MediaTypeEnums"),
-    .target(name: "MediaTypeUtilities", dependencies: [
-      .byName(name: "MediaTypeEnums")
-    ]),
-    .target(name: "MediaType", dependencies: [
-      .byName(name: "MediaTypeEnums"),
-      .byName(name: "MediaTypeUtilities")
-    ]),
+    .target(name: "MediaType"),
     .testTarget(name: "MediaTypeTests", dependencies: [.byName(name: "MediaType")])
   ]
 )

@@ -1,0 +1,17 @@
+[
+  "+xml",
+  "+json",
+  "+ber",
+  "+cbor",
+  "+der",
+  "+fastinfoset",
+  "+wbxml",
+  "+zip",
+  "+tlv",
+  "+json-seq",
+  "+sqlite3",
+  "+jwt",
+  "+gzip",
+  "+cbor-seq",
+  "+zstd"
+]
