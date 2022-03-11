@@ -44,4 +44,8 @@ extension CodeExamples {
     let mediaType: MediaType = "application/atom+xml; charset=utf-8"
     XCTAssertEqual(mediaType, MediaType.application(.atom(.xml, ["charset": "utf-8"])))
   }
+
+  func test_vendor_tree() {
+    XCTAssertEqual("application/vnd.efi.img", MediaType.application(.other("vnd.efi.img")))
+  }
 }
