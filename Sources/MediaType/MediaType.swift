@@ -7,8 +7,21 @@ import Foundation
 /// media type instances simply using string literals.
 ///
 /// ```swift
-/// MediaType.application(.json())
-/// let mediaType: MediaType = "text/example"
+/// MediaType.application(.json()) // is equivalent to
+/// let mediaType: MediaType = "application/json"
+/// ```
+///
+/// Media type suffixes and parameters are supported both via string literals and ``MediaType`` cases.
+///
+/// ```swift
+/// MediaType.application(.atom(nil, ["charset": "utf-8"])) // is equivalent to
+/// let mediaType: MediaType = "application/atom; charset=utf-8"
+///
+/// MediaType.application(.atom(.xml)) // is equivalent to
+/// let mediaType: MediaType = "application/atom+xml"
+///
+/// MediaType.application(.atom(.xml, ["charset": "utf-8"])) // is equivalent to
+/// let mediaType: MediaType = "application/atom+xml; charset=utf-8"
 /// ```
 public enum MediaType {
   /// Creates an `application` media type.
