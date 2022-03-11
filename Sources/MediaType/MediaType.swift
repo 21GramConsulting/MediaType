@@ -105,7 +105,7 @@ extension MediaType: RawRepresentable {
     case "multipart":   self = .multipart(Multipart(rawValue: rawSubtype))
     case "text":        self = .text(Text(rawValue: rawSubtype))
     case "video":       self = .video(Video(rawValue: rawSubtype))
-    case "*":           self = .anything(Anything(rawValue: rawValue))
+    case "*":           self = .anything(Anything(rawValue: rawSubtype))
     default:            self = .other(type: rawType, subtype: subtype, suffix, parameters)
     }
   }
