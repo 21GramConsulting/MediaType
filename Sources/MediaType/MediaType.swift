@@ -81,6 +81,15 @@ public enum MediaType {
   /// Represents a custom media type with the given `type` and `subtype`. Optionally, you can specify a ``Suffix`` and
   /// ``Parameters``.
   case other(type: CustomStringConvertible, subtype: CustomStringConvertible, Suffix? = nil, Parameters? = nil)
+  /// Creates a wildcard media type.
+  ///
+  /// A wildcard media type has a type of `*`. A few examples:
+  ///
+  /// ```swift
+  /// MediaType.anything(.anything()) // Creates: */*
+  /// MediaType.anything(.other("dialog")) // Creates: */dialog
+  /// MediaType.anything(.other("response", .xml)) // Creates: */response+xml
+  /// ```
   case anything(Anything)
 }
 
