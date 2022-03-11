@@ -1,7 +1,29 @@
 import Foundation
 
+/// A type-safe representation of [Media Type](https://www.iana.org/assignments/media-types/media-types.xhtml)s
+/// (or formerly known as MIME types).
+///
+/// You can create a media type in a type-safe manner using one of the possible cases. You can also create
+/// media type instances simply using string literals.
+///
+/// ```swift
+/// MediaType.application(.json())
+/// let mediaType: MediaType = "text/example"
+/// ```
 public enum MediaType {
+  /// Creates an `application` media type.
+  ///
+  /// Typically represents some sort of binary data. Common examples: `application/json`, `application/octet-stream`.
+  ///
+  /// For the whole family of `application` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#application) documentation.
   case application(Application)
+  /// Creates an `audio` media type.
+  ///
+  /// Represents audible data. Common examples: `audio/ac3`, `audio/mpeg`.
+  ///
+  /// For the whole family of `audio` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#audio) documentation.
   case audio(Audio)
   case font(Font)
   case image(Image)
