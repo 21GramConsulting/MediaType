@@ -13,7 +13,7 @@ import Foundation
 public enum MediaType {
   /// Creates an `application` media type.
   ///
-  /// Typically represents some sort of binary data. Common examples: `application/json`, `application/octet-stream`.
+  /// Represents binary data. Common examples: `application/json`, `application/octet-stream`.
   ///
   /// For the whole family of `application` media types consult the
   /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#application) documentation.
@@ -25,12 +25,56 @@ public enum MediaType {
   /// For the whole family of `audio` media types consult the
   /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#audio) documentation.
   case audio(Audio)
+  /// Creates a `font` media type.
+  ///
+  /// Represents font or typeface data. Common examples: `font/woff`, `font/ttf`.
+  ///
+  /// For the whole family of `font` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#font) documentation.
   case font(Font)
+  /// Creates a `image` media type.
+  ///
+  /// Represents image or graphical data. This includes bitmap and vector images, along with animated image formats.
+  /// Common examples: `image/jpeg`, `image/apng`.
+  ///
+  /// For the whole family of `image` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#image) documentation.
   case image(Image)
+  /// Creates a `message` media type.
+  ///
+  /// Represents embedded message data. Common examples: `message/rfc882`, `message/http`.
+  ///
+  /// For the whole family of `message` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#message) documentation.
   case message(Message)
+  /// Creates a `model` media type.
+  ///
+  /// Represents 3D modelling data. Common examples: `model/step`, `model/3mf`.
+  ///
+  /// For the whole family of `model` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#model) documentation.
   case model(Model)
+  /// Creates a `multipart` media type.
+  ///
+  /// Represents data formed from multiple components, which may have their individual media types.
+  /// Common examples: `multipart/form-data`, `multipart/encrypted`.
+  ///
+  /// For the whole family of `multipart` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart) documentation.
   case multipart(Multipart)
+  /// Creates a `text` media type.
+  ///
+  /// Represents textual only data. Common examples: `text/css`, `text/html`.
+  ///
+  /// For the whole family of `text` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#text) documentation.
   case text(Text)
+  /// Creates a `video` media type.
+  ///
+  /// Represents video data. Common examples: `video/mp4`, `video/H264`.
+  ///
+  /// For the whole family of `video` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#video) documentation.
   case video(Video)
   case other(type: CustomStringConvertible, subtype: CustomStringConvertible, Suffix? = nil, Parameters? = nil)
   case anything(Anything)
@@ -79,7 +123,7 @@ extension MediaType: RawRepresentable {
   }
 }
 
-extension MediaType:ExpressibleByStringLiteral {
+extension MediaType: ExpressibleByStringLiteral {
   public init(stringLiteral value: String) { self.init(rawValue: value) }
 }
 
@@ -108,31 +152,31 @@ extension MediaType: Hashable {
 
   public func hash(into hasher: inout Hasher) {
     switch self {
-    case .application(let subtype): 
+    case .application(let subtype):
       hasher.combine(0)
       hasher.combine(subtype)
-    case .audio(let subtype): 
+    case .audio(let subtype):
       hasher.combine(1)
       hasher.combine(subtype)
-    case .font(let subtype): 
+    case .font(let subtype):
       hasher.combine(2)
       hasher.combine(subtype)
-    case .image(let subtype): 
+    case .image(let subtype):
       hasher.combine(3)
       hasher.combine(subtype)
-    case .message(let subtype): 
+    case .message(let subtype):
       hasher.combine(4)
       hasher.combine(subtype)
-    case .model(let subtype): 
+    case .model(let subtype):
       hasher.combine(5)
       hasher.combine(subtype)
-    case .multipart(let subtype): 
+    case .multipart(let subtype):
       hasher.combine(6)
       hasher.combine(subtype)
-    case .text(let subtype): 
+    case .text(let subtype):
       hasher.combine(7)
       hasher.combine(subtype)
-    case .video(let subtype): 
+    case .video(let subtype):
       hasher.combine(8)
       hasher.combine(subtype)
     case .anything(let subtype):
