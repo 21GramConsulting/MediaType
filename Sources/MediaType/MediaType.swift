@@ -158,6 +158,10 @@ extension MediaType: RawRepresentable {
 }
 
 extension MediaType: ExpressibleByStringLiteral {
+  /// Creates a media type from a string literal.
+  ///
+  /// Do not call this initializer directly. This rather allows you to use a string literal where you have to provide
+  /// a ``MediaType`` node.
   public init(stringLiteral value: String) { self.init(rawValue: value) }
 }
 
