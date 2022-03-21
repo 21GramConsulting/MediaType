@@ -335,7 +335,7 @@ ${
   }
 }
 
-extension MediaType:ExpressibleByStringLiteral {
+extension MediaType: ExpressibleByStringLiteral {
   /// Creates a media type from a string literal.
   ///
   /// Do not call this initializer directly. This rather allows you to use a string literal where you have to provide
@@ -380,7 +380,7 @@ ${
             .slice()
             .sort((a, b) => a.lowerCase.charCodeAt(0) - b.lowerCase.charCodeAt(0))
             .map(({lowerCase}, i) => [
-                `    case .${lowerCase}(let subtype): `,
+                `    case .${lowerCase}(let subtype):`,
                 `      hasher.combine(${i})`,
                 '      hasher.combine(subtype)'
             ].join('\n'))
