@@ -10,6 +10,11 @@ extension CodeExamples {
     XCTAssertEqual("application/json", MediaType.application(.json()))
   }
 
+  func test_media_type_from_string_variable() {
+    let rawMediaType = "application/json"
+    XCTAssertEqual(MediaType(rawValue: rawMediaType), MediaType.application(.json()))
+  }
+
   func test_audio_media_type() {
     XCTAssertEqual((MediaType.audio(.ac3())), "audio/ac3")
     XCTAssertEqual((MediaType.audio(.mpeg())), "audio/mpeg")
