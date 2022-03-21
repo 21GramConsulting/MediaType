@@ -223,6 +223,37 @@ writeFileSync(
     'MediaType.swift',
     `import Foundation
 
+/// A type-safe representation of [Media Type](https://www.iana.org/assignments/media-types/media-types.xhtml)s
+/// (or formerly known as MIME types).
+///
+/// You can create a media type in a type-safe manner using one of the possible cases. You can also create
+/// media type instances simply using string literals.
+///
+/// \`\`\`swift
+/// MediaType.application(.json()) // is equivalent to
+/// let mediaType: MediaType = "application/json"
+/// \`\`\`
+///
+/// Media type suffixes and parameters are supported both via string literals and \`\`MediaType\`\` cases.
+///
+/// \`\`\`swift
+/// MediaType.application(.atom(nil, ["charset": "utf-8"])) // is equivalent to
+/// let mediaType: MediaType = "application/atom; charset=utf-8"
+///
+/// MediaType.application(.atom(.xml)) // is equivalent to
+/// let mediaType: MediaType = "application/atom+xml"
+///
+/// MediaType.application(.atom(.xml, ["charset": "utf-8"])) // is equivalent to
+/// let mediaType: MediaType = "application/atom+xml; charset=utf-8"
+/// \`\`\`
+///
+/// You can create media type trees using either the string literal syntax, or using the \`other\` case of a particular
+/// media type.
+///
+/// \`\`\`swift
+/// MediaType.application(.other("vnd.efi.img")) // is equivalent to
+/// "application/vnd.efi.img"
+/// \`\`\`
 public enum MediaType {
 ${
         types
@@ -234,11 +265,22 @@ ${
 }
 
 extension MediaType: CustomStringConvertible {
+  /// The textual representation of the media type.
+  ///
+  /// The string form of a media type follows the pattern: \`type/subtype[+suffix][;parameters]\`. A few examples:
+  ///
+  /// \`\`\`swift
+  /// MediaType.text(.css()).description // Outputs: text/css
+  /// MediaType.audio(.ac3(nil, ["rate": 32000])).description // Outputs: audio/ac3;rate=32000
+  /// MediaType.application(.atom(.xml, ["charset": "utf-8"])).description // Outputs: application/atom+xml;charset=utf-8
+  /// \`\`\`
   public var description: String { rawValue }
 }
 
 extension MediaType: RawRepresentable {
-
+  /// Creates a media type from its raw string value.
+  ///
+  /// - Parameter rawValue: The raw string value.
   public init(rawValue: String) {
     let chunks = rawValue.split(separator: "/", maxSplits: 1)
     let rawType = String(chunks.first ?? "*")
@@ -267,6 +309,7 @@ ${
     }
   }
 
+  /// The raw string value of the media type.
   public var rawValue: String {
     switch self {
 ${
@@ -293,6 +336,10 @@ ${
 }
 
 extension MediaType:ExpressibleByStringLiteral {
+  /// Creates a media type from a string literal.
+  ///
+  /// Do not call this initializer directly. This rather allows you to use a string literal where you have to provide
+  /// a \`\`MediaType\`\` node.
   public init(stringLiteral value: String) { self.init(rawValue: value) }
 }
 
