@@ -74,3 +74,24 @@ request.setValue("Content-Type", forHTTPHeaderField: "\(contentType)")
 
 let (_, response) = try await URLSession.shared.data(for: request)
 ```
+
+### Media Types are [`Hashable`](https://developer.apple.com/documentation/swift/hashable)
+
+This means you can use ``MediaType``s in sets or dictionaries. For example, you can define the type of images your
+application supports like so:
+
+```swift
+let supportedImages: Set<MediaType> = [.image(.png()), .image(.gif()), .image(.jpeg())]
+```
+
+### Comparing Media Types
+
+You can also compare media type for equality using the ``MediaType/==(lhs:rhs:)`` operator.
+
+```swift
+func canHandle(response: URLResponse) -> Bool {
+  guard let mimeType = response.mimeType else { return false }
+  let mediaType = MediaType(rawValue: mimeType)
+  return mediaType == .application(.json())
+}
+```
