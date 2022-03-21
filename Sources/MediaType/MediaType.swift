@@ -29,7 +29,7 @@ import Foundation
 ///
 /// ```swift
 /// MediaType.application(.other("vnd.efi.img")) // is equivalent to
-/// "application/vnd.efi.img"
+/// let mediaType: MediaType = "application/vnd.efi.img"
 /// ```
 public enum MediaType {
   /// Creates an `application` media type.

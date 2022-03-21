@@ -49,5 +49,5 @@ media type.
 
 ```swift
 MediaType.application(.other("vnd.efi.img")) // is equivalent to
-"application/vnd.efi.img"
+let mediaType: MediaType = "application/vnd.efi.img"
 ```
