@@ -115,6 +115,15 @@ public enum MediaType {
 }
 
 extension MediaType: CustomStringConvertible {
+  /// The textual representation of the media type.
+  ///
+  /// The string form of a media type follows the pattern: `type/subtype[+suffix][;parameters]`. A few examples:
+  ///
+  /// ```swift
+  /// MediaType.text(.css()).description // Outputs: text/css
+  /// MediaType.audio(.ac3(nil, ["rate": 32000])).description // Outputs: audio/ac3;rate=32000
+  /// MediaType.application(.atom(.xml, ["charset": "utf-8"])).description // Outputs: application/atom+xml;charset=utf-8
+  /// ```
   public var description: String { rawValue }
 }
 
