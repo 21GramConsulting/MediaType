@@ -34,12 +34,12 @@ extension Suffix: RawRepresentable {
 ${
     records
         .map(({caseName, value}) => [
-            `      case "${value.replace(/^\+/, '')}": `,
+            `    case "${value.replace(/^\+/, '')}": `,
             `self = .${caseName}`
         ])
         .sort(([a], [b]) => a.charCodeAt(0) - b.charCodeAt(0))
         .concat([[
-            `      default: `,
+            `    default: `,
             `self = .other(rawValue)`
         ]])
         .map(toFormattedSwitchCase)
@@ -47,18 +47,18 @@ ${
 }
     }
   }
-  
+
   public var rawValue: String {
     switch self {
 ${
     records
         .map(({caseName, value}) => [
-            `      case .${caseName}: `,
+            `    case .${caseName}:`,
             `return "${value}"`
         ])
         .sort(([a], [b]) => a.charCodeAt(0) - b.charCodeAt(0))
         .concat([[
-            "      case .other(let value): ",
+            "    case .other(let value): ",
             `return value.description.starts(with: "+") ? value.description : "+\\(value)"`
         ]])
         .map(toFormattedSwitchCase)
@@ -91,12 +91,12 @@ extension Suffix: Hashable {
 ${
     records
         .map(({caseName}) => [
-            `      case .${caseName}: `,
+            `    case .${caseName}: `,
             `if case .${caseName} = rhs { return true } else { return false }`
         ])
         .sort(([a], [b]) => a.charCodeAt(0) - b.charCodeAt(0))
         .concat([[
-            `      case .other(let lhsSuffix): `,
+            `    case .other(let lhsSuffix): `,
             `if case let .other(rhsSuffix) = rhs { return lhsSuffix.description == rhsSuffix.description } else { return false }`
         ]])
         .map(toFormattedSwitchCase)
@@ -107,15 +107,15 @@ ${
 
   public func hash(into hasher: inout Hasher) {
     switch self {
-    ${
+${
     records
         .map(({caseName}, i) => [
-            `      case .${caseName}: `,
+            `    case .${caseName}: `,
             `hasher.combine(${i})`
         ])
         .sort(([a], [b]) => a.charCodeAt(0) - b.charCodeAt(0))
         .concat([[
-            `      case .other(let other): `,
+            `    case .other(let other): `,
             `hasher.combine(other.description)`
         ]])
         .map(toFormattedSwitchCase)
