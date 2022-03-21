@@ -51,3 +51,24 @@ media type.
 MediaType.application(.other("vnd.efi.img")) // is equivalent to
 let mediaType: MediaType = "application/vnd.efi.img"
 ```
+
+## Using Media Types
+
+### String Conversion
+
+Since ``MediaType`` conforms to
+the [`CustomStringConvertible`](https://developer.apple.com/documentation/swift/customstringconvertible) protocol it is
+pretty straightforward to turn an instance into a string.
+
+You can either call the ``MediaType/description`` computed property or simply embed an instance into an interpolated
+string.
+
+For example, you can request the list of available products in JSON from an imaginary store.
+
+```swift
+var request = URLRequest(url: URL(string: "https://example-store.com/products")!)
+let contentType = MediaType.application(.json())
+request.setValue("Content-Type", forHTTPHeaderField: contentType.description)
+request.setValue("Content-Type", forHTTPHeaderField: "\(contentType)")
+let (_, response) = try await URLSession.shared.data(for: request)
+```
