@@ -2,10 +2,10 @@
 
 ## Overview
 
-MediaType is a library -- developed by [21Gram Consulting](https://21gram.consulting) -- that can be used to
+MediaType is a library &ndash; developed by [21Gram Consulting](https://21gram.consulting) &ndash; that can be used to
 create [Media Type](https://www.iana.org/assignments/media-types/media-types.xhtml)s in a type-safe manner.
 
-Mainly intended -- although not limited -- to be used in [server-side Swift](https://www.swift.org/server)
+Mainly intended &ndash; although not limited &ndash; to be used in [server-side Swift](https://www.swift.org/server)
 applications.
 
 ## Creating Media Types
@@ -68,7 +68,9 @@ For example, you can request the list of available products in JSON from an imag
 ```swift
 var request = URLRequest(url: URL(string: "https://example-store.com/products")!)
 let contentType = MediaType.application(.json())
-request.setValue("Content-Type", forHTTPHeaderField: contentType.description)
+
+request.setValue("Content-Type", forHTTPHeaderField: contentType.description) // is equivalent to
 request.setValue("Content-Type", forHTTPHeaderField: "\(contentType)")
+
 let (_, response) = try await URLSession.shared.data(for: request)
 ```
