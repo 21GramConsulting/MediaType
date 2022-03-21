@@ -253,7 +253,7 @@ ${
             ])
             .concat([[
                 '    case "*": ',
-                'self = .anything(Anything(rawValue: rawValue))'
+                'self = .anything(Anything(rawValue: rawSubtype))'
             ]])
             .concat([[
                 '    default: ',
