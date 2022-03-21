@@ -31,18 +31,15 @@ extension CodeExamples {
 
   func test_media_type_with_parameters() {
     XCTAssertEqual("audio/ac3;rate=32000", MediaType.audio(.ac3(nil, ["rate": 32000])))
-    let mediaType: MediaType = "application/atom; charset=utf-8"
-    XCTAssertEqual(mediaType, MediaType.application(.atom(nil, ["charset": "utf-8"])))
+    XCTAssertEqual("application/atom; charset=utf-8", MediaType.application(.atom(nil, ["charset": "utf-8"])))
   }
 
   func test_media_type_with_suffix() {
-    let mediaType: MediaType = "application/atom+xml"
-    XCTAssertEqual(mediaType, MediaType.application(.atom(.xml)))
+    XCTAssertEqual("application/atom+xml", MediaType.application(.atom(.xml)))
   }
 
   func test_media_type_with_suffix_and_parameters() {
-    let mediaType: MediaType = "application/atom+xml; charset=utf-8"
-    XCTAssertEqual(mediaType, MediaType.application(.atom(.xml, ["charset": "utf-8"])))
+    XCTAssertEqual("application/atom+xml; charset=utf-8", MediaType.application(.atom(.xml, ["charset": "utf-8"])))
   }
 
   func test_vendor_tree() {
