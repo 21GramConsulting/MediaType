@@ -3,7 +3,7 @@ import MediaType
 
 extension CodeExamples {
   func test_create_media_type_using_initializer() {
-    XCTAssertEqual("\(MediaType.application(.json()))", "application/json")
+    XCTAssertEqual(MediaType.application(.json()), "application/json")
   }
 
   func test_create_media_type_with_string_literal() {
@@ -11,8 +11,8 @@ extension CodeExamples {
   }
 
   func test_audio_media_type() {
-    XCTAssertEqual("\(MediaType.audio(.ac3()))", "audio/ac3")
-    XCTAssertEqual("\(MediaType.audio(.mpeg()))", "audio/mpeg")
+    XCTAssertEqual((MediaType.audio(.ac3())), "audio/ac3")
+    XCTAssertEqual((MediaType.audio(.mpeg())), "audio/mpeg")
   }
 
   func test_application_json_with_json_suffix() {
