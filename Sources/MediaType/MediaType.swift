@@ -119,7 +119,9 @@ extension MediaType: CustomStringConvertible {
 }
 
 extension MediaType: RawRepresentable {
-
+  /// Creates a media type from its raw string value.
+  ///
+  /// - Parameter rawValue: The raw string value.
   public init(rawValue: String) {
     let chunks = rawValue.split(separator: "/", maxSplits: 1)
     let rawType = String(chunks.first ?? "*")
@@ -140,6 +142,7 @@ extension MediaType: RawRepresentable {
     }
   }
 
+  /// The raw string value of the media type.
   public var rawValue: String {
     switch self {
     case .application(let subtype):                                return "application/\(subtype)"
