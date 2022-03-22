@@ -1,20 +1,35 @@
 import Foundation
 
 public enum Model {
+  /// Represents the `3mf` subtype.
   case _3mf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `e57` subtype.
   case e57(Suffix? = nil, Parameters? = nil)
+  /// Represents the `example` subtype.
   case example(Suffix? = nil, Parameters? = nil)
+  /// Represents the `gltf-binary` subtype.
   case gltfBinary(Suffix? = nil, Parameters? = nil)
+  /// Represents the `gltf` subtype.
   case gltf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `iges` subtype.
   case iges(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mesh` subtype.
   case mesh(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mtl` subtype.
   case mtl(Suffix? = nil, Parameters? = nil)
+  /// Represents the `obj` subtype.
   case obj(Suffix? = nil, Parameters? = nil)
+  /// Represents the `step` subtype.
   case step(Suffix? = nil, Parameters? = nil)
+  /// Represents the `step-xml` subtype.
   case stepXml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `stl` subtype.
   case stl(Suffix? = nil, Parameters? = nil)
+  /// Represents the `vrml` subtype.
   case vrml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `x3d-vrml` subtype.
   case x3dVrml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `x3d` subtype.
   case x3d(Suffix? = nil, Parameters? = nil)
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)

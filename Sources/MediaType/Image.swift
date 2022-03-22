@@ -1,50 +1,95 @@
 import Foundation
 
 public enum Image {
+  /// Represents the `aces` subtype.
   case aces(Suffix? = nil, Parameters? = nil)
+  /// Represents the `avci` subtype.
   case avci(Suffix? = nil, Parameters? = nil)
+  /// Represents the `avcs` subtype.
   case avcs(Suffix? = nil, Parameters? = nil)
+  /// Represents the `avif` subtype.
   case avif(Suffix? = nil, Parameters? = nil)
+  /// Represents the `bmp` subtype.
   case bmp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cgm` subtype.
   case cgm(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dicom-rle` subtype.
   case dicomRle(Suffix? = nil, Parameters? = nil)
+  /// Represents the `emf` subtype.
   case emf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `example` subtype.
   case example(Suffix? = nil, Parameters? = nil)
+  /// Represents the `fits` subtype.
   case fits(Suffix? = nil, Parameters? = nil)
+  /// Represents the `g3fax` subtype.
   case g3fax(Suffix? = nil, Parameters? = nil)
+  /// Represents the `gif` subtype.
   case gif(Suffix? = nil, Parameters? = nil)
+  /// Represents the `heic` subtype.
   case heic(Suffix? = nil, Parameters? = nil)
+  /// Represents the `heic-sequence` subtype.
   case heicSequence(Suffix? = nil, Parameters? = nil)
+  /// Represents the `heif` subtype.
   case heif(Suffix? = nil, Parameters? = nil)
+  /// Represents the `heif-sequence` subtype.
   case heifSequence(Suffix? = nil, Parameters? = nil)
+  /// Represents the `hej2k` subtype.
   case hej2k(Suffix? = nil, Parameters? = nil)
+  /// Represents the `hsj2` subtype.
   case hsj2(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ief` subtype.
   case ief(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jls` subtype.
   case jls(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jp2` subtype.
   case jp2(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jpeg` subtype.
   case jpeg(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jph` subtype.
   case jph(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jphc` subtype.
   case jphc(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jpm` subtype.
   case jpm(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jpx` subtype.
   case jpx(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jxr` subtype.
   case jxr(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jxrA` subtype.
   case jxrA(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jxrS` subtype.
   case jxrS(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jxs` subtype.
   case jxs(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jxsc` subtype.
   case jxsc(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jxsi` subtype.
   case jxsi(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jxss` subtype.
   case jxss(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ktx` subtype.
   case ktx(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ktx2` subtype.
   case ktx2(Suffix? = nil, Parameters? = nil)
+  /// Represents the `naplps` subtype.
   case naplps(Suffix? = nil, Parameters? = nil)
+  /// Represents the `png` subtype.
   case png(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pwg-raster` subtype.
   case pwgRaster(Suffix? = nil, Parameters? = nil)
+  /// Represents the `svg` subtype.
   case svg(Suffix? = nil, Parameters? = nil)
+  /// Represents the `t38` subtype.
   case t38(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tiff` subtype.
   case tiff(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tiff-fx` subtype.
   case tiffFx(Suffix? = nil, Parameters? = nil)
+  /// Represents the `wmf` subtype.
   case wmf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `x-emf` subtype.
   case xEmf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `x-wmf` subtype.
   case xWmf(Suffix? = nil, Parameters? = nil)
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)

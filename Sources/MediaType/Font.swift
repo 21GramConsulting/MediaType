@@ -1,11 +1,17 @@
 import Foundation
 
 public enum Font {
+  /// Represents the `collection` subtype.
   case collection(Suffix? = nil, Parameters? = nil)
+  /// Represents the `otf` subtype.
   case otf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sfnt` subtype.
   case sfnt(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ttf` subtype.
   case ttf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `woff` subtype.
   case woff(Suffix? = nil, Parameters? = nil)
+  /// Represents the `woff2` subtype.
   case woff2(Suffix? = nil, Parameters? = nil)
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)

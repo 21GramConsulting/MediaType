@@ -1,24 +1,43 @@
 import Foundation
 
 public enum Message {
+  /// Represents the `CPIM` subtype.
   case CPIM(Suffix? = nil, Parameters? = nil)
+  /// Represents the `delivery-status` subtype.
   case deliveryStatus(Suffix? = nil, Parameters? = nil)
+  /// Represents the `disposition-notification` subtype.
   case dispositionNotification(Suffix? = nil, Parameters? = nil)
+  /// Represents the `example` subtype.
   case example(Suffix? = nil, Parameters? = nil)
+  /// Represents the `external-body` subtype.
   case externalBody(Suffix? = nil, Parameters? = nil)
+  /// Represents the `feedback-report` subtype.
   case feedbackReport(Suffix? = nil, Parameters? = nil)
+  /// Represents the `global` subtype.
   case global(Suffix? = nil, Parameters? = nil)
+  /// Represents the `global-delivery-status` subtype.
   case globalDeliveryStatus(Suffix? = nil, Parameters? = nil)
+  /// Represents the `global-disposition-notification` subtype.
   case globalDispositionNotification(Suffix? = nil, Parameters? = nil)
+  /// Represents the `global-headers` subtype.
   case globalHeaders(Suffix? = nil, Parameters? = nil)
+  /// Represents the `http` subtype.
   case http(Suffix? = nil, Parameters? = nil)
+  /// Represents the `imdn` subtype.
   case imdn(Suffix? = nil, Parameters? = nil)
+  /// Represents the `news` subtype.
   case news(Suffix? = nil, Parameters? = nil)
+  /// Represents the `partial` subtype.
   case partial(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rfc822` subtype.
   case rfc822(Suffix? = nil, Parameters? = nil)
+  /// Represents the `s-http` subtype.
   case sHttp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sip` subtype.
   case sip(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sipfrag` subtype.
   case sipfrag(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tracking-status` subtype.
   case trackingStatus(Suffix? = nil, Parameters? = nil)
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)

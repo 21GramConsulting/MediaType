@@ -46,6 +46,17 @@ const mediaRecords = Object.freeze(
         .filter(r => r.tree.length === 1) // TODO: Rework when support for tree subtypes is added.
 );
 
+/**
+ * @param {string} name
+ * @returns {{subtype: string, caseName: string}}
+ */
+function toSubtype(name) {
+    return {
+        subtype: name,
+        caseName: name.snakeToCamel().firstNumberTreated()
+    }
+}
+
 /** @type {Array<{pascalCase:string,lowerCase:string}>} */
 const types = mediaRecords
     .filter((r, _, l) => l.find(_r => _r.type === r.type) === r)
@@ -61,9 +72,10 @@ public enum ${pascalCase} {
 ${
             mediaRecords
                 .filter(r => r.type === lowerCase)
-                .map(r => r.tree[0].snakeToCamel().firstNumberTreated())
-                .filter((c, i, l) => l.indexOf(c) === i)
-                .map(caseName => `  case ${caseName}(Suffix? = nil, Parameters? = nil)`)
+                .map(r => toSubtype(r.tree[0]))
+                .filter((c, i, l) => l.findIndex(x => x.caseName === c.caseName) === i)
+                .map(({subtype, caseName}) => `  /// Represents the \`${subtype}\` subtype.
+  case ${caseName}(Suffix? = nil, Parameters? = nil)`)
                 .slice()
                 .sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0))
                 .concat('  case other(String, Suffix? = nil, Parameters? = nil)')

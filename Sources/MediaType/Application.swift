@@ -1,428 +1,851 @@
 import Foundation
 
 public enum Application {
+  /// Represents the `1d-interleaved-parityfec` subtype.
   case _1dInterleavedParityfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `3gpdash-qoe-report` subtype.
   case _3gpdashQoeReport(Suffix? = nil, Parameters? = nil)
+  /// Represents the `3gppHal` subtype.
   case _3gppHal(Suffix? = nil, Parameters? = nil)
+  /// Represents the `3gppHalForms` subtype.
   case _3gppHalForms(Suffix? = nil, Parameters? = nil)
+  /// Represents the `3gpp-ims` subtype.
   case _3gppIms(Suffix? = nil, Parameters? = nil)
+  /// Represents the `A2L` subtype.
   case A2L(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ace` subtype.
   case ace(Suffix? = nil, Parameters? = nil)
+  /// Represents the `activemessage` subtype.
   case activemessage(Suffix? = nil, Parameters? = nil)
+  /// Represents the `activity` subtype.
   case activity(Suffix? = nil, Parameters? = nil)
+  /// Represents the `alto-costmap` subtype.
   case altoCostmap(Suffix? = nil, Parameters? = nil)
+  /// Represents the `alto-costmapfilter` subtype.
   case altoCostmapfilter(Suffix? = nil, Parameters? = nil)
+  /// Represents the `alto-directory` subtype.
   case altoDirectory(Suffix? = nil, Parameters? = nil)
+  /// Represents the `alto-endpointprop` subtype.
   case altoEndpointprop(Suffix? = nil, Parameters? = nil)
+  /// Represents the `alto-endpointpropparams` subtype.
   case altoEndpointpropparams(Suffix? = nil, Parameters? = nil)
+  /// Represents the `alto-endpointcost` subtype.
   case altoEndpointcost(Suffix? = nil, Parameters? = nil)
+  /// Represents the `alto-endpointcostparams` subtype.
   case altoEndpointcostparams(Suffix? = nil, Parameters? = nil)
+  /// Represents the `alto-error` subtype.
   case altoError(Suffix? = nil, Parameters? = nil)
+  /// Represents the `alto-networkmapfilter` subtype.
   case altoNetworkmapfilter(Suffix? = nil, Parameters? = nil)
+  /// Represents the `alto-networkmap` subtype.
   case altoNetworkmap(Suffix? = nil, Parameters? = nil)
+  /// Represents the `alto-updatestreamcontrol` subtype.
   case altoUpdatestreamcontrol(Suffix? = nil, Parameters? = nil)
+  /// Represents the `alto-updatestreamparams` subtype.
   case altoUpdatestreamparams(Suffix? = nil, Parameters? = nil)
+  /// Represents the `AML` subtype.
   case AML(Suffix? = nil, Parameters? = nil)
+  /// Represents the `andrew-inset` subtype.
   case andrewInset(Suffix? = nil, Parameters? = nil)
+  /// Represents the `applefile` subtype.
   case applefile(Suffix? = nil, Parameters? = nil)
+  /// Represents the `at` subtype.
   case at(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ATF` subtype.
   case ATF(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ATFX` subtype.
   case ATFX(Suffix? = nil, Parameters? = nil)
+  /// Represents the `atom` subtype.
   case atom(Suffix? = nil, Parameters? = nil)
+  /// Represents the `atomcat` subtype.
   case atomcat(Suffix? = nil, Parameters? = nil)
+  /// Represents the `atomdeleted` subtype.
   case atomdeleted(Suffix? = nil, Parameters? = nil)
+  /// Represents the `atomicmail` subtype.
   case atomicmail(Suffix? = nil, Parameters? = nil)
+  /// Represents the `atomsvc` subtype.
   case atomsvc(Suffix? = nil, Parameters? = nil)
+  /// Represents the `atsc-dwd` subtype.
   case atscDwd(Suffix? = nil, Parameters? = nil)
+  /// Represents the `atsc-dynamic-event-message` subtype.
   case atscDynamicEventMessage(Suffix? = nil, Parameters? = nil)
+  /// Represents the `atsc-held` subtype.
   case atscHeld(Suffix? = nil, Parameters? = nil)
+  /// Represents the `atsc-rdt` subtype.
   case atscRdt(Suffix? = nil, Parameters? = nil)
+  /// Represents the `atsc-rsat` subtype.
   case atscRsat(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ATXML` subtype.
   case ATXML(Suffix? = nil, Parameters? = nil)
+  /// Represents the `auth-policy` subtype.
   case authPolicy(Suffix? = nil, Parameters? = nil)
+  /// Represents the `bacnet-xdd` subtype.
   case bacnetXdd(Suffix? = nil, Parameters? = nil)
+  /// Represents the `batch-SMTP` subtype.
   case batchSMTP(Suffix? = nil, Parameters? = nil)
+  /// Represents the `beep` subtype.
   case beep(Suffix? = nil, Parameters? = nil)
+  /// Represents the `calendar` subtype.
   case calendar(Suffix? = nil, Parameters? = nil)
+  /// Represents the `call-completion` subtype.
   case callCompletion(Suffix? = nil, Parameters? = nil)
+  /// Represents the `CALS-1840` subtype.
   case CALS1840(Suffix? = nil, Parameters? = nil)
+  /// Represents the `captive` subtype.
   case captive(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cbor` subtype.
   case cbor(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cbor-seq` subtype.
   case cborSeq(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cccex` subtype.
   case cccex(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ccmp` subtype.
   case ccmp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ccxml` subtype.
   case ccxml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `CDFX` subtype.
   case CDFX(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cdmi-capability` subtype.
   case cdmiCapability(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cdmi-container` subtype.
   case cdmiContainer(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cdmi-domain` subtype.
   case cdmiDomain(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cdmi-object` subtype.
   case cdmiObject(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cdmi-queue` subtype.
   case cdmiQueue(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cdni` subtype.
   case cdni(Suffix? = nil, Parameters? = nil)
+  /// Represents the `CEA` subtype.
   case CEA(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cea-2018` subtype.
   case cea2018(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cellml` subtype.
   case cellml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cfw` subtype.
   case cfw(Suffix? = nil, Parameters? = nil)
+  /// Represents the `clr` subtype.
   case clr(Suffix? = nil, Parameters? = nil)
+  /// Represents the `clue_info` subtype.
   case clue_info(Suffix? = nil, Parameters? = nil)
+  /// Represents the `clue` subtype.
   case clue(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cms` subtype.
   case cms(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cnrp` subtype.
   case cnrp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `coap-group` subtype.
   case coapGroup(Suffix? = nil, Parameters? = nil)
+  /// Represents the `coap-payload` subtype.
   case coapPayload(Suffix? = nil, Parameters? = nil)
+  /// Represents the `commonground` subtype.
   case commonground(Suffix? = nil, Parameters? = nil)
+  /// Represents the `conference-info` subtype.
   case conferenceInfo(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cpl` subtype.
   case cpl(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cose` subtype.
   case cose(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cose-key` subtype.
   case coseKey(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cose-key-set` subtype.
   case coseKeySet(Suffix? = nil, Parameters? = nil)
+  /// Represents the `csrattrs` subtype.
   case csrattrs(Suffix? = nil, Parameters? = nil)
+  /// Represents the `csta` subtype.
   case csta(Suffix? = nil, Parameters? = nil)
+  /// Represents the `CSTAdata` subtype.
   case CSTAdata(Suffix? = nil, Parameters? = nil)
+  /// Represents the `csvm` subtype.
   case csvm(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cwt` subtype.
   case cwt(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cybercash` subtype.
   case cybercash(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dash` subtype.
   case dash(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dashdelta` subtype.
   case dashdelta(Suffix? = nil, Parameters? = nil)
+  /// Represents the `davmount` subtype.
   case davmount(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dca-rft` subtype.
   case dcaRft(Suffix? = nil, Parameters? = nil)
+  /// Represents the `DCD` subtype.
   case DCD(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dec-dx` subtype.
   case decDx(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dialog-info` subtype.
   case dialogInfo(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dicom` subtype.
   case dicom(Suffix? = nil, Parameters? = nil)
+  /// Represents the `DII` subtype.
   case DII(Suffix? = nil, Parameters? = nil)
+  /// Represents the `DIT` subtype.
   case DIT(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dns` subtype.
   case dns(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dns-message` subtype.
   case dnsMessage(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dots` subtype.
   case dots(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dskpp` subtype.
   case dskpp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dssc` subtype.
   case dssc(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dvcs` subtype.
   case dvcs(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ecmascript` subtype.
   case ecmascript(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EDI-consent` subtype.
   case EDIConsent(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EDIFACT` subtype.
   case EDIFACT(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EDI-X12` subtype.
   case EDIX12(Suffix? = nil, Parameters? = nil)
+  /// Represents the `efi` subtype.
   case efi(Suffix? = nil, Parameters? = nil)
+  /// Represents the `elm` subtype.
   case elm(Suffix? = nil, Parameters? = nil)
+  /// Represents the `emma` subtype.
   case emma(Suffix? = nil, Parameters? = nil)
+  /// Represents the `emotionml` subtype.
   case emotionml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `encaprtp` subtype.
   case encaprtp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `epp` subtype.
   case epp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `epub` subtype.
   case epub(Suffix? = nil, Parameters? = nil)
+  /// Represents the `eshop` subtype.
   case eshop(Suffix? = nil, Parameters? = nil)
+  /// Represents the `example` subtype.
   case example(Suffix? = nil, Parameters? = nil)
+  /// Represents the `exi` subtype.
   case exi(Suffix? = nil, Parameters? = nil)
+  /// Represents the `expect-ct-report` subtype.
   case expectCtReport(Suffix? = nil, Parameters? = nil)
+  /// Represents the `express` subtype.
   case express(Suffix? = nil, Parameters? = nil)
+  /// Represents the `fastinfoset` subtype.
   case fastinfoset(Suffix? = nil, Parameters? = nil)
+  /// Represents the `fastsoap` subtype.
   case fastsoap(Suffix? = nil, Parameters? = nil)
+  /// Represents the `fdt` subtype.
   case fdt(Suffix? = nil, Parameters? = nil)
+  /// Represents the `fhir` subtype.
   case fhir(Suffix? = nil, Parameters? = nil)
+  /// Represents the `fits` subtype.
   case fits(Suffix? = nil, Parameters? = nil)
+  /// Represents the `flexfec` subtype.
   case flexfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `font-sfnt` subtype.
   case fontSfnt(Suffix? = nil, Parameters? = nil)
+  /// Represents the `font-tdpfr` subtype.
   case fontTdpfr(Suffix? = nil, Parameters? = nil)
+  /// Represents the `font-woff` subtype.
   case fontWoff(Suffix? = nil, Parameters? = nil)
+  /// Represents the `framework-attributes` subtype.
   case frameworkAttributes(Suffix? = nil, Parameters? = nil)
+  /// Represents the `geo` subtype.
   case geo(Suffix? = nil, Parameters? = nil)
+  /// Represents the `geopackage` subtype.
   case geopackage(Suffix? = nil, Parameters? = nil)
+  /// Represents the `geoxacml` subtype.
   case geoxacml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `gltf-buffer` subtype.
   case gltfBuffer(Suffix? = nil, Parameters? = nil)
+  /// Represents the `gml` subtype.
   case gml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `gzip` subtype.
   case gzip(Suffix? = nil, Parameters? = nil)
+  /// Represents the `H224` subtype.
   case H224(Suffix? = nil, Parameters? = nil)
+  /// Represents the `held` subtype.
   case held(Suffix? = nil, Parameters? = nil)
+  /// Represents the `http` subtype.
   case http(Suffix? = nil, Parameters? = nil)
+  /// Represents the `hyperstudio` subtype.
   case hyperstudio(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ibe-key-request` subtype.
   case ibeKeyRequest(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ibe-pkg-reply` subtype.
   case ibePkgReply(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ibe-pp-data` subtype.
   case ibePpData(Suffix? = nil, Parameters? = nil)
+  /// Represents the `iges` subtype.
   case iges(Suffix? = nil, Parameters? = nil)
+  /// Represents the `im-iscomposing` subtype.
   case imIscomposing(Suffix? = nil, Parameters? = nil)
+  /// Represents the `index` subtype.
   case index(Suffix? = nil, Parameters? = nil)
+  /// Represents the `inkml` subtype.
   case inkml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `IOTP` subtype.
   case IOTP(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ipfix` subtype.
   case ipfix(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ipp` subtype.
   case ipp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ISUP` subtype.
   case ISUP(Suffix? = nil, Parameters? = nil)
+  /// Represents the `its` subtype.
   case its(Suffix? = nil, Parameters? = nil)
+  /// Represents the `javascript` subtype.
   case javascript(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jf2feed` subtype.
   case jf2feed(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jose` subtype.
   case jose(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jrd` subtype.
   case jrd(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jscalendar` subtype.
   case jscalendar(Suffix? = nil, Parameters? = nil)
+  /// Represents the `json` subtype.
   case json(Suffix? = nil, Parameters? = nil)
+  /// Represents the `json-patch` subtype.
   case jsonPatch(Suffix? = nil, Parameters? = nil)
+  /// Represents the `json-seq` subtype.
   case jsonSeq(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jwk` subtype.
   case jwk(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jwk-set` subtype.
   case jwkSet(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jwt` subtype.
   case jwt(Suffix? = nil, Parameters? = nil)
+  /// Represents the `kpml-request` subtype.
   case kpmlRequest(Suffix? = nil, Parameters? = nil)
+  /// Represents the `kpml-response` subtype.
   case kpmlResponse(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ld` subtype.
   case ld(Suffix? = nil, Parameters? = nil)
+  /// Represents the `lgr` subtype.
   case lgr(Suffix? = nil, Parameters? = nil)
+  /// Represents the `link-format` subtype.
   case linkFormat(Suffix? = nil, Parameters? = nil)
+  /// Represents the `load-control` subtype.
   case loadControl(Suffix? = nil, Parameters? = nil)
+  /// Represents the `lost` subtype.
   case lost(Suffix? = nil, Parameters? = nil)
+  /// Represents the `lostsync` subtype.
   case lostsync(Suffix? = nil, Parameters? = nil)
+  /// Represents the `lpf` subtype.
   case lpf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `LXF` subtype.
   case LXF(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mac-binhex40` subtype.
   case macBinhex40(Suffix? = nil, Parameters? = nil)
+  /// Represents the `macwriteii` subtype.
   case macwriteii(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mads` subtype.
   case mads(Suffix? = nil, Parameters? = nil)
+  /// Represents the `manifest` subtype.
   case manifest(Suffix? = nil, Parameters? = nil)
+  /// Represents the `marc` subtype.
   case marc(Suffix? = nil, Parameters? = nil)
+  /// Represents the `marcxml` subtype.
   case marcxml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mathematica` subtype.
   case mathematica(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mathml` subtype.
   case mathml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mathml-content` subtype.
   case mathmlContent(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mathml-presentation` subtype.
   case mathmlPresentation(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mbms-associated-procedure-description` subtype.
   case mbmsAssociatedProcedureDescription(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mbms-deregister` subtype.
   case mbmsDeregister(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mbms-envelope` subtype.
   case mbmsEnvelope(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mbms-msk-response` subtype.
   case mbmsMskResponse(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mbms-msk` subtype.
   case mbmsMsk(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mbms-protection-description` subtype.
   case mbmsProtectionDescription(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mbms-reception-report` subtype.
   case mbmsReceptionReport(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mbms-register-response` subtype.
   case mbmsRegisterResponse(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mbms-register` subtype.
   case mbmsRegister(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mbms-schedule` subtype.
   case mbmsSchedule(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mbms-user-service-description` subtype.
   case mbmsUserServiceDescription(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mbox` subtype.
   case mbox(Suffix? = nil, Parameters? = nil)
+  /// Represents the `media_control` subtype.
   case media_control(Suffix? = nil, Parameters? = nil)
+  /// Represents the `media-policy-dataset` subtype.
   case mediaPolicyDataset(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mediaservercontrol` subtype.
   case mediaservercontrol(Suffix? = nil, Parameters? = nil)
+  /// Represents the `merge-patch` subtype.
   case mergePatch(Suffix? = nil, Parameters? = nil)
+  /// Represents the `metalink4` subtype.
   case metalink4(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mets` subtype.
   case mets(Suffix? = nil, Parameters? = nil)
+  /// Represents the `MF4` subtype.
   case MF4(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mikey` subtype.
   case mikey(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mipc` subtype.
   case mipc(Suffix? = nil, Parameters? = nil)
+  /// Represents the `missing-blocks` subtype.
   case missingBlocks(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mmt-aei` subtype.
   case mmtAei(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mmt-usd` subtype.
   case mmtUsd(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mods` subtype.
   case mods(Suffix? = nil, Parameters? = nil)
+  /// Represents the `moss-keys` subtype.
   case mossKeys(Suffix? = nil, Parameters? = nil)
+  /// Represents the `moss-signature` subtype.
   case mossSignature(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mosskey-data` subtype.
   case mosskeyData(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mosskey-request` subtype.
   case mosskeyRequest(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mp21` subtype.
   case mp21(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mp4` subtype.
   case mp4(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mpeg4-generic` subtype.
   case mpeg4Generic(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mpeg4-iod` subtype.
   case mpeg4Iod(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mpeg4-iod-xmt` subtype.
   case mpeg4IodXmt(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mrb-consumer` subtype.
   case mrbConsumer(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mrb-publish` subtype.
   case mrbPublish(Suffix? = nil, Parameters? = nil)
+  /// Represents the `msc-ivr` subtype.
   case mscIvr(Suffix? = nil, Parameters? = nil)
+  /// Represents the `msc-mixer` subtype.
   case mscMixer(Suffix? = nil, Parameters? = nil)
+  /// Represents the `msword` subtype.
   case msword(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mud` subtype.
   case mud(Suffix? = nil, Parameters? = nil)
+  /// Represents the `multipart-core` subtype.
   case multipartCore(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mxf` subtype.
   case mxf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `n-quads` subtype.
   case nQuads(Suffix? = nil, Parameters? = nil)
+  /// Represents the `n-triples` subtype.
   case nTriples(Suffix? = nil, Parameters? = nil)
+  /// Represents the `nasdata` subtype.
   case nasdata(Suffix? = nil, Parameters? = nil)
+  /// Represents the `news-checkgroups` subtype.
   case newsCheckgroups(Suffix? = nil, Parameters? = nil)
+  /// Represents the `news-groupinfo` subtype.
   case newsGroupinfo(Suffix? = nil, Parameters? = nil)
+  /// Represents the `news-transmission` subtype.
   case newsTransmission(Suffix? = nil, Parameters? = nil)
+  /// Represents the `nlsml` subtype.
   case nlsml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `node` subtype.
   case node(Suffix? = nil, Parameters? = nil)
+  /// Represents the `nss` subtype.
   case nss(Suffix? = nil, Parameters? = nil)
+  /// Represents the `oauth-authz-req` subtype.
   case oauthAuthzReq(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ocsp-request` subtype.
   case ocspRequest(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ocsp-response` subtype.
   case ocspResponse(Suffix? = nil, Parameters? = nil)
+  /// Represents the `octet-stream` subtype.
   case octetStream(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ODA` subtype.
   case ODA(Suffix? = nil, Parameters? = nil)
+  /// Represents the `odm` subtype.
   case odm(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ODX` subtype.
   case ODX(Suffix? = nil, Parameters? = nil)
+  /// Represents the `oebps-package` subtype.
   case oebpsPackage(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ogg` subtype.
   case ogg(Suffix? = nil, Parameters? = nil)
+  /// Represents the `opc-nodeset` subtype.
   case opcNodeset(Suffix? = nil, Parameters? = nil)
+  /// Represents the `oscore` subtype.
   case oscore(Suffix? = nil, Parameters? = nil)
+  /// Represents the `oxps` subtype.
   case oxps(Suffix? = nil, Parameters? = nil)
+  /// Represents the `p21` subtype.
   case p21(Suffix? = nil, Parameters? = nil)
+  /// Represents the `p2p-overlay` subtype.
   case p2pOverlay(Suffix? = nil, Parameters? = nil)
+  /// Represents the `parityfec` subtype.
   case parityfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `passport` subtype.
   case passport(Suffix? = nil, Parameters? = nil)
+  /// Represents the `patch-ops-error` subtype.
   case patchOpsError(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pdf` subtype.
   case pdf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `PDX` subtype.
   case PDX(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pem-certificate-chain` subtype.
   case pemCertificateChain(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pgp-encrypted` subtype.
   case pgpEncrypted(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pgp-keys` subtype.
   case pgpKeys(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pgp-signature` subtype.
   case pgpSignature(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pidf-diff` subtype.
   case pidfDiff(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pidf` subtype.
   case pidf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pkcs10` subtype.
   case pkcs10(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pkcs7-mime` subtype.
   case pkcs7Mime(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pkcs7-signature` subtype.
   case pkcs7Signature(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pkcs8` subtype.
   case pkcs8(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pkcs8-encrypted` subtype.
   case pkcs8Encrypted(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pkcs12` subtype.
   case pkcs12(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pkix-attr-cert` subtype.
   case pkixAttrCert(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pkix-cert` subtype.
   case pkixCert(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pkix-crl` subtype.
   case pkixCrl(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pkix-pkipath` subtype.
   case pkixPkipath(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pkixcmp` subtype.
   case pkixcmp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pls` subtype.
   case pls(Suffix? = nil, Parameters? = nil)
+  /// Represents the `poc-settings` subtype.
   case pocSettings(Suffix? = nil, Parameters? = nil)
+  /// Represents the `postscript` subtype.
   case postscript(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ppsp-tracker` subtype.
   case ppspTracker(Suffix? = nil, Parameters? = nil)
+  /// Represents the `problem` subtype.
   case problem(Suffix? = nil, Parameters? = nil)
+  /// Represents the `provenance` subtype.
   case provenance(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pskc` subtype.
   case pskc(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pvd` subtype.
   case pvd(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rdf` subtype.
   case rdf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `route-apd` subtype.
   case routeApd(Suffix? = nil, Parameters? = nil)
+  /// Represents the `route-s-tsid` subtype.
   case routeSTsid(Suffix? = nil, Parameters? = nil)
+  /// Represents the `route-usd` subtype.
   case routeUsd(Suffix? = nil, Parameters? = nil)
+  /// Represents the `QSIG` subtype.
   case QSIG(Suffix? = nil, Parameters? = nil)
+  /// Represents the `raptorfec` subtype.
   case raptorfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rdap` subtype.
   case rdap(Suffix? = nil, Parameters? = nil)
+  /// Represents the `reginfo` subtype.
   case reginfo(Suffix? = nil, Parameters? = nil)
+  /// Represents the `relax-ng-compact-syntax` subtype.
   case relaxNgCompactSyntax(Suffix? = nil, Parameters? = nil)
+  /// Represents the `remote-printing` subtype.
   case remotePrinting(Suffix? = nil, Parameters? = nil)
+  /// Represents the `reputon` subtype.
   case reputon(Suffix? = nil, Parameters? = nil)
+  /// Represents the `resource-lists-diff` subtype.
   case resourceListsDiff(Suffix? = nil, Parameters? = nil)
+  /// Represents the `resource-lists` subtype.
   case resourceLists(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rfc` subtype.
   case rfc(Suffix? = nil, Parameters? = nil)
+  /// Represents the `riscos` subtype.
   case riscos(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rlmi` subtype.
   case rlmi(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rls-services` subtype.
   case rlsServices(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rpki-ghostbusters` subtype.
   case rpkiGhostbusters(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rpki-manifest` subtype.
   case rpkiManifest(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rpki-publication` subtype.
   case rpkiPublication(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rpki-roa` subtype.
   case rpkiRoa(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rpki-updown` subtype.
   case rpkiUpdown(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rtf` subtype.
   case rtf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rtploopback` subtype.
   case rtploopback(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rtx` subtype.
   case rtx(Suffix? = nil, Parameters? = nil)
+  /// Represents the `samlassertion` subtype.
   case samlassertion(Suffix? = nil, Parameters? = nil)
+  /// Represents the `samlmetadata` subtype.
   case samlmetadata(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sarif-external-properties` subtype.
   case sarifExternalProperties(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sarif` subtype.
   case sarif(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sbe` subtype.
   case sbe(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sbml` subtype.
   case sbml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `scaip` subtype.
   case scaip(Suffix? = nil, Parameters? = nil)
+  /// Represents the `scim` subtype.
   case scim(Suffix? = nil, Parameters? = nil)
+  /// Represents the `scvp-cv-request` subtype.
   case scvpCvRequest(Suffix? = nil, Parameters? = nil)
+  /// Represents the `scvp-cv-response` subtype.
   case scvpCvResponse(Suffix? = nil, Parameters? = nil)
+  /// Represents the `scvp-vp-request` subtype.
   case scvpVpRequest(Suffix? = nil, Parameters? = nil)
+  /// Represents the `scvp-vp-response` subtype.
   case scvpVpResponse(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sdp` subtype.
   case sdp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `secevent` subtype.
   case secevent(Suffix? = nil, Parameters? = nil)
+  /// Represents the `senml-etch` subtype.
   case senmlEtch(Suffix? = nil, Parameters? = nil)
+  /// Represents the `senml-exi` subtype.
   case senmlExi(Suffix? = nil, Parameters? = nil)
+  /// Represents the `senml` subtype.
   case senml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sensml-exi` subtype.
   case sensmlExi(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sensml` subtype.
   case sensml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sep-exi` subtype.
   case sepExi(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sep` subtype.
   case sep(Suffix? = nil, Parameters? = nil)
+  /// Represents the `session-info` subtype.
   case sessionInfo(Suffix? = nil, Parameters? = nil)
+  /// Represents the `set-payment` subtype.
   case setPayment(Suffix? = nil, Parameters? = nil)
+  /// Represents the `set-payment-initiation` subtype.
   case setPaymentInitiation(Suffix? = nil, Parameters? = nil)
+  /// Represents the `set-registration` subtype.
   case setRegistration(Suffix? = nil, Parameters? = nil)
+  /// Represents the `set-registration-initiation` subtype.
   case setRegistrationInitiation(Suffix? = nil, Parameters? = nil)
+  /// Represents the `SGML` subtype.
   case SGML(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sgml-open-catalog` subtype.
   case sgmlOpenCatalog(Suffix? = nil, Parameters? = nil)
+  /// Represents the `shf` subtype.
   case shf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sieve` subtype.
   case sieve(Suffix? = nil, Parameters? = nil)
+  /// Represents the `simple-filter` subtype.
   case simpleFilter(Suffix? = nil, Parameters? = nil)
+  /// Represents the `simple-message-summary` subtype.
   case simpleMessageSummary(Suffix? = nil, Parameters? = nil)
+  /// Represents the `simpleSymbolContainer` subtype.
   case simpleSymbolContainer(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sipc` subtype.
   case sipc(Suffix? = nil, Parameters? = nil)
+  /// Represents the `slate` subtype.
   case slate(Suffix? = nil, Parameters? = nil)
+  /// Represents the `smil` subtype.
   case smil(Suffix? = nil, Parameters? = nil)
+  /// Represents the `smpte336m` subtype.
   case smpte336m(Suffix? = nil, Parameters? = nil)
+  /// Represents the `soap` subtype.
   case soap(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sparql-query` subtype.
   case sparqlQuery(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sparql-results` subtype.
   case sparqlResults(Suffix? = nil, Parameters? = nil)
+  /// Represents the `spirits-event` subtype.
   case spiritsEvent(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sql` subtype.
   case sql(Suffix? = nil, Parameters? = nil)
+  /// Represents the `srgs` subtype.
   case srgs(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sru` subtype.
   case sru(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ssml` subtype.
   case ssml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `stix` subtype.
   case stix(Suffix? = nil, Parameters? = nil)
+  /// Represents the `swid` subtype.
   case swid(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tamp-apex-update` subtype.
   case tampApexUpdate(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tamp-apex-update-confirm` subtype.
   case tampApexUpdateConfirm(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tamp-community-update` subtype.
   case tampCommunityUpdate(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tamp-community-update-confirm` subtype.
   case tampCommunityUpdateConfirm(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tamp-error` subtype.
   case tampError(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tamp-sequence-adjust` subtype.
   case tampSequenceAdjust(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tamp-sequence-adjust-confirm` subtype.
   case tampSequenceAdjustConfirm(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tamp-status-query` subtype.
   case tampStatusQuery(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tamp-status-response` subtype.
   case tampStatusResponse(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tamp-update` subtype.
   case tampUpdate(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tamp-update-confirm` subtype.
   case tampUpdateConfirm(Suffix? = nil, Parameters? = nil)
+  /// Represents the `taxii` subtype.
   case taxii(Suffix? = nil, Parameters? = nil)
+  /// Represents the `td` subtype.
   case td(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tei` subtype.
   case tei(Suffix? = nil, Parameters? = nil)
+  /// Represents the `TETRA_ISI` subtype.
   case TETRA_ISI(Suffix? = nil, Parameters? = nil)
+  /// Represents the `thraud` subtype.
   case thraud(Suffix? = nil, Parameters? = nil)
+  /// Represents the `timestamp-query` subtype.
   case timestampQuery(Suffix? = nil, Parameters? = nil)
+  /// Represents the `timestamp-reply` subtype.
   case timestampReply(Suffix? = nil, Parameters? = nil)
+  /// Represents the `timestamped-data` subtype.
   case timestampedData(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tlsrpt` subtype.
   case tlsrpt(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tnauthlist` subtype.
   case tnauthlist(Suffix? = nil, Parameters? = nil)
+  /// Represents the `token-introspection` subtype.
   case tokenIntrospection(Suffix? = nil, Parameters? = nil)
+  /// Represents the `trickle-ice-sdpfrag` subtype.
   case trickleIceSdpfrag(Suffix? = nil, Parameters? = nil)
+  /// Represents the `trig` subtype.
   case trig(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ttml` subtype.
   case ttml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tve-trigger` subtype.
   case tveTrigger(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tzif` subtype.
   case tzif(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tzif-leap` subtype.
   case tzifLeap(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ulpfec` subtype.
   case ulpfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `urc-grpsheet` subtype.
   case urcGrpsheet(Suffix? = nil, Parameters? = nil)
+  /// Represents the `urc-ressheet` subtype.
   case urcRessheet(Suffix? = nil, Parameters? = nil)
+  /// Represents the `urc-targetdesc` subtype.
   case urcTargetdesc(Suffix? = nil, Parameters? = nil)
+  /// Represents the `urc-uisocketdesc` subtype.
   case urcUisocketdesc(Suffix? = nil, Parameters? = nil)
+  /// Represents the `vcard` subtype.
   case vcard(Suffix? = nil, Parameters? = nil)
+  /// Represents the `vemmi` subtype.
   case vemmi(Suffix? = nil, Parameters? = nil)
+  /// Represents the `voicexml` subtype.
   case voicexml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `voucher-cms` subtype.
   case voucherCms(Suffix? = nil, Parameters? = nil)
+  /// Represents the `vq-rtcpxr` subtype.
   case vqRtcpxr(Suffix? = nil, Parameters? = nil)
+  /// Represents the `wasm` subtype.
   case wasm(Suffix? = nil, Parameters? = nil)
+  /// Represents the `watcherinfo` subtype.
   case watcherinfo(Suffix? = nil, Parameters? = nil)
+  /// Represents the `webpush-options` subtype.
   case webpushOptions(Suffix? = nil, Parameters? = nil)
+  /// Represents the `whoispp-query` subtype.
   case whoisppQuery(Suffix? = nil, Parameters? = nil)
+  /// Represents the `whoispp-response` subtype.
   case whoisppResponse(Suffix? = nil, Parameters? = nil)
+  /// Represents the `widget` subtype.
   case widget(Suffix? = nil, Parameters? = nil)
+  /// Represents the `wita` subtype.
   case wita(Suffix? = nil, Parameters? = nil)
+  /// Represents the `wsdl` subtype.
   case wsdl(Suffix? = nil, Parameters? = nil)
+  /// Represents the `wspolicy` subtype.
   case wspolicy(Suffix? = nil, Parameters? = nil)
+  /// Represents the `x-pki-message` subtype.
   case xPkiMessage(Suffix? = nil, Parameters? = nil)
+  /// Represents the `x-www-form-urlencoded` subtype.
   case xWwwFormUrlencoded(Suffix? = nil, Parameters? = nil)
+  /// Represents the `x-x509-ca-cert` subtype.
   case xX509CaCert(Suffix? = nil, Parameters? = nil)
+  /// Represents the `x-x509-ca-ra-cert` subtype.
   case xX509CaRaCert(Suffix? = nil, Parameters? = nil)
+  /// Represents the `x-x509-next-ca-cert` subtype.
   case xX509NextCaCert(Suffix? = nil, Parameters? = nil)
+  /// Represents the `x400-bp` subtype.
   case x400Bp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xacml` subtype.
   case xacml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xcap-att` subtype.
   case xcapAtt(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xcap-caps` subtype.
   case xcapCaps(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xcap-diff` subtype.
   case xcapDiff(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xcap-el` subtype.
   case xcapEl(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xcap-error` subtype.
   case xcapError(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xcap-ns` subtype.
   case xcapNs(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xcon-conference-info-diff` subtype.
   case xconConferenceInfoDiff(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xcon-conference-info` subtype.
   case xconConferenceInfo(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xenc` subtype.
   case xenc(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xhtml` subtype.
   case xhtml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xliff` subtype.
   case xliff(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xml` subtype.
   case xml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xml-dtd` subtype.
   case xmlDtd(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xml-external-parsed-entity` subtype.
   case xmlExternalParsedEntity(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xml-patch` subtype.
   case xmlPatch(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xmpp` subtype.
   case xmpp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xop` subtype.
   case xop(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xslt` subtype.
   case xslt(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xv` subtype.
   case xv(Suffix? = nil, Parameters? = nil)
+  /// Represents the `yang` subtype.
   case yang(Suffix? = nil, Parameters? = nil)
+  /// Represents the `yang-data` subtype.
   case yangData(Suffix? = nil, Parameters? = nil)
+  /// Represents the `yang-patch` subtype.
   case yangPatch(Suffix? = nil, Parameters? = nil)
+  /// Represents the `yin` subtype.
   case yin(Suffix? = nil, Parameters? = nil)
+  /// Represents the `zip` subtype.
   case zip(Suffix? = nil, Parameters? = nil)
+  /// Represents the `zlib` subtype.
   case zlib(Suffix? = nil, Parameters? = nil)
+  /// Represents the `zstd` subtype.
   case zstd(Suffix? = nil, Parameters? = nil)
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)

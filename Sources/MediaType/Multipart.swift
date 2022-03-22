@@ -1,21 +1,37 @@
 import Foundation
 
 public enum Multipart {
+  /// Represents the `alternative` subtype.
   case alternative(Suffix? = nil, Parameters? = nil)
+  /// Represents the `appledouble` subtype.
   case appledouble(Suffix? = nil, Parameters? = nil)
+  /// Represents the `byteranges` subtype.
   case byteranges(Suffix? = nil, Parameters? = nil)
+  /// Represents the `digest` subtype.
   case digest(Suffix? = nil, Parameters? = nil)
+  /// Represents the `encrypted` subtype.
   case encrypted(Suffix? = nil, Parameters? = nil)
+  /// Represents the `example` subtype.
   case example(Suffix? = nil, Parameters? = nil)
+  /// Represents the `form-data` subtype.
   case formData(Suffix? = nil, Parameters? = nil)
+  /// Represents the `header-set` subtype.
   case headerSet(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mixed` subtype.
   case mixed(Suffix? = nil, Parameters? = nil)
+  /// Represents the `multilingual` subtype.
   case multilingual(Suffix? = nil, Parameters? = nil)
+  /// Represents the `parallel` subtype.
   case parallel(Suffix? = nil, Parameters? = nil)
+  /// Represents the `related` subtype.
   case related(Suffix? = nil, Parameters? = nil)
+  /// Represents the `report` subtype.
   case report(Suffix? = nil, Parameters? = nil)
+  /// Represents the `signed` subtype.
   case signed(Suffix? = nil, Parameters? = nil)
+  /// Represents the `voice-message` subtype.
   case voiceMessage(Suffix? = nil, Parameters? = nil)
+  /// Represents the `x-mixed-replace` subtype.
   case xMixedReplace(Suffix? = nil, Parameters? = nil)
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)
