@@ -270,7 +270,7 @@ writeFileSync(
 public enum MediaType {
 ${
         types
-            .map(({lowerCase, pascalCase}) => `${mediaDocumentations[lowerCase]}
+            .map(({lowerCase, pascalCase}) => `${mediaDocumentations[lowerCase].caseDoc}
   case ${lowerCase}(${pascalCase})`)
             .join('\n')
     }
