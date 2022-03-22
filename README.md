@@ -52,6 +52,16 @@ MediaType.application(.other("vnd.efi.img")) // is equivalent to
 let mediaType: MediaType = "application/vnd.efi.img"
 ```
 
+### Unregistered Media Types
+
+Using this library you can create all the registered media types. The library is versatile enough to allow you to create
+practically *any* media type, even ones that are *not* registered. A few examples of such cases:
+
+```swift
+MediaType.image(.svg(.gzip)) // Creates: image/svg+gzip
+MediaType.application(.other("myApp", .json)) // Creates: application/myApp+json
+```
+
 ## Using Media Types
 
 ### String Conversion

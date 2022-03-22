@@ -50,4 +50,9 @@ extension CodeExamples {
   func test_vendor_tree() {
     XCTAssertEqual("application/vnd.efi.img", MediaType.application(.other("vnd.efi.img")))
   }
+
+  func test_unregistered_media_types() {
+    XCTAssertEqual(MediaType.image(.svg(.gzip)), "image/svg+gzip")
+    XCTAssertEqual(MediaType.application(.other("myApp", .json)), "application/myApp+json")
+  }
 }
