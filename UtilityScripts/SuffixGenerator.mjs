@@ -16,6 +16,19 @@ const records = suffixes
 
 const code = `import Foundation
 
+/// Represents the media type [suffix](https://en.wikipedia.org/wiki/Media_type#Suffix)es.
+///
+/// The library allows all \`\`MediaType\`\`s to have a suffix. Keep in mind though, that not all such combinations are
+/// registered (see the [official site](https://www.iana.org/assignments/media-types/media-types.xhtml) for details).
+///
+/// It is also possible to create completely custom suffixes by using either the \`\`Suffix/other(_:)\`\` case directly or a
+/// string literal.
+///
+/// \`\`\`swift
+/// MediaType.application(.jose(.json)) // Creates: application/jose+json
+/// MediaType.application(.jose(.other("custom"))) // Creates: application/jose+custom
+/// MediaType.image(.svg("zip")) // Creates: image/svg+zip
+/// \`\`\`
 public enum Suffix {
 ${
     records
