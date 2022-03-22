@@ -29,7 +29,7 @@ let mediaType = MediaType(rawValue: rawMediaType)
 
 ### Suffixes and Parameters
 
-Media type suffixes and parameters are supported both via string literals and ``MediaType`` cases.
+Media type ``Suffix``es and parameters are supported both via string literals and ``MediaType`` cases.
 
 ```swift
 MediaType.application(.atom(nil, ["charset": "utf-8"])) // is equivalent to
