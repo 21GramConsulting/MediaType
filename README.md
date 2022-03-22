@@ -2,7 +2,7 @@
 
 ## Overview
 
-MediaType is a library &ndash; developed by [21Gram Consulting](https://21gram.consulting) &ndash; that can be used to
+MediaType is a library that can be used to
 create [Media Type](https://www.iana.org/assignments/media-types/media-types.xhtml)s in a type-safe manner.
 
 Mainly intended &ndash; although not limited &ndash; to be used in [server-side Swift](https://www.swift.org/server)
