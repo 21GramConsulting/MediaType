@@ -97,12 +97,12 @@ public enum MediaType {
   /// For the whole family of `video` media types consult the
   /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#video) documentation.
   case video(Video)
-  /// Creates a custom media type that is currently not officially defined.
+  /// Represents a custom media type that is currently not officially defined.
   ///
   /// Represents a custom media type with the given `type` and `subtype`. Optionally, you can specify a ``Suffix`` and
   /// ``Parameters``.
   case other(type: CustomStringConvertible, subtype: CustomStringConvertible, Suffix? = nil, Parameters? = nil)
-  /// Creates a wildcard media type.
+  /// Represents a wildcard media type.
   ///
   /// A wildcard media type has a type of `*`. A few examples:
   ///
