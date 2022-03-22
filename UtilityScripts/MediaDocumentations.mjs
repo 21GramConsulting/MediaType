@@ -11,7 +11,25 @@ export function toDocumentation(lines, indentation) {
 }
 
 export const mediaDocumentations = {
+    generic: {
+        typeDoc: {
+            otherCase: ["Represents a subtype that does not fit in the other cases or is currently not officially defined.",
+                "",
+                "You can use this case to define an arbitrary, unregistered subtype with the given name or",
+                "to represent a subtype in the non standard tree, e.g. vendor tree or personal tree.",
+                "",
+                "Optionally, you can specify a ``Suffix`` and ``Parameters``."
+            ]
+        }
+    },
     application: {
+        typeDoc: {
+            otherCase: [
+                "```swift",
+                "// TODO: Provide examples.",
+                "```"
+            ]
+        },
         caseDoc: ["Represents the `application` media type.",
             "",
             "Represents binary data. Common examples: `application/json`, `application/octet-stream`.",
@@ -21,6 +39,13 @@ export const mediaDocumentations = {
         ]
     },
     audio: {
+        typeDoc: {
+            otherCase: [
+                "```swift",
+                "// TODO: Provide examples.",
+                "```"
+            ]
+        },
         caseDoc: ["Represents the `audio` media type.",
             "",
             "Represents audible data. Common examples: `audio/ac3`, `audio/mpeg`.",
@@ -30,6 +55,13 @@ export const mediaDocumentations = {
         ]
     },
     font: {
+        typeDoc: {
+            otherCase: [
+                "```swift",
+                "// TODO: Provide examples.",
+                "```"
+            ]
+        },
         caseDoc: ["Represents the `font` media type.",
             "",
             "Represents font or typeface data. Common examples: `font/woff`, `font/ttf`.",
@@ -39,6 +71,13 @@ export const mediaDocumentations = {
         ]
     },
     image: {
+        typeDoc: {
+            otherCase: [
+                "```swift",
+                "// TODO: Provide examples.",
+                "```"
+            ]
+        },
         caseDoc: ["Represents the `image` media type.",
             "",
             "Represents image or graphical data. This includes bitmap and vector images, along with animated image formats.",
@@ -49,6 +88,13 @@ export const mediaDocumentations = {
         ]
     },
     message: {
+        typeDoc: {
+            otherCase: [
+                "```swift",
+                "// TODO: Provide examples.",
+                "```"
+            ]
+        },
         caseDoc: ["Represents the `message` media type.",
             "",
             "Represents embedded message data. Common examples: `message/rfc882`, `message/http`.",
@@ -58,6 +104,13 @@ export const mediaDocumentations = {
         ]
     },
     model: {
+        typeDoc: {
+            otherCase: [
+                "```swift",
+                "// TODO: Provide examples.",
+                "```"
+            ]
+        },
         caseDoc: ["Represents the `model` media type.",
             "",
             "Represents 3D modelling data. Common examples: `model/step`, `model/3mf`.",
@@ -67,6 +120,13 @@ export const mediaDocumentations = {
         ]
     },
     multipart: {
+        typeDoc: {
+            otherCase: [
+                "```swift",
+                "// TODO: Provide examples.",
+                "```"
+            ]
+        },
         caseDoc: ["Represents the `multipart` media type.",
             "",
             "Represents data formed from multiple components, which may have their individual media types.",
@@ -77,6 +137,13 @@ export const mediaDocumentations = {
         ]
     },
     text: {
+        typeDoc: {
+            otherCase: [
+                "```swift",
+                "// TODO: Provide examples.",
+                "```"
+            ]
+        },
         caseDoc: ["Represents the `text` media type.",
             "",
             "Represents textual only data. Common examples: `text/css`, `text/html`.",
@@ -86,6 +153,13 @@ export const mediaDocumentations = {
         ]
     },
     video: {
+        typeDoc: {
+            otherCase: [
+                "```swift",
+                "// TODO: Provide examples.",
+                "```"
+            ]
+        },
         caseDoc: ["Represents the `video` media type.",
             "",
             "Represents video data. Common examples: `video/mp4`, `video/H264`.",

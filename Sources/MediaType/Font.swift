@@ -13,6 +13,16 @@ public enum Font {
   case woff(Suffix? = nil, Parameters? = nil)
   /// Represents the `woff2` subtype.
   case woff2(Suffix? = nil, Parameters? = nil)
+  /// Represents a subtype that does not fit in the other cases or is currently not officially defined.
+  /// 
+  /// You can use this case to define an arbitrary, unregistered subtype with the given name or
+  /// to represent a subtype in the non standard tree, e.g. vendor tree or personal tree.
+  /// 
+  /// Optionally, you can specify a ``Suffix`` and ``Parameters``.
+  /// 
+  /// ```swift
+  /// // TODO: Provide examples.
+  /// ```
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)
 }

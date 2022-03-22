@@ -78,6 +78,12 @@ ${
   case ${caseName}(Suffix? = nil, Parameters? = nil)`)
                 .slice()
                 .sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0))
+                .concat(toDocumentation(
+                    mediaDocumentations["generic"].typeDoc.otherCase
+                        .concat([""])
+                        .concat(mediaDocumentations[lowerCase].typeDoc.otherCase),
+                    2)
+                )
                 .concat('  case other(String, Suffix? = nil, Parameters? = nil)')
                 .concat('  case anything(Suffix? = nil, Parameters? = nil)')
                 .join('\n')

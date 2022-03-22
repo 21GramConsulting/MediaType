@@ -31,6 +31,16 @@ public enum Model {
   case x3dVrml(Suffix? = nil, Parameters? = nil)
   /// Represents the `x3d` subtype.
   case x3d(Suffix? = nil, Parameters? = nil)
+  /// Represents a subtype that does not fit in the other cases or is currently not officially defined.
+  /// 
+  /// You can use this case to define an arbitrary, unregistered subtype with the given name or
+  /// to represent a subtype in the non standard tree, e.g. vendor tree or personal tree.
+  /// 
+  /// Optionally, you can specify a ``Suffix`` and ``Parameters``.
+  /// 
+  /// ```swift
+  /// // TODO: Provide examples.
+  /// ```
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)
 }
