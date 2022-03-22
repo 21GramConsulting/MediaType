@@ -2,7 +2,7 @@
 
 import {readFileSync, writeFileSync} from 'fs';
 import {toFormattedSwitchCase} from './commonUtility.mjs';
-import {mediaDocumentations} from './MediaDocumentations.mjs';
+import {mediaDocumentations, toDocumentation} from './MediaDocumentations.mjs';
 
 String.prototype.snakeToCamel = function () {
     return this.replace(/-(.)/g, (_, m) => m.toUpperCase())
@@ -270,7 +270,7 @@ writeFileSync(
 public enum MediaType {
 ${
         types
-            .map(({lowerCase, pascalCase}) => `${mediaDocumentations[lowerCase].caseDoc}
+            .map(({lowerCase, pascalCase}) => `${toDocumentation(mediaDocumentations[lowerCase].caseDoc, 2)}
   case ${lowerCase}(${pascalCase})`)
             .join('\n')
     }
