@@ -1,12 +1,52 @@
 import Foundation
 
+/// Represents the `font` media type. See the
+/// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#font) for details.
+/// 
+/// You typically use ``Font`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let font = Font.ttf(nil, ["layout": "oat,aat"])
+/// let mediaType = MediaType.font(font) // Creates: font/ttf;layout=oat,aat
+/// ```
+/// 
+/// You can use standard `switch` statement to access font values.
+/// 
+/// ```swift
+/// func isSupported(font: Font) -> Bool {
+///   switch font {
+///   case .woff, .woff2: return true
+///   case .ttf(_, let parameters?): return !parameters.isEmpty
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(font: .woff()) // Returns: true
+/// isSupported(font: .ttf(nil, ["layout": "oat,aat"])) // Returns: true
+/// isSupported(font: .ttf()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Font {
+  /// Represents the `collection` subtype.
   case collection(Suffix? = nil, Parameters? = nil)
+  /// Represents the `otf` subtype.
   case otf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sfnt` subtype.
   case sfnt(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ttf` subtype.
   case ttf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `woff` subtype.
   case woff(Suffix? = nil, Parameters? = nil)
+  /// Represents the `woff2` subtype.
   case woff2(Suffix? = nil, Parameters? = nil)
+  /// Represents a subtype that does not fit in the other cases or is currently not officially defined.
+  /// 
+  /// You can use this case to define an arbitrary, unregistered subtype with the given name or
+  /// to represent a subtype in the non standard tree, e.g. vendor tree or personal tree.
+  /// 
+  /// Optionally, you can specify a ``Suffix`` and ``Parameters``.
+  /// 
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)
 }

@@ -1,59 +1,145 @@
 import Foundation
 
+/// Represents the `text` media type. See the
+/// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#text) for details.
+/// 
+/// You typically use ``Text`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let text = Text.html()
+/// let mediaType = MediaType.text(text) // Creates: text/html
+/// ```
+/// 
+/// You can use standard `switch` statement to access text values.
+/// 
+/// ```swift
+/// func isSupported(text: Text) -> Bool {
+///   switch text {
+///   case .html, .css: return true
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(audio: .html()) // Returns: true
+/// isSupported(audio: .css()) // Returns: true
+/// isSupported(audio: .javascript()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Text {
+  /// Represents the `1d-interleaved-parityfec` subtype.
   case _1dInterleavedParityfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cache-manifest` subtype.
   case cacheManifest(Suffix? = nil, Parameters? = nil)
+  /// Represents the `calendar` subtype.
   case calendar(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cql` subtype.
   case cql(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cql-expression` subtype.
   case cqlExpression(Suffix? = nil, Parameters? = nil)
+  /// Represents the `cql-identifier` subtype.
   case cqlIdentifier(Suffix? = nil, Parameters? = nil)
+  /// Represents the `css` subtype.
   case css(Suffix? = nil, Parameters? = nil)
+  /// Represents the `csv` subtype.
   case csv(Suffix? = nil, Parameters? = nil)
+  /// Represents the `csv-schema` subtype.
   case csvSchema(Suffix? = nil, Parameters? = nil)
+  /// Represents the `directory` subtype.
   case directory(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dns` subtype.
   case dns(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ecmascript` subtype.
   case ecmascript(Suffix? = nil, Parameters? = nil)
+  /// Represents the `encaprtp` subtype.
   case encaprtp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `enriched` subtype.
   case enriched(Suffix? = nil, Parameters? = nil)
+  /// Represents the `example` subtype.
   case example(Suffix? = nil, Parameters? = nil)
+  /// Represents the `fhirpath` subtype.
   case fhirpath(Suffix? = nil, Parameters? = nil)
+  /// Represents the `flexfec` subtype.
   case flexfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `fwdred` subtype.
   case fwdred(Suffix? = nil, Parameters? = nil)
+  /// Represents the `gff3` subtype.
   case gff3(Suffix? = nil, Parameters? = nil)
+  /// Represents the `grammar-ref-list` subtype.
   case grammarRefList(Suffix? = nil, Parameters? = nil)
+  /// Represents the `html` subtype.
   case html(Suffix? = nil, Parameters? = nil)
+  /// Represents the `javascript` subtype.
   case javascript(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jcr-cnd` subtype.
   case jcrCnd(Suffix? = nil, Parameters? = nil)
+  /// Represents the `markdown` subtype.
   case markdown(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mizar` subtype.
   case mizar(Suffix? = nil, Parameters? = nil)
+  /// Represents the `n3` subtype.
   case n3(Suffix? = nil, Parameters? = nil)
+  /// Represents the `parameters` subtype.
   case parameters(Suffix? = nil, Parameters? = nil)
+  /// Represents the `parityfec` subtype.
   case parityfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `plain` subtype.
   case plain(Suffix? = nil, Parameters? = nil)
+  /// Represents the `provenance-notation` subtype.
   case provenanceNotation(Suffix? = nil, Parameters? = nil)
+  /// Represents the `raptorfec` subtype.
   case raptorfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `RED` subtype.
   case RED(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rfc822-headers` subtype.
   case rfc822Headers(Suffix? = nil, Parameters? = nil)
+  /// Represents the `richtext` subtype.
   case richtext(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rtf` subtype.
   case rtf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rtp-enc-aescm128` subtype.
   case rtpEncAescm128(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rtploopback` subtype.
   case rtploopback(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rtx` subtype.
   case rtx(Suffix? = nil, Parameters? = nil)
+  /// Represents the `SGML` subtype.
   case SGML(Suffix? = nil, Parameters? = nil)
+  /// Represents the `shaclc` subtype.
   case shaclc(Suffix? = nil, Parameters? = nil)
+  /// Represents the `shex` subtype.
   case shex(Suffix? = nil, Parameters? = nil)
+  /// Represents the `spdx` subtype.
   case spdx(Suffix? = nil, Parameters? = nil)
+  /// Represents the `strings` subtype.
   case strings(Suffix? = nil, Parameters? = nil)
+  /// Represents the `t140` subtype.
   case t140(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tab-separated-values` subtype.
   case tabSeparatedValues(Suffix? = nil, Parameters? = nil)
+  /// Represents the `troff` subtype.
   case troff(Suffix? = nil, Parameters? = nil)
+  /// Represents the `turtle` subtype.
   case turtle(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ulpfec` subtype.
   case ulpfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `uri-list` subtype.
   case uriList(Suffix? = nil, Parameters? = nil)
+  /// Represents the `vcard` subtype.
   case vcard(Suffix? = nil, Parameters? = nil)
+  /// Represents the `vtt` subtype.
   case vtt(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xml` subtype.
   case xml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `xml-external-parsed-entity` subtype.
   case xmlExternalParsedEntity(Suffix? = nil, Parameters? = nil)
+  /// Represents a subtype that does not fit in the other cases or is currently not officially defined.
+  /// 
+  /// You can use this case to define an arbitrary, unregistered subtype with the given name or
+  /// to represent a subtype in the non standard tree, e.g. vendor tree or personal tree.
+  /// 
+  /// Optionally, you can specify a ``Suffix`` and ``Parameters``.
+  /// 
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)
 }

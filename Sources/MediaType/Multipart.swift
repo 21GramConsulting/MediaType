@@ -1,22 +1,71 @@
 import Foundation
 
+/// Represents the `multipart` media type. See the
+/// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart) for details.
+/// 
+/// You typically use ``Multipart`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let multipart = Multipart.formData()
+/// let mediaType = MediaType.multipart(multipart) // Creates: multipart/form-data
+/// ```
+/// 
+/// You can use standard `switch` statement to access multipart values.
+/// 
+/// ```swift
+/// func isSupported(multipart: Multipart) -> Bool {
+///   switch multipart {
+///   case .formData, .mixed: return true
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(audio: .formData()) // Returns: true
+/// isSupported(audio: .mixed()) // Returns: true
+/// isSupported(audio: .voiceMessage()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Multipart {
+  /// Represents the `alternative` subtype.
   case alternative(Suffix? = nil, Parameters? = nil)
+  /// Represents the `appledouble` subtype.
   case appledouble(Suffix? = nil, Parameters? = nil)
+  /// Represents the `byteranges` subtype.
   case byteranges(Suffix? = nil, Parameters? = nil)
+  /// Represents the `digest` subtype.
   case digest(Suffix? = nil, Parameters? = nil)
+  /// Represents the `encrypted` subtype.
   case encrypted(Suffix? = nil, Parameters? = nil)
+  /// Represents the `example` subtype.
   case example(Suffix? = nil, Parameters? = nil)
+  /// Represents the `form-data` subtype.
   case formData(Suffix? = nil, Parameters? = nil)
+  /// Represents the `header-set` subtype.
   case headerSet(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mixed` subtype.
   case mixed(Suffix? = nil, Parameters? = nil)
+  /// Represents the `multilingual` subtype.
   case multilingual(Suffix? = nil, Parameters? = nil)
+  /// Represents the `parallel` subtype.
   case parallel(Suffix? = nil, Parameters? = nil)
+  /// Represents the `related` subtype.
   case related(Suffix? = nil, Parameters? = nil)
+  /// Represents the `report` subtype.
   case report(Suffix? = nil, Parameters? = nil)
+  /// Represents the `signed` subtype.
   case signed(Suffix? = nil, Parameters? = nil)
+  /// Represents the `voice-message` subtype.
   case voiceMessage(Suffix? = nil, Parameters? = nil)
+  /// Represents the `x-mixed-replace` subtype.
   case xMixedReplace(Suffix? = nil, Parameters? = nil)
+  /// Represents a subtype that does not fit in the other cases or is currently not officially defined.
+  /// 
+  /// You can use this case to define an arbitrary, unregistered subtype with the given name or
+  /// to represent a subtype in the non standard tree, e.g. vendor tree or personal tree.
+  /// 
+  /// Optionally, you can specify a ``Suffix`` and ``Parameters``.
+  /// 
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)
 }

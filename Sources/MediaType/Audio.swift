@@ -1,122 +1,272 @@
 import Foundation
 
+/// Represents the `audio` media type. See the
+/// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#audio) for details.
+/// 
+/// You typically use ``Audio`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let audio = Audio.ac3(nil, ["rate": 32000])
+/// let mediaType = MediaType.audio(audio) // Creates: audio/ac3;rate=32000
+/// ```
+/// 
+/// You can use standard `switch` statement to access audio values.
+/// 
+/// ```swift
+/// func isSupported(audio: Audio) -> Bool {
+///   switch audio {
+///   case .ac3, .aac, .ogg: return true
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(audio: .ac3()) // Returns: true
+/// isSupported(audio: .aac()) // Returns: true
+/// isSupported(audio: .ogg()) // Returns: true
+/// isSupported(audio: .mpeg()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Audio {
+  /// Represents the `1d-interleaved-parityfec` subtype.
   case _1dInterleavedParityfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `32kadpcm` subtype.
   case _32kadpcm(Suffix? = nil, Parameters? = nil)
+  /// Represents the `3gpp` subtype.
   case _3gpp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `3gpp2` subtype.
   case _3gpp2(Suffix? = nil, Parameters? = nil)
+  /// Represents the `aac` subtype.
   case aac(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ac3` subtype.
   case ac3(Suffix? = nil, Parameters? = nil)
+  /// Represents the `AMR` subtype.
   case AMR(Suffix? = nil, Parameters? = nil)
+  /// Represents the `AMR-WB` subtype.
   case AMRWB(Suffix? = nil, Parameters? = nil)
+  /// Represents the `amr-wb` subtype.
   case amrWb(Suffix? = nil, Parameters? = nil)
+  /// Represents the `aptx` subtype.
   case aptx(Suffix? = nil, Parameters? = nil)
+  /// Represents the `asc` subtype.
   case asc(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ATRAC-ADVANCED-LOSSLESS` subtype.
   case ATRACADVANCEDLOSSLESS(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ATRAC-X` subtype.
   case ATRACX(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ATRAC3` subtype.
   case ATRAC3(Suffix? = nil, Parameters? = nil)
+  /// Represents the `basic` subtype.
   case basic(Suffix? = nil, Parameters? = nil)
+  /// Represents the `BV16` subtype.
   case BV16(Suffix? = nil, Parameters? = nil)
+  /// Represents the `BV32` subtype.
   case BV32(Suffix? = nil, Parameters? = nil)
+  /// Represents the `clearmode` subtype.
   case clearmode(Suffix? = nil, Parameters? = nil)
+  /// Represents the `CN` subtype.
   case CN(Suffix? = nil, Parameters? = nil)
+  /// Represents the `DAT12` subtype.
   case DAT12(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dls` subtype.
   case dls(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dsr-es201108` subtype.
   case dsrEs201108(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dsr-es202050` subtype.
   case dsrEs202050(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dsr-es202211` subtype.
   case dsrEs202211(Suffix? = nil, Parameters? = nil)
+  /// Represents the `dsr-es202212` subtype.
   case dsrEs202212(Suffix? = nil, Parameters? = nil)
+  /// Represents the `DV` subtype.
   case DV(Suffix? = nil, Parameters? = nil)
+  /// Represents the `DVI4` subtype.
   case DVI4(Suffix? = nil, Parameters? = nil)
+  /// Represents the `eac3` subtype.
   case eac3(Suffix? = nil, Parameters? = nil)
+  /// Represents the `encaprtp` subtype.
   case encaprtp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EVRC` subtype.
   case EVRC(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EVRC-QCP` subtype.
   case EVRCQCP(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EVRC0` subtype.
   case EVRC0(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EVRC1` subtype.
   case EVRC1(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EVRCB` subtype.
   case EVRCB(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EVRCB0` subtype.
   case EVRCB0(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EVRCB1` subtype.
   case EVRCB1(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EVRCNW` subtype.
   case EVRCNW(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EVRCNW0` subtype.
   case EVRCNW0(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EVRCNW1` subtype.
   case EVRCNW1(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EVRCWB` subtype.
   case EVRCWB(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EVRCWB0` subtype.
   case EVRCWB0(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EVRCWB1` subtype.
   case EVRCWB1(Suffix? = nil, Parameters? = nil)
+  /// Represents the `EVS` subtype.
   case EVS(Suffix? = nil, Parameters? = nil)
+  /// Represents the `example` subtype.
   case example(Suffix? = nil, Parameters? = nil)
+  /// Represents the `flexfec` subtype.
   case flexfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `fwdred` subtype.
   case fwdred(Suffix? = nil, Parameters? = nil)
+  /// Represents the `G711-0` subtype.
   case G7110(Suffix? = nil, Parameters? = nil)
+  /// Represents the `G719` subtype.
   case G719(Suffix? = nil, Parameters? = nil)
+  /// Represents the `G7221` subtype.
   case G7221(Suffix? = nil, Parameters? = nil)
+  /// Represents the `G722` subtype.
   case G722(Suffix? = nil, Parameters? = nil)
+  /// Represents the `G723` subtype.
   case G723(Suffix? = nil, Parameters? = nil)
+  /// Represents the `G726-16` subtype.
   case G72616(Suffix? = nil, Parameters? = nil)
+  /// Represents the `G726-24` subtype.
   case G72624(Suffix? = nil, Parameters? = nil)
+  /// Represents the `G726-32` subtype.
   case G72632(Suffix? = nil, Parameters? = nil)
+  /// Represents the `G726-40` subtype.
   case G72640(Suffix? = nil, Parameters? = nil)
+  /// Represents the `G728` subtype.
   case G728(Suffix? = nil, Parameters? = nil)
+  /// Represents the `G729` subtype.
   case G729(Suffix? = nil, Parameters? = nil)
+  /// Represents the `G7291` subtype.
   case G7291(Suffix? = nil, Parameters? = nil)
+  /// Represents the `G729D` subtype.
   case G729D(Suffix? = nil, Parameters? = nil)
+  /// Represents the `G729E` subtype.
   case G729E(Suffix? = nil, Parameters? = nil)
+  /// Represents the `GSM` subtype.
   case GSM(Suffix? = nil, Parameters? = nil)
+  /// Represents the `GSM-EFR` subtype.
   case GSMEFR(Suffix? = nil, Parameters? = nil)
+  /// Represents the `GSM-HR-08` subtype.
   case GSMHR08(Suffix? = nil, Parameters? = nil)
+  /// Represents the `iLBC` subtype.
   case iLBC(Suffix? = nil, Parameters? = nil)
+  /// Represents the `L8` subtype.
   case L8(Suffix? = nil, Parameters? = nil)
+  /// Represents the `L16` subtype.
   case L16(Suffix? = nil, Parameters? = nil)
+  /// Represents the `L20` subtype.
   case L20(Suffix? = nil, Parameters? = nil)
+  /// Represents the `L24` subtype.
   case L24(Suffix? = nil, Parameters? = nil)
+  /// Represents the `LPC` subtype.
   case LPC(Suffix? = nil, Parameters? = nil)
+  /// Represents the `MELP` subtype.
   case MELP(Suffix? = nil, Parameters? = nil)
+  /// Represents the `MELP600` subtype.
   case MELP600(Suffix? = nil, Parameters? = nil)
+  /// Represents the `MELP1200` subtype.
   case MELP1200(Suffix? = nil, Parameters? = nil)
+  /// Represents the `MELP2400` subtype.
   case MELP2400(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mhas` subtype.
   case mhas(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mobile-xmf` subtype.
   case mobileXmf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `MPA` subtype.
   case MPA(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mp4` subtype.
   case mp4(Suffix? = nil, Parameters? = nil)
+  /// Represents the `MP4A-LATM` subtype.
   case MP4ALATM(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mpa-robust` subtype.
   case mpaRobust(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mpeg` subtype.
   case mpeg(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mpeg4-generic` subtype.
   case mpeg4Generic(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ogg` subtype.
   case ogg(Suffix? = nil, Parameters? = nil)
+  /// Represents the `opus` subtype.
   case opus(Suffix? = nil, Parameters? = nil)
+  /// Represents the `parityfec` subtype.
   case parityfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `PCMA` subtype.
   case PCMA(Suffix? = nil, Parameters? = nil)
+  /// Represents the `PCMA-WB` subtype.
   case PCMAWB(Suffix? = nil, Parameters? = nil)
+  /// Represents the `PCMU` subtype.
   case PCMU(Suffix? = nil, Parameters? = nil)
+  /// Represents the `PCMU-WB` subtype.
   case PCMUWB(Suffix? = nil, Parameters? = nil)
+  /// Represents the `QCELP` subtype.
   case QCELP(Suffix? = nil, Parameters? = nil)
+  /// Represents the `raptorfec` subtype.
   case raptorfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `RED` subtype.
   case RED(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rtp-enc-aescm128` subtype.
   case rtpEncAescm128(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rtploopback` subtype.
   case rtploopback(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rtp-midi` subtype.
   case rtpMidi(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rtx` subtype.
   case rtx(Suffix? = nil, Parameters? = nil)
+  /// Represents the `scip` subtype.
   case scip(Suffix? = nil, Parameters? = nil)
+  /// Represents the `SMV` subtype.
   case SMV(Suffix? = nil, Parameters? = nil)
+  /// Represents the `SMV0` subtype.
   case SMV0(Suffix? = nil, Parameters? = nil)
+  /// Represents the `SMV-QCP` subtype.
   case SMVQCP(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sofa` subtype.
   case sofa(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sp-midi` subtype.
   case spMidi(Suffix? = nil, Parameters? = nil)
+  /// Represents the `speex` subtype.
   case speex(Suffix? = nil, Parameters? = nil)
+  /// Represents the `t140c` subtype.
   case t140c(Suffix? = nil, Parameters? = nil)
+  /// Represents the `t38` subtype.
   case t38(Suffix? = nil, Parameters? = nil)
+  /// Represents the `telephone-event` subtype.
   case telephoneEvent(Suffix? = nil, Parameters? = nil)
+  /// Represents the `TETRA_ACELP` subtype.
   case TETRA_ACELP(Suffix? = nil, Parameters? = nil)
+  /// Represents the `TETRA_ACELP_BB` subtype.
   case TETRA_ACELP_BB(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tone` subtype.
   case tone(Suffix? = nil, Parameters? = nil)
+  /// Represents the `TSVCIS` subtype.
   case TSVCIS(Suffix? = nil, Parameters? = nil)
+  /// Represents the `UEMCLIP` subtype.
   case UEMCLIP(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ulpfec` subtype.
   case ulpfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `usac` subtype.
   case usac(Suffix? = nil, Parameters? = nil)
+  /// Represents the `VDVI` subtype.
   case VDVI(Suffix? = nil, Parameters? = nil)
+  /// Represents the `VMR-WB` subtype.
   case VMRWB(Suffix? = nil, Parameters? = nil)
+  /// Represents the `vorbis` subtype.
   case vorbis(Suffix? = nil, Parameters? = nil)
+  /// Represents the `vorbis-config` subtype.
   case vorbisConfig(Suffix? = nil, Parameters? = nil)
+  /// Represents a subtype that does not fit in the other cases or is currently not officially defined.
+  /// 
+  /// You can use this case to define an arbitrary, unregistered subtype with the given name or
+  /// to represent a subtype in the non standard tree, e.g. vendor tree or personal tree.
+  /// 
+  /// Optionally, you can specify a ``Suffix`` and ``Parameters``.
+  /// 
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)
 }
