@@ -13,6 +13,19 @@ import Foundation
 /// MediaType.application(.jose(.other("custom"))) // Creates: application/jose+custom
 /// MediaType.image(.svg("zip")) // Creates: image/svg+zip
 /// ```
+///
+/// You can access a media type's suffix by matching using a `switch` statement:
+///
+/// ```swift
+/// let mediaType = MediaType.application(.calendar(.xml))
+/// switch mediaType {
+/// case .application(.calendar(let suffix, _)):
+///   guard let suffix = suffix else { break }
+///   print("Suffix: \(suffix)", "Suffix: +xml")
+/// default:
+///   print("Unsupported media type: \(mediaType)")
+/// }
+/// ```
 public enum Suffix {
   case xml
   case json
