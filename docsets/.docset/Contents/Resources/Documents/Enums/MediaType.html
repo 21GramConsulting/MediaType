@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MediaType Enumeration Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/MediaType" class="dashAnchor"></a>
+    <a title="MediaType Enumeration Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Swift MediaType Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/21GramConsulting/MediaType"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
+        <div class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
+        MediaType Enumeration Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Anything.html">Anything</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Application.html">Application</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Audio.html">Audio</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Font.html">Font</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Image.html">Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MediaType.html">MediaType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Message.html">Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Model.html">Model</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Multipart.html">Multipart</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Suffix.html">Suffix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Text.html">Text</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Video.html">Video</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Optional.html">Optional</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MediaType</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">MediaType</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">MediaType</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">MediaType</span><span class="p">:</span> <span class="kt">RawRepresentable</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">MediaType</span><span class="p">:</span> <span class="kt">ExpressibleByStringLiteral</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">MediaType</span><span class="p">:</span> <span class="kt">Hashable</span></code></pre>
+
+                </div>
+              </div>
+            <p>A type-safe representation of <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">Media Type</a>s
+(or formerly known as MIME types).</p>
+
+<p>You can create a media type in a type-safe manner using one of the possible cases. You can also create
+media type instances simply using string literals.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">mediaType</span><span class="p">:</span> <span class="kt">MediaType</span> <span class="o">=</span> <span class="s">"application/json"</span> <span class="c1">// is equivalent to</span>
+<span class="kt">MediaType</span><span class="o">.</span><span class="nf">application</span><span class="p">(</span><span class="o">.</span><span class="nf">json</span><span class="p">())</span>
+</code></pre>
+
+<p>Media type suffixes and parameters are supported both via string literals and <code>MediaType</code> cases.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">mediaType</span><span class="p">:</span> <span class="kt">MediaType</span> <span class="o">=</span> <span class="s">"application/atom; charset=utf-8"</span> <span class="c1">// is equivalent to</span>
+<span class="kt">MediaType</span><span class="o">.</span><span class="nf">application</span><span class="p">(</span><span class="o">.</span><span class="nf">atom</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="p">[</span><span class="s">"charset"</span><span class="p">:</span> <span class="s">"utf-8"</span><span class="p">]))</span>
+
+<span class="k">let</span> <span class="nv">mediaType</span><span class="p">:</span> <span class="kt">MediaType</span> <span class="o">=</span> <span class="s">"application/atom+xml"</span> <span class="c1">// is equivalent to</span>
+<span class="kt">MediaType</span><span class="o">.</span><span class="nf">application</span><span class="p">(</span><span class="o">.</span><span class="nf">atom</span><span class="p">(</span><span class="o">.</span><span class="n">xml</span><span class="p">))</span>
+
+<span class="k">let</span> <span class="nv">mediaType</span><span class="p">:</span> <span class="kt">MediaType</span> <span class="o">=</span> <span class="s">"application/atom+xml; charset=utf-8"</span> <span class="c1">// is equivalent to</span>
+<span class="kt">MediaType</span><span class="o">.</span><span class="nf">application</span><span class="p">(</span><span class="o">.</span><span class="nf">atom</span><span class="p">(</span><span class="o">.</span><span class="n">xml</span><span class="p">,</span> <span class="p">[</span><span class="s">"charset"</span><span class="p">:</span> <span class="s">"utf-8"</span><span class="p">]))</span>
+</code></pre>
+
+<p>You can create media type trees using either the string literal syntax, or using the <code>other</code> case of a particular
+media type.</p>
+<pre class="highlight swift"><code><span class="s">"application/vnd.efi.img"</span> <span class="c1">// is equivalent to</span>
+<span class="kt">MediaType</span><span class="o">.</span><span class="nf">application</span><span class="p">(</span><span class="o">.</span><span class="nf">other</span><span class="p">(</span><span class="s">"vnd.efi.img"</span><span class="p">))</span>
+</code></pre>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO11applicationyAbA11ApplicationOcABmF"></a>
+                    <a name="//apple_ref/swift/Element/application(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO11applicationyAbA11ApplicationOcABmF">application(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>application</code> media type.</p>
+
+<p>Represents binary data. Common examples: <code>application/json</code>, <code>application/octet-stream</code>.</p>
+
+<p>For the whole family of <code>application</code> media types consult the
+<a href="https://www.iana.org/assignments/media-types/media-types.xhtml#application">official IANA</a> documentation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">application</span><span class="p">(</span><span class="kt"><a href="../Enums/Application.html">Application</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO5audioyAbA5AudioOcABmF"></a>
+                    <a name="//apple_ref/swift/Element/audio(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO5audioyAbA5AudioOcABmF">audio(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>audio</code> media type.</p>
+
+<p>Represents audible data. Common examples: <code>audio/ac3</code>, <code>audio/mpeg</code>.</p>
+
+<p>For the whole family of <code>audio</code> media types consult the
+<a href="https://www.iana.org/assignments/media-types/media-types.xhtml#audio">official IANA</a> documentation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">audio</span><span class="p">(</span><span class="kt"><a href="../Enums/Audio.html">Audio</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO4fontyAbA4FontOcABmF"></a>
+                    <a name="//apple_ref/swift/Element/font(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO4fontyAbA4FontOcABmF">font(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>font</code> media type.</p>
+
+<p>Represents font or typeface data. Common examples: <code>font/woff</code>, <code>font/ttf</code>.</p>
+
+<p>For the whole family of <code>font</code> media types consult the
+<a href="https://www.iana.org/assignments/media-types/media-types.xhtml#font">official IANA</a> documentation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">font</span><span class="p">(</span><span class="kt"><a href="../Enums/Font.html">Font</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO5imageyAbA5ImageOcABmF"></a>
+                    <a name="//apple_ref/swift/Element/image(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO5imageyAbA5ImageOcABmF">image(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>image</code> media type.</p>
+
+<p>Represents image or graphical data. This includes bitmap and vector images, along with animated image formats.
+Common examples: <code>image/jpeg</code>, <code>image/apng</code>.</p>
+
+<p>For the whole family of <code>image</code> media types consult the
+<a href="https://www.iana.org/assignments/media-types/media-types.xhtml#image">official IANA</a> documentation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">image</span><span class="p">(</span><span class="kt"><a href="../Enums/Image.html">Image</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO7messageyAbA7MessageOcABmF"></a>
+                    <a name="//apple_ref/swift/Element/message(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO7messageyAbA7MessageOcABmF">message(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>message</code> media type.</p>
+
+<p>Represents embedded message data. Common examples: <code>message/rfc882</code>, <code>message/http</code>.</p>
+
+<p>For the whole family of <code>message</code> media types consult the
+<a href="https://www.iana.org/assignments/media-types/media-types.xhtml#message">official IANA</a> documentation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">message</span><span class="p">(</span><span class="kt"><a href="../Enums/Message.html">Message</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO5modelyAbA5ModelOcABmF"></a>
+                    <a name="//apple_ref/swift/Element/model(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO5modelyAbA5ModelOcABmF">model(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>model</code> media type.</p>
+
+<p>Represents 3D modelling data. Common examples: <code>model/step</code>, <code>model/3mf</code>.</p>
+
+<p>For the whole family of <code>model</code> media types consult the
+<a href="https://www.iana.org/assignments/media-types/media-types.xhtml#model">official IANA</a> documentation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">model</span><span class="p">(</span><span class="kt"><a href="../Enums/Model.html">Model</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO9multipartyAbA9MultipartOcABmF"></a>
+                    <a name="//apple_ref/swift/Element/multipart(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO9multipartyAbA9MultipartOcABmF">multipart(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>multipart</code> media type.</p>
+
+<p>Represents data formed from multiple components, which may have their individual media types.
+Common examples: <code>multipart/form-data</code>, <code>multipart/encrypted</code>.</p>
+
+<p>For the whole family of <code>multipart</code> media types consult the
+<a href="https://www.iana.org/assignments/media-types/media-types.xhtml#multipart">official IANA</a> documentation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">multipart</span><span class="p">(</span><span class="kt"><a href="../Enums/Multipart.html">Multipart</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO4textyAbA4TextOcABmF"></a>
+                    <a name="//apple_ref/swift/Element/text(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO4textyAbA4TextOcABmF">text(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>text</code> media type.</p>
+
+<p>Represents textual only data. Common examples: <code>text/css</code>, <code>text/html</code>.</p>
+
+<p>For the whole family of <code>text</code> media types consult the
+<a href="https://www.iana.org/assignments/media-types/media-types.xhtml#text">official IANA</a> documentation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">text</span><span class="p">(</span><span class="kt"><a href="../Enums/Text.html">Text</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO5videoyAbA5VideoOcABmF"></a>
+                    <a name="//apple_ref/swift/Element/video(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO5videoyAbA5VideoOcABmF">video(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>video</code> media type.</p>
+
+<p>Represents video data. Common examples: <code>video/mp4</code>, <code>video/H264</code>.</p>
+
+<p>For the whole family of <code>video</code> media types consult the
+<a href="https://www.iana.org/assignments/media-types/media-types.xhtml#video">official IANA</a> documentation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">video</span><span class="p">(</span><span class="kt"><a href="../Enums/Video.html">Video</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO5otheryABs23CustomStringConvertible_p_sAD_pAA6SuffixOSgSDySSsAD_pSgGSgtcABmF"></a>
+                    <a name="//apple_ref/swift/Element/other(type:subtype:_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO5otheryABs23CustomStringConvertible_p_sAD_pAA6SuffixOSgSDySSsAD_pSgGSgtcABmF">other(type:<wbr>subtype:<wbr>_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a custom media type that is currently not officially defined.</p>
+
+<p>Represents a custom media type with the given <code>type</code> and <code>subtype</code>. Optionally, you can specify a <code><a href="../Enums/Suffix.html">Suffix</a></code> and
+<code><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">other</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span><span class="p">,</span> <span class="nv">subtype</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO8anythingyAbA8AnythingOcABmF"></a>
+                    <a name="//apple_ref/swift/Element/anything(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO8anythingyAbA8AnythingOcABmF">anything(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a wildcard media type.</p>
+
+<p>A wildcard media type has a type of <code>*</code>. A few examples:</p>
+<pre class="highlight swift"><code><span class="kt">MediaType</span><span class="o">.</span><span class="nf">anything</span><span class="p">(</span><span class="o">.</span><span class="nf">anything</span><span class="p">())</span> <span class="c1">// Creates: */*</span>
+<span class="kt">MediaType</span><span class="o">.</span><span class="nf">anything</span><span class="p">(</span><span class="o">.</span><span class="nf">other</span><span class="p">(</span><span class="s">"dialog"</span><span class="p">))</span> <span class="c1">// Creates: */dialog</span>
+<span class="kt">MediaType</span><span class="o">.</span><span class="nf">anything</span><span class="p">(</span><span class="o">.</span><span class="nf">other</span><span class="p">(</span><span class="s">"response"</span><span class="p">,</span> <span class="o">.</span><span class="n">xml</span><span class="p">))</span> <span class="c1">// Creates: */response+xml</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">anything</span><span class="p">(</span><span class="kt"><a href="../Enums/Anything.html">Anything</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO11descriptionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO11descriptionSSvp">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The textual representation of the media type.</p>
+
+<p>The string form of a media type follows the pattern: <code>type/subtype[+suffix][;parameters]</code>. A few examples:</p>
+<pre class="highlight swift"><code><span class="kt">MediaType</span><span class="o">.</span><span class="nf">text</span><span class="p">(</span><span class="o">.</span><span class="nf">css</span><span class="p">())</span><span class="o">.</span><span class="n">description</span> <span class="c1">// Outputs: text/css</span>
+<span class="kt">MediaType</span><span class="o">.</span><span class="nf">audio</span><span class="p">(</span><span class="o">.</span><span class="nf">ac3</span><span class="p">(</span><span class="kc">nil</span><span class="p">,</span> <span class="p">[</span><span class="s">"rate"</span><span class="p">:</span> <span class="mi">32000</span><span class="p">]))</span><span class="o">.</span><span class="n">description</span> <span class="c1">// Outputs: audio/ac3;rate=32000</span>
+<span class="kt">MediaType</span><span class="o">.</span><span class="nf">application</span><span class="p">(</span><span class="o">.</span><span class="nf">atom</span><span class="p">(</span><span class="o">.</span><span class="n">xml</span><span class="p">,</span> <span class="p">[</span><span class="s">"charset"</span><span class="p">:</span> <span class="s">"utf-8"</span><span class="p">]))</span><span class="o">.</span><span class="n">description</span> <span class="c1">// Outputs: application/atom+xml;charset=utf-8</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO8rawValueABSS_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(rawValue:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO8rawValueABSS_tcfc">init(rawValue:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a media type from its raw string value.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rawValue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The raw string value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO8rawValueSSvp"></a>
+                    <a name="//apple_ref/swift/Property/rawValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO8rawValueSSvp">rawValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The raw string value of the media type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO13stringLiteralABSS_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(stringLiteral:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO13stringLiteralABSS_tcfc">init(stringLiteral:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a media type from a string literal.</p>
+
+<p>Do not call this initializer directly. This rather allows you to use a string literal where you have to provide
+a <code>MediaType</code> node.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">stringLiteral</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaTypeAAO2eeoiySbAB_ABtFZ"></a>
+                    <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaTypeAAO2eeoiySbAB_ABtFZ">==(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a Boolean indicating whether two media types are the same.</p>
+
+<p>Two media types represent the same thing, and thus considered to be equal, if they have the same type, subtype,
+<code><a href="../Enums/Suffix.html">Suffix</a></code> and <code><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SH4hash4intoys6HasherVz_tF"></a>
+                    <a name="//apple_ref/swift/Method/hash(into:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SH4hash4intoys6HasherVz_tF">hash(into:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hash</span><span class="p">(</span><span class="n">into</span> <span class="nv">hasher</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Hasher</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2022 <a class="link" href="https://21gram.hu" target="_blank" rel="external noopener">21Gram Technology Kft.</a>. All rights reserved. (Last updated: 2022-03-23)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>

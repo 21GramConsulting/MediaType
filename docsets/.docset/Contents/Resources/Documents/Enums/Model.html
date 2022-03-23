@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Model Enumeration Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Enum/Model" class="dashAnchor"></a>
+    <a title="Model Enumeration Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Swift MediaType Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/21GramConsulting/MediaType"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
+        <div class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
+        Model Enumeration Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Anything.html">Anything</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Application.html">Application</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Audio.html">Audio</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Font.html">Font</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Image.html">Image</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/MediaType.html">MediaType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Message.html">Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Model.html">Model</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Multipart.html">Multipart</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Suffix.html">Suffix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Text.html">Text</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Video.html">Video</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Optional.html">Optional</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Model</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Model</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Model</span><span class="p">:</span> <span class="kt">CustomStringConvertible</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Model</span><span class="p">:</span> <span class="kt">RawRepresentable</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Model</span><span class="p">:</span> <span class="kt">MediaSubtype</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Model</span><span class="p">:</span> <span class="kt">Hashable</span></code></pre>
+
+                </div>
+              </div>
+            <p>Represents the <code>model</code> media type. See the
+<a href="https://www.iana.org/assignments/media-types/media-types.xhtml#model">official documentation</a> for details.</p>
+
+<p>You typically use <code>Model</code> as a <code><a href="../Enums/MediaType.html">MediaType</a></code>.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">model</span> <span class="o">=</span> <span class="kt">Model</span><span class="o">.</span><span class="nf">step</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">mediaType</span> <span class="o">=</span> <span class="kt">MediaType</span><span class="o">.</span><span class="nf">model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span> <span class="c1">// Creates: model/step</span>
+</code></pre>
+
+<p>You can use standard <code>switch</code> statement to access model values.</p>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">isSupported</span><span class="p">(</span><span class="nv">model</span><span class="p">:</span> <span class="kt">Model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="n">model</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="o">.</span><span class="n">step</span><span class="p">,</span> <span class="o">.</span><span class="nv">iges</span><span class="p">:</span> <span class="k">return</span> <span class="kc">true</span>
+  <span class="k">default</span><span class="p">:</span> <span class="k">return</span> <span class="kc">false</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nf">isSupported</span><span class="p">(</span><span class="nv">audio</span><span class="p">:</span> <span class="o">.</span><span class="nf">step</span><span class="p">())</span> <span class="c1">// Returns: true</span>
+<span class="nf">isSupported</span><span class="p">(</span><span class="nv">audio</span><span class="p">:</span> <span class="o">.</span><span class="nf">iges</span><span class="p">())</span> <span class="c1">// Returns: true</span>
+<span class="nf">isSupported</span><span class="p">(</span><span class="nv">audio</span><span class="p">:</span> <span class="o">.</span><span class="nf">mesh</span><span class="p">())</span> <span class="c1">// Returns: false</span>
+</code></pre>
+<div class="aside aside-see-also">
+    <p class="aside-title">See also</p>
+    <code><a href="../Enums/MediaType.html">MediaType</a></code>
+
+</div>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO4_3mfyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/_3mf(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO4_3mfyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">_3mf(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>3mf</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">_3mf</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO3e57yAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/e57(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO3e57yAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">e57(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>e57</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">e57</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO7exampleyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/example(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO7exampleyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">example(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>example</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">example</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO10gltfBinaryyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/gltfBinary(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO10gltfBinaryyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">gltfBinary(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>gltf-binary</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">gltfBinary</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO4gltfyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/gltf(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO4gltfyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">gltf(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>gltf</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">gltf</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO4igesyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/iges(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO4igesyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">iges(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>iges</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">iges</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO4meshyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/mesh(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO4meshyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">mesh(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>mesh</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">mesh</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO3mtlyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/mtl(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO3mtlyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">mtl(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>mtl</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">mtl</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO3objyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/obj(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO3objyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">obj(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>obj</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">obj</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO4stepyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/step(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO4stepyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">step(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>step</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">step</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO7stepXmlyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/stepXml(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO7stepXmlyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">stepXml(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>step-xml</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">stepXml</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO3stlyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/stl(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO3stlyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">stl(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>stl</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">stl</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO4vrmlyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/vrml(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO4vrmlyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">vrml(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>vrml</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">vrml</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO7x3dVrmlyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/x3dVrml(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO7x3dVrmlyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">x3dVrml(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>x3d-vrml</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">x3dVrml</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO3x3dyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/x3d(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO3x3dyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">x3d(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the <code>x3d</code> subtype.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">x3d</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO5otheryACSS_AA6SuffixOSgSDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/other(_:_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO5otheryACSS_AA6SuffixOSgSDySSs23CustomStringConvertible_pSgGSgtcACmF">other(_:<wbr>_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a subtype that does not fit in the other cases or is currently not officially defined.</p>
+
+<p>You can use this case to define an arbitrary, unregistered subtype with the given name or
+to represent a subtype in the non standard tree, e.g. vendor tree or personal tree.</p>
+
+<p>Optionally, you can specify a <code><a href="../Enums/Suffix.html">Suffix</a></code> and <code><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">other</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO8anythingyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF"></a>
+                    <a name="//apple_ref/swift/Element/anything(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO8anythingyAcA6SuffixOSg_SDySSs23CustomStringConvertible_pSgGSgtcACmF">anything(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">anything</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Enums/Suffix.html">Suffix</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">_</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:9MediaType10Parametersa">Parameters</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:s23CustomStringConvertibleP11descriptionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s23CustomStringConvertibleP11descriptionSSvp">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SY8rawValuexSg03RawB0Qz_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(rawValue:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SY8rawValuexSg03RawB0Qz_tcfc">init(rawValue:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rawValue</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SY8rawValue03RawB0Qzvp"></a>
+                    <a name="//apple_ref/swift/Property/rawValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SY8rawValue03RawB0Qzvp">rawValue</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">rawValue</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9MediaType5ModelO4typeA2AOvp"></a>
+                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9MediaType5ModelO4typeA2AOvp">type</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/MediaType.html">MediaType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SQ2eeoiySbx_xtFZ"></a>
+                    <a name="//apple_ref/swift/Method/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SQ2eeoiySbx_xtFZ">==(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="o">==</span> <span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:SH4hash4intoys6HasherVz_tF"></a>
+                    <a name="//apple_ref/swift/Method/hash(into:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:SH4hash4intoys6HasherVz_tF">hash(into:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">hash</span><span class="p">(</span><span class="n">into</span> <span class="nv">hasher</span><span class="p">:</span> <span class="k">inout</span> <span class="kt">Hasher</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2022 <a class="link" href="https://21gram.hu" target="_blank" rel="external noopener">21Gram Technology Kft.</a>. All rights reserved. (Last updated: 2022-03-23)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>
