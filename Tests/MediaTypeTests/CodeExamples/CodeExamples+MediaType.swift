@@ -55,4 +55,29 @@ extension CodeExamples {
     XCTAssertEqual(MediaType.image(.svg(.gzip)), "image/svg+gzip")
     XCTAssertEqual(MediaType.application(.other("myApp", .json)), "application/myApp+json")
   }
+
+  func test_matching() {
+    func isSupported(_ mediaType: MediaType) -> Bool {
+      switch mediaType {
+      case .application(.json(_, _)): return true
+      case .application(.atom("xml", _)): return true
+      case .application(let subtype):
+        switch subtype {
+        case .xml(_, _): return true
+        default: return false
+        }
+      default: return false
+      }
+    }
+
+    XCTAssertTrue(isSupported("application/json"))
+    XCTAssertTrue(isSupported("application/json+xml"))
+    XCTAssertTrue(isSupported("application/json;charset=utf-8"))
+    XCTAssertTrue(isSupported("application/json+xml;charset=utf-8"))
+
+    XCTAssertTrue(isSupported("application/atom+xml"))
+    XCTAssertTrue(isSupported("application/atom+xml;charset=utf-8"))
+    XCTAssertFalse(isSupported("application/atom"))
+    XCTAssertFalse(isSupported("application/atom;charset=utf-8"))
+  }
 }

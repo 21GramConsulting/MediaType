@@ -64,6 +64,34 @@ MediaType.application(.other("myApp", .json)) // Creates: application/myApp+json
 
 ## Using Media Types
 
+You can use regular `swift` statements to test for media types and get access to their components. The following example
+shows various ways to treat a media type.
+
+```swift
+func isSupported(_ mediaType: MediaType) -> Bool {
+  switch mediaType {
+  case .application(.json(_, _)): return true
+  case .application(.atom("xml", _)): return true
+  case .application(let subtype):
+    switch subtype {
+    case .xml(_, _): return true
+    default: return false
+    }
+  default: return false
+  }
+}
+
+isSupported("application/json") // Returns: true
+isSupported("application/json+xml") // Returns: true
+isSupported("application/json;charset=utf-8") // Returns: true
+isSupported("application/json+xml;charset=utf-8") // Returns: true
+
+isSupported("application/atom+xml") // Returns: true
+isSupported("application/atom+xml;charset=utf-8") // Returns: true
+isSupported("application/atom") // Returns: false
+isSupported("application/atom;charset=utf-8") // Returns: false
+```
+
 ### String Conversion
 
 Since ``MediaType`` conforms to
