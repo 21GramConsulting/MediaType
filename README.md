@@ -16,8 +16,8 @@ You can create a media type in a type-safe manner using one of the possible case
 instances simply by using string literals.
 
 ```swift
-MediaType.application(.json()) // is equivalent to
-let mediaType: MediaType = "application/json"
+let mediaType: MediaType = "application/json" // is equivalent to
+MediaType.application(.json())
 ```
 
 It is also possible to create a ``MediaType`` instance from a string variable as shown in the following example.
@@ -32,14 +32,14 @@ let mediaType = MediaType(rawValue: rawMediaType)
 Media type ``Suffix``es and ``Parameters`` are supported both via string literals and ``MediaType`` cases.
 
 ```swift
-MediaType.application(.atom(nil, ["charset": "utf-8"])) // is equivalent to
-let mediaType: MediaType = "application/atom; charset=utf-8"
+let mediaType: MediaType = "application/atom; charset=utf-8" // is equivalent to
+MediaType.application(.atom(nil, ["charset": "utf-8"]))
 
-MediaType.application(.atom(.xml)) // is equivalent to
-let mediaType: MediaType = "application/atom+xml"
+let mediaType: MediaType = "application/atom+xml" // is equivalent to
+MediaType.application(.atom(.xml))
 
-MediaType.application(.atom(.xml, ["charset": "utf-8"])) // is equivalent to
-let mediaType: MediaType = "application/atom+xml; charset=utf-8"
+let mediaType: MediaType = "application/atom+xml; charset=utf-8" // is equivalent to
+MediaType.application(.atom(.xml, ["charset": "utf-8"]))
 ```
 
 ### Trees
@@ -48,8 +48,8 @@ You can create media type trees by using either the string literal syntax, or us
 media type.
 
 ```swift
-MediaType.application(.other("vnd.efi.img")) // is equivalent to
-let mediaType: MediaType = "application/vnd.efi.img"
+let mediaType: MediaType = "application/vnd.efi.img" // is equivalent to
+MediaType.application(.other("vnd.efi.img"))
 ```
 
 ### Unregistered Media Types
@@ -58,8 +58,11 @@ Using this library you can create all the registered media types. The library is
 practically *any* media type, even ones that are *not* registered. A few examples of such cases:
 
 ```swift
-MediaType.image(.svg(.gzip)) // Creates: image/svg+gzip
-MediaType.application(.other("myApp", .json)) // Creates: application/myApp+json
+let image: MediaType = "image/svg+gzip" // is equivalent to
+MediaType.image(.svg(.gzip))
+
+let application: MediaType = "application/myApp+json" // is equivalent to
+MediaType.application(.other("myApp", .json))
 ```
 
 ## Using Media Types
@@ -105,10 +108,16 @@ For example, you can request the list of available products in JSON from an imag
 
 ```swift
 var request = URLRequest(url: URL(string: "https://example-store.com/products")!)
-let contentType = MediaType.application(.json())
+let contentType: MediaType = "application/json"
 
-request.setValue("Content-Type", forHTTPHeaderField: contentType.description) // is equivalent to
-request.setValue("Content-Type", forHTTPHeaderField: "\(contentType)")
+request.setValue(
+  "Content-Type",
+  forHTTPHeaderField: "\(contentType)"
+) // is equivalent to
+request.setValue(
+  "Content-Type",
+  forHTTPHeaderField: contentType.description
+)
 
 let (_, response) = try await URLSession.shared.data(for: request)
 ```
@@ -119,7 +128,9 @@ This means you can use ``MediaType``s in sets or dictionaries. For example, you 
 application supports like so:
 
 ```swift
-let supportedImages: Set<MediaType> = [.image(.png()), .image(.gif()), .image(.jpeg())]
+let supportedImages: Set<MediaType> = [
+  .image(.png()), .image(.gif()), .image(.jpeg())
+]
 ```
 
 ### Comparing Media Types
