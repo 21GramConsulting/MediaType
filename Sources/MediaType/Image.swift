@@ -100,9 +100,6 @@ public enum Image {
   /// 
   /// Optionally, you can specify a ``Suffix`` and ``Parameters``.
   /// 
-  /// ```swift
-  /// // TODO: Provide examples.
-  /// ```
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)
 }

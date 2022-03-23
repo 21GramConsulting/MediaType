@@ -55,11 +55,7 @@ export const mediaDocumentations = {
                 "",
                 "- SeeAlso: ``MediaType``",
             ],
-            otherCase: [
-                "```swift",
-                "// TODO: Provide examples.",
-                "```"
-            ]
+            otherCase: []
         },
         caseDoc: [
             "Represents the `application` media type.",
@@ -76,11 +72,7 @@ export const mediaDocumentations = {
                 "Represents the `audio` media type. See the",
                 "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#audio) for details."
             ],
-            otherCase: [
-                "```swift",
-                "// TODO: Provide examples.",
-                "```"
-            ]
+            otherCase: []
         },
         caseDoc: [
             "Represents the `audio` media type.",
@@ -122,11 +114,7 @@ export const mediaDocumentations = {
                 "",
                 "- SeeAlso: ``MediaType``",
             ],
-            otherCase: [
-                "```swift",
-                "// TODO: Provide examples.",
-                "```"
-            ]
+            otherCase: []
         },
         caseDoc: [
             "Represents the `font` media type.",
@@ -143,11 +131,7 @@ export const mediaDocumentations = {
                 "Represents the `image` media type. See the",
                 "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#image) for details."
             ],
-            otherCase: [
-                "```swift",
-                "// TODO: Provide examples.",
-                "```"
-            ]
+            otherCase: []
         },
         caseDoc: [
             "Represents the `image` media type.",
@@ -165,11 +149,7 @@ export const mediaDocumentations = {
                 "Represents the `message` media type. See the",
                 "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#message) for details."
             ],
-            otherCase: [
-                "```swift",
-                "// TODO: Provide examples.",
-                "```"
-            ]
+            otherCase: []
         },
         caseDoc: [
             "Represents the `message` media type.",
@@ -186,11 +166,7 @@ export const mediaDocumentations = {
                 "Represents the `model` media type. See the",
                 "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#model) for details."
             ],
-            otherCase: [
-                "```swift",
-                "// TODO: Provide examples.",
-                "```"
-            ]
+            otherCase: []
         },
         caseDoc: [
             "Represents the `model` media type.",
@@ -207,11 +183,7 @@ export const mediaDocumentations = {
                 "Represents the `multipart` media type. See the",
                 "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart) for details."
             ],
-            otherCase: [
-                "```swift",
-                "// TODO: Provide examples.",
-                "```"
-            ]
+            otherCase: []
         },
         caseDoc: [
             "Represents the `multipart` media type.",
@@ -229,11 +201,7 @@ export const mediaDocumentations = {
                 "Represents the `text` media type. See the",
                 "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#text) for details."
             ],
-            otherCase: [
-                "```swift",
-                "// TODO: Provide examples.",
-                "```"
-            ]
+            otherCase: []
         },
         caseDoc: [
             "Represents the `text` media type.",
@@ -250,11 +218,7 @@ export const mediaDocumentations = {
                 "Represents the `video` media type. See the",
                 "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#video) for details."
             ],
-            otherCase: [
-                "```swift",
-                "// TODO: Provide examples.",
-                "```"
-            ]
+            otherCase: []
         },
         caseDoc: [
             "Represents the `video` media type.",
