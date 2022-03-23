@@ -1,21 +1,69 @@
 import Foundation
 
+/// Represents the `model` media type. See the
+/// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#model) for details.
+/// 
+/// You typically use ``Model`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let model = Model.step()
+/// let mediaType = MediaType.model(model) // Creates: model/step
+/// ```
+/// 
+/// You can use standard `switch` statement to access model values.
+/// 
+/// ```swift
+/// func isSupported(model: Model) -> Bool {
+///   switch model {
+///   case .step, .iges: return true
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(audio: .step()) // Returns: true
+/// isSupported(audio: .iges()) // Returns: true
+/// isSupported(audio: .mesh()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Model {
+  /// Represents the `3mf` subtype.
   case _3mf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `e57` subtype.
   case e57(Suffix? = nil, Parameters? = nil)
+  /// Represents the `example` subtype.
   case example(Suffix? = nil, Parameters? = nil)
+  /// Represents the `gltf-binary` subtype.
   case gltfBinary(Suffix? = nil, Parameters? = nil)
+  /// Represents the `gltf` subtype.
   case gltf(Suffix? = nil, Parameters? = nil)
+  /// Represents the `iges` subtype.
   case iges(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mesh` subtype.
   case mesh(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mtl` subtype.
   case mtl(Suffix? = nil, Parameters? = nil)
+  /// Represents the `obj` subtype.
   case obj(Suffix? = nil, Parameters? = nil)
+  /// Represents the `step` subtype.
   case step(Suffix? = nil, Parameters? = nil)
+  /// Represents the `step-xml` subtype.
   case stepXml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `stl` subtype.
   case stl(Suffix? = nil, Parameters? = nil)
+  /// Represents the `vrml` subtype.
   case vrml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `x3d-vrml` subtype.
   case x3dVrml(Suffix? = nil, Parameters? = nil)
+  /// Represents the `x3d` subtype.
   case x3d(Suffix? = nil, Parameters? = nil)
+  /// Represents a subtype that does not fit in the other cases or is currently not officially defined.
+  /// 
+  /// You can use this case to define an arbitrary, unregistered subtype with the given name or
+  /// to represent a subtype in the non standard tree, e.g. vendor tree or personal tree.
+  /// 
+  /// Optionally, you can specify a ``Suffix`` and ``Parameters``.
+  /// 
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)
 }

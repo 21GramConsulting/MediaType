@@ -1,25 +1,136 @@
 import Foundation
 
+/// A type-safe representation of [Media Type](https://www.iana.org/assignments/media-types/media-types.xhtml)s
+/// (or formerly known as MIME types).
+///
+/// You can create a media type in a type-safe manner using one of the possible cases. You can also create
+/// media type instances simply using string literals.
+///
+/// ```swift
+/// let mediaType: MediaType = "application/json" // is equivalent to
+/// MediaType.application(.json())
+/// ```
+///
+/// Media type suffixes and parameters are supported both via string literals and ``MediaType`` cases.
+///
+/// ```swift
+/// let mediaType: MediaType = "application/atom; charset=utf-8" // is equivalent to
+/// MediaType.application(.atom(nil, ["charset": "utf-8"]))
+///
+/// let mediaType: MediaType = "application/atom+xml" // is equivalent to
+/// MediaType.application(.atom(.xml))
+///
+/// let mediaType: MediaType = "application/atom+xml; charset=utf-8" // is equivalent to
+/// MediaType.application(.atom(.xml, ["charset": "utf-8"]))
+/// ```
+///
+/// You can create media type trees using either the string literal syntax, or using the `other` case of a particular
+/// media type.
+///
+/// ```swift
+/// "application/vnd.efi.img" // is equivalent to
+/// MediaType.application(.other("vnd.efi.img"))
+/// ```
 public enum MediaType {
+  /// Represents the `application` media type.
+  ///
+  /// Represents binary data. Common examples: `application/json`, `application/octet-stream`.
+  ///
+  /// For the whole family of `application` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#application) documentation.
   case application(Application)
+  /// Represents the `audio` media type.
+  ///
+  /// Represents audible data. Common examples: `audio/ac3`, `audio/mpeg`.
+  ///
+  /// For the whole family of `audio` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#audio) documentation.
   case audio(Audio)
+  /// Represents the `font` media type.
+  ///
+  /// Represents font or typeface data. Common examples: `font/woff`, `font/ttf`.
+  ///
+  /// For the whole family of `font` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#font) documentation.
   case font(Font)
+  /// Represents the `image` media type.
+  ///
+  /// Represents image or graphical data. This includes bitmap and vector images, along with animated image formats.
+  /// Common examples: `image/jpeg`, `image/apng`.
+  ///
+  /// For the whole family of `image` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#image) documentation.
   case image(Image)
+  /// Represents the `message` media type.
+  ///
+  /// Represents embedded message data. Common examples: `message/rfc882`, `message/http`.
+  ///
+  /// For the whole family of `message` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#message) documentation.
   case message(Message)
+  /// Represents the `model` media type.
+  ///
+  /// Represents 3D modelling data. Common examples: `model/step`, `model/3mf`.
+  ///
+  /// For the whole family of `model` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#model) documentation.
   case model(Model)
+  /// Represents the `multipart` media type.
+  ///
+  /// Represents data formed from multiple components, which may have their individual media types.
+  /// Common examples: `multipart/form-data`, `multipart/encrypted`.
+  ///
+  /// For the whole family of `multipart` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart) documentation.
   case multipart(Multipart)
+  /// Represents the `text` media type.
+  ///
+  /// Represents textual only data. Common examples: `text/css`, `text/html`.
+  ///
+  /// For the whole family of `text` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#text) documentation.
   case text(Text)
+  /// Represents the `video` media type.
+  ///
+  /// Represents video data. Common examples: `video/mp4`, `video/H264`.
+  ///
+  /// For the whole family of `video` media types consult the
+  /// [official IANA](https://www.iana.org/assignments/media-types/media-types.xhtml#video) documentation.
   case video(Video)
+  /// Represents a custom media type that is currently not officially defined.
+  ///
+  /// Represents a custom media type with the given `type` and `subtype`. Optionally, you can specify a ``Suffix`` and
+  /// ``Parameters``.
   case other(type: CustomStringConvertible, subtype: CustomStringConvertible, Suffix? = nil, Parameters? = nil)
+  /// Represents a wildcard media type.
+  ///
+  /// A wildcard media type has a type of `*`. A few examples:
+  ///
+  /// ```swift
+  /// MediaType.anything(.anything()) // Creates: */*
+  /// MediaType.anything(.other("dialog")) // Creates: */dialog
+  /// MediaType.anything(.other("response", .xml)) // Creates: */response+xml
+  /// ```
   case anything(Anything)
 }
 
 extension MediaType: CustomStringConvertible {
+  /// The textual representation of the media type.
+  ///
+  /// The string form of a media type follows the pattern: `type/subtype[+suffix][;parameters]`. A few examples:
+  ///
+  /// ```swift
+  /// MediaType.text(.css()).description // Outputs: text/css
+  /// MediaType.audio(.ac3(nil, ["rate": 32000])).description // Outputs: audio/ac3;rate=32000
+  /// MediaType.application(.atom(.xml, ["charset": "utf-8"])).description // Outputs: application/atom+xml;charset=utf-8
+  /// ```
   public var description: String { rawValue }
 }
 
 extension MediaType: RawRepresentable {
-
+  /// Creates a media type from its raw string value.
+  ///
+  /// - Parameter rawValue: The raw string value.
   public init(rawValue: String) {
     let chunks = rawValue.split(separator: "/", maxSplits: 1)
     let rawType = String(chunks.first ?? "*")
@@ -35,11 +146,12 @@ extension MediaType: RawRepresentable {
     case "multipart":   self = .multipart(Multipart(rawValue: rawSubtype))
     case "text":        self = .text(Text(rawValue: rawSubtype))
     case "video":       self = .video(Video(rawValue: rawSubtype))
-    case "*":           self = .anything(Anything(rawValue: rawValue))
+    case "*":           self = .anything(Anything(rawValue: rawSubtype))
     default:            self = .other(type: rawType, subtype: subtype, suffix, parameters)
     }
   }
 
+  /// The raw string value of the media type.
   public var rawValue: String {
     switch self {
     case .application(let subtype):                                return "application/\(subtype)"
@@ -57,11 +169,19 @@ extension MediaType: RawRepresentable {
   }
 }
 
-extension MediaType:ExpressibleByStringLiteral {
+extension MediaType: ExpressibleByStringLiteral {
+  /// Creates a media type from a string literal.
+  ///
+  /// Do not call this initializer directly. This rather allows you to use a string literal where you have to provide
+  /// a ``MediaType`` node.
   public init(stringLiteral value: String) { self.init(rawValue: value) }
 }
 
 extension MediaType: Hashable {
+  /// Returns a Boolean indicating whether two media types are the same.
+  ///
+  /// Two media types represent the same thing, and thus considered to be equal, if they have the same type, subtype,
+  /// ``Suffix`` and ``Parameters``.
   public static func ==(lhs: Self, rhs: Self) -> Bool {
     switch lhs {
     case .application(let lhs): if case let .application(rhs) = rhs { return lhs == rhs } else { return false }
@@ -86,31 +206,31 @@ extension MediaType: Hashable {
 
   public func hash(into hasher: inout Hasher) {
     switch self {
-    case .application(let subtype): 
+    case .application(let subtype):
       hasher.combine(0)
       hasher.combine(subtype)
-    case .audio(let subtype): 
+    case .audio(let subtype):
       hasher.combine(1)
       hasher.combine(subtype)
-    case .font(let subtype): 
+    case .font(let subtype):
       hasher.combine(2)
       hasher.combine(subtype)
-    case .image(let subtype): 
+    case .image(let subtype):
       hasher.combine(3)
       hasher.combine(subtype)
-    case .message(let subtype): 
+    case .message(let subtype):
       hasher.combine(4)
       hasher.combine(subtype)
-    case .model(let subtype): 
+    case .model(let subtype):
       hasher.combine(5)
       hasher.combine(subtype)
-    case .multipart(let subtype): 
+    case .multipart(let subtype):
       hasher.combine(6)
       hasher.combine(subtype)
-    case .text(let subtype): 
+    case .text(let subtype):
       hasher.combine(7)
       hasher.combine(subtype)
-    case .video(let subtype): 
+    case .video(let subtype):
       hasher.combine(8)
       hasher.combine(subtype)
     case .anything(let subtype):

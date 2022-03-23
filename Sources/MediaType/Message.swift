@@ -1,25 +1,77 @@
 import Foundation
 
+/// Represents the `message` media type. See the
+/// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#message) for details.
+/// 
+/// You typically use ``Message`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let message = Message.http()
+/// let mediaType = MediaType.message(message) // Creates: message/http
+/// ```
+/// 
+/// You can use standard `switch` statement to access message values.
+/// 
+/// ```swift
+/// func isSupported(message: Message) -> Bool {
+///   switch message {
+///   case .http, .rfc822: return true
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(audio: .http()) // Returns: true
+/// isSupported(audio: .rfc822()) // Returns: true
+/// isSupported(audio: .sip()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Message {
+  /// Represents the `CPIM` subtype.
   case CPIM(Suffix? = nil, Parameters? = nil)
+  /// Represents the `delivery-status` subtype.
   case deliveryStatus(Suffix? = nil, Parameters? = nil)
+  /// Represents the `disposition-notification` subtype.
   case dispositionNotification(Suffix? = nil, Parameters? = nil)
+  /// Represents the `example` subtype.
   case example(Suffix? = nil, Parameters? = nil)
+  /// Represents the `external-body` subtype.
   case externalBody(Suffix? = nil, Parameters? = nil)
+  /// Represents the `feedback-report` subtype.
   case feedbackReport(Suffix? = nil, Parameters? = nil)
+  /// Represents the `global` subtype.
   case global(Suffix? = nil, Parameters? = nil)
+  /// Represents the `global-delivery-status` subtype.
   case globalDeliveryStatus(Suffix? = nil, Parameters? = nil)
+  /// Represents the `global-disposition-notification` subtype.
   case globalDispositionNotification(Suffix? = nil, Parameters? = nil)
+  /// Represents the `global-headers` subtype.
   case globalHeaders(Suffix? = nil, Parameters? = nil)
+  /// Represents the `http` subtype.
   case http(Suffix? = nil, Parameters? = nil)
+  /// Represents the `imdn` subtype.
   case imdn(Suffix? = nil, Parameters? = nil)
+  /// Represents the `news` subtype.
   case news(Suffix? = nil, Parameters? = nil)
+  /// Represents the `partial` subtype.
   case partial(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rfc822` subtype.
   case rfc822(Suffix? = nil, Parameters? = nil)
+  /// Represents the `s-http` subtype.
   case sHttp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sip` subtype.
   case sip(Suffix? = nil, Parameters? = nil)
+  /// Represents the `sipfrag` subtype.
   case sipfrag(Suffix? = nil, Parameters? = nil)
+  /// Represents the `tracking-status` subtype.
   case trackingStatus(Suffix? = nil, Parameters? = nil)
+  /// Represents a subtype that does not fit in the other cases or is currently not officially defined.
+  /// 
+  /// You can use this case to define an arbitrary, unregistered subtype with the given name or
+  /// to represent a subtype in the non standard tree, e.g. vendor tree or personal tree.
+  /// 
+  /// Optionally, you can specify a ``Suffix`` and ``Parameters``.
+  /// 
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)
 }

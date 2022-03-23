@@ -2,6 +2,7 @@
 
 import {readFileSync, writeFileSync} from 'fs';
 import {toFormattedSwitchCase} from './commonUtility.mjs';
+import {mediaDocumentations, toDocumentation} from './MediaDocumentations.mjs';
 
 String.prototype.snakeToCamel = function () {
     return this.replace(/-(.)/g, (_, m) => m.toUpperCase())
@@ -45,6 +46,17 @@ const mediaRecords = Object.freeze(
         .filter(r => r.tree.length === 1) // TODO: Rework when support for tree subtypes is added.
 );
 
+/**
+ * @param {string} name
+ * @returns {{subtype: string, caseName: string}}
+ */
+function toSubtype(name) {
+    return {
+        subtype: name,
+        caseName: name.snakeToCamel().firstNumberTreated()
+    }
+}
+
 /** @type {Array<{pascalCase:string,lowerCase:string}>} */
 const types = mediaRecords
     .filter((r, _, l) => l.find(_r => _r.type === r.type) === r)
@@ -56,15 +68,23 @@ types
         fileName: pascalCase.concat('.swift'),
         code: `import Foundation
 
+${toDocumentation(mediaDocumentations[lowerCase].typeDoc.description, 0)}
 public enum ${pascalCase} {
 ${
             mediaRecords
                 .filter(r => r.type === lowerCase)
-                .map(r => r.tree[0].snakeToCamel().firstNumberTreated())
-                .filter((c, i, l) => l.indexOf(c) === i)
-                .map(caseName => `  case ${caseName}(Suffix? = nil, Parameters? = nil)`)
+                .map(r => toSubtype(r.tree[0]))
+                .filter((c, i, l) => l.findIndex(x => x.caseName === c.caseName) === i)
+                .map(({subtype, caseName}) => `  /// Represents the \`${subtype}\` subtype.
+  case ${caseName}(Suffix? = nil, Parameters? = nil)`)
                 .slice()
                 .sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0))
+                .concat(toDocumentation(
+                    mediaDocumentations["generic"].typeDoc.otherCase
+                        .concat([""])
+                        .concat(mediaDocumentations[lowerCase].typeDoc.otherCase),
+                    2)
+                )
                 .concat('  case other(String, Suffix? = nil, Parameters? = nil)')
                 .concat('  case anything(Suffix? = nil, Parameters? = nil)')
                 .join('\n')
@@ -223,22 +243,78 @@ writeFileSync(
     'MediaType.swift',
     `import Foundation
 
+/// A type-safe representation of [Media Type](https://www.iana.org/assignments/media-types/media-types.xhtml)s
+/// (or formerly known as MIME types).
+///
+/// You can create a media type in a type-safe manner using one of the possible cases. You can also create
+/// media type instances simply using string literals.
+///
+/// \`\`\`swift
+/// let mediaType: MediaType = "application/json" // is equivalent to
+/// MediaType.application(.json())
+/// \`\`\`
+///
+/// Media type suffixes and parameters are supported both via string literals and \`\`MediaType\`\` cases.
+///
+/// \`\`\`swift
+/// let mediaType: MediaType = "application/atom; charset=utf-8" // is equivalent to
+/// MediaType.application(.atom(nil, ["charset": "utf-8"]))
+///
+/// let mediaType: MediaType = "application/atom+xml" // is equivalent to
+/// MediaType.application(.atom(.xml))
+///
+/// let mediaType: MediaType = "application/atom+xml; charset=utf-8" // is equivalent to
+/// MediaType.application(.atom(.xml, ["charset": "utf-8"]))
+/// \`\`\`
+///
+/// You can create media type trees using either the string literal syntax, or using the \`other\` case of a particular
+/// media type.
+///
+/// \`\`\`swift
+/// "application/vnd.efi.img" // is equivalent to
+/// MediaType.application(.other("vnd.efi.img"))
+/// \`\`\`
 public enum MediaType {
 ${
         types
-            .map(({lowerCase, pascalCase}) => `  case ${lowerCase}(${pascalCase})`)
+            .map(({lowerCase, pascalCase}) => `${toDocumentation(mediaDocumentations[lowerCase].caseDoc, 2)}
+  case ${lowerCase}(${pascalCase})`)
             .join('\n')
     }
+  /// Represents a custom media type that is currently not officially defined.
+  ///
+  /// Represents a custom media type with the given \`type\` and \`subtype\`. Optionally, you can specify a \`\`Suffix\`\` and
+  /// \`\`Parameters\`\`.
   case other(type: CustomStringConvertible, subtype: CustomStringConvertible, Suffix? = nil, Parameters? = nil)
+  /// Represents a wildcard media type.
+  ///
+  /// A wildcard media type has a type of \`*\`. A few examples:
+  ///
+  /// \`\`\`swift
+  /// MediaType.anything(.anything()) // Creates: */*
+  /// MediaType.anything(.other("dialog")) // Creates: */dialog
+  /// MediaType.anything(.other("response", .xml)) // Creates: */response+xml
+  /// \`\`\`
   case anything(Anything)
 }
 
 extension MediaType: CustomStringConvertible {
+  /// The textual representation of the media type.
+  ///
+  /// The string form of a media type follows the pattern: \`type/subtype[+suffix][;parameters]\`. A few examples:
+  ///
+  /// \`\`\`swift
+  /// MediaType.text(.css()).description // Outputs: text/css
+  /// MediaType.audio(.ac3(nil, ["rate": 32000])).description // Outputs: audio/ac3;rate=32000
+  /// MediaType.application(.atom(.xml, ["charset": "utf-8"])).description // Outputs: application/atom+xml;charset=utf-8
+  /// \`\`\`
   public var description: String { rawValue }
 }
 
 extension MediaType: RawRepresentable {
-
+  /// Creates a media type from its raw string value.
+  ///
+  /// - Parameter rawValue: The raw string value.
   public init(rawValue: String) {
     let chunks = rawValue.split(separator: "/", maxSplits: 1)
     let rawType = String(chunks.first ?? "*")
@@ -253,7 +329,7 @@ ${
             ])
             .concat([[
                 '    case "*": ',
-                'self = .anything(Anything(rawValue: rawValue))'
+                'self = .anything(Anything(rawValue: rawSubtype))'
             ]])
             .concat([[
                 '    default: ',
@@ -267,6 +343,7 @@ ${
     }
   }
 
+  /// The raw string value of the media type.
   public var rawValue: String {
     switch self {
 ${
@@ -292,7 +369,11 @@ ${
   }
 }
 
-extension MediaType:ExpressibleByStringLiteral {
+extension MediaType: ExpressibleByStringLiteral {
+  /// Creates a media type from a string literal.
+  ///
+  /// Do not call this initializer directly. This rather allows you to use a string literal where you have to provide
+  /// a \`\`MediaType\`\` node.
   public init(stringLiteral value: String) { self.init(rawValue: value) }
 }
 
@@ -333,7 +414,7 @@ ${
             .slice()
             .sort((a, b) => a.lowerCase.charCodeAt(0) - b.lowerCase.charCodeAt(0))
             .map(({lowerCase}, i) => [
-                `    case .${lowerCase}(let subtype): `,
+                `    case .${lowerCase}(let subtype):`,
                 `      hasher.combine(${i})`,
                 '      hasher.combine(subtype)'
             ].join('\n'))
@@ -426,6 +507,27 @@ writeFileSync(
     'Parameters.swift',
     `import Foundation
 
+/// Represents parameters of \`\`MediaType\`\`s.
+///
+/// A media type may have parameters. For example \`text/html;charset=utf-8\` defines a media type with UTF-8 charset
+/// instead of the default ASCII.
+///
+/// You can specify arbitrary parameters to *any* of the \`\`MediaType\`\`s using a Swift
+/// [dictionary](https://developer.apple.com/documentation/swift/dictionary). Keep in mind though, that not all such
+/// parameter values are registered (see the
+/// [official site](https://www.iana.org/assignments/media-types/media-types.xhtml) for details).
+///
+/// You can specify parameters by using either the Swift DSL or string literal syntax. Parameters in string variables
+/// are also supported. The following examples are equivalent:
+///
+/// \`\`\`swift
+/// let mediaType: MediaType = "audio/ac3;rate=32000"  // is equivalent to
+///
+/// let mediaType = MediaType.audio(.ac3(nil, ["rate": 32_000])) // is equivalent to
+///
+/// let rawMediaType = "audio/ac3;rate=32000"
+/// let mediaType = MediaType(rawValue: rawMediaType)
+/// \`\`\`
 public typealias Parameters = [String: CustomStringConvertible?]
 
 internal extension DefaultStringInterpolation {

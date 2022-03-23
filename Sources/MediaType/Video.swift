@@ -1,57 +1,141 @@
 import Foundation
 
+/// Represents the `video` media type. See the
+/// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#video) for details.
+/// 
+/// You typically use ``Video`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let video = Video.mp4()
+/// let mediaType = MediaType.video(video) // Creates: video/mp4
+/// ```
+/// 
+/// You can use standard `switch` statement to access video values.
+/// 
+/// ```swift
+/// func isSupported(video: Video) -> Bool {
+///   switch video {
+///   case .mp4, .H264: return true
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(audio: .mp4()) // Returns: true
+/// isSupported(audio: .H264()) // Returns: true
+/// isSupported(audio: .vc1()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Video {
+  /// Represents the `1d-interleaved-parityfec` subtype.
   case _1dInterleavedParityfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `3gpp` subtype.
   case _3gpp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `3gpp2` subtype.
   case _3gpp2(Suffix? = nil, Parameters? = nil)
+  /// Represents the `3gpp-tt` subtype.
   case _3gppTt(Suffix? = nil, Parameters? = nil)
+  /// Represents the `AV1` subtype.
   case AV1(Suffix? = nil, Parameters? = nil)
+  /// Represents the `BMPEG` subtype.
   case BMPEG(Suffix? = nil, Parameters? = nil)
+  /// Represents the `BT656` subtype.
   case BT656(Suffix? = nil, Parameters? = nil)
+  /// Represents the `CelB` subtype.
   case CelB(Suffix? = nil, Parameters? = nil)
+  /// Represents the `DV` subtype.
   case DV(Suffix? = nil, Parameters? = nil)
+  /// Represents the `encaprtp` subtype.
   case encaprtp(Suffix? = nil, Parameters? = nil)
+  /// Represents the `example` subtype.
   case example(Suffix? = nil, Parameters? = nil)
+  /// Represents the `FFV1` subtype.
   case FFV1(Suffix? = nil, Parameters? = nil)
+  /// Represents the `flexfec` subtype.
   case flexfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `H261` subtype.
   case H261(Suffix? = nil, Parameters? = nil)
+  /// Represents the `H263` subtype.
   case H263(Suffix? = nil, Parameters? = nil)
+  /// Represents the `H263-1998` subtype.
   case H2631998(Suffix? = nil, Parameters? = nil)
+  /// Represents the `H263-2000` subtype.
   case H2632000(Suffix? = nil, Parameters? = nil)
+  /// Represents the `H264` subtype.
   case H264(Suffix? = nil, Parameters? = nil)
+  /// Represents the `H264-RCDO` subtype.
   case H264RCDO(Suffix? = nil, Parameters? = nil)
+  /// Represents the `H264-SVC` subtype.
   case H264SVC(Suffix? = nil, Parameters? = nil)
+  /// Represents the `H265` subtype.
   case H265(Suffix? = nil, Parameters? = nil)
+  /// Represents the `JPEG` subtype.
   case JPEG(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jpeg2000` subtype.
   case jpeg2000(Suffix? = nil, Parameters? = nil)
+  /// Represents the `jxsv` subtype.
   case jxsv(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mj2` subtype.
   case mj2(Suffix? = nil, Parameters? = nil)
+  /// Represents the `MP1S` subtype.
   case MP1S(Suffix? = nil, Parameters? = nil)
+  /// Represents the `MP2P` subtype.
   case MP2P(Suffix? = nil, Parameters? = nil)
+  /// Represents the `MP2T` subtype.
   case MP2T(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mp4` subtype.
   case mp4(Suffix? = nil, Parameters? = nil)
+  /// Represents the `MP4V-ES` subtype.
   case MP4VES(Suffix? = nil, Parameters? = nil)
+  /// Represents the `MPV` subtype.
   case MPV(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mpeg` subtype.
   case mpeg(Suffix? = nil, Parameters? = nil)
+  /// Represents the `mpeg4-generic` subtype.
   case mpeg4Generic(Suffix? = nil, Parameters? = nil)
+  /// Represents the `nv` subtype.
   case nv(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ogg` subtype.
   case ogg(Suffix? = nil, Parameters? = nil)
+  /// Represents the `parityfec` subtype.
   case parityfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `pointer` subtype.
   case pointer(Suffix? = nil, Parameters? = nil)
+  /// Represents the `quicktime` subtype.
   case quicktime(Suffix? = nil, Parameters? = nil)
+  /// Represents the `raptorfec` subtype.
   case raptorfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `raw` subtype.
   case raw(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rtp-enc-aescm128` subtype.
   case rtpEncAescm128(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rtploopback` subtype.
   case rtploopback(Suffix? = nil, Parameters? = nil)
+  /// Represents the `rtx` subtype.
   case rtx(Suffix? = nil, Parameters? = nil)
+  /// Represents the `scip` subtype.
   case scip(Suffix? = nil, Parameters? = nil)
+  /// Represents the `smpte291` subtype.
   case smpte291(Suffix? = nil, Parameters? = nil)
+  /// Represents the `SMPTE292M` subtype.
   case SMPTE292M(Suffix? = nil, Parameters? = nil)
+  /// Represents the `ulpfec` subtype.
   case ulpfec(Suffix? = nil, Parameters? = nil)
+  /// Represents the `vc1` subtype.
   case vc1(Suffix? = nil, Parameters? = nil)
+  /// Represents the `vc2` subtype.
   case vc2(Suffix? = nil, Parameters? = nil)
+  /// Represents the `VP8` subtype.
   case VP8(Suffix? = nil, Parameters? = nil)
+  /// Represents the `VP9` subtype.
   case VP9(Suffix? = nil, Parameters? = nil)
+  /// Represents a subtype that does not fit in the other cases or is currently not officially defined.
+  /// 
+  /// You can use this case to define an arbitrary, unregistered subtype with the given name or
+  /// to represent a subtype in the non standard tree, e.g. vendor tree or personal tree.
+  /// 
+  /// Optionally, you can specify a ``Suffix`` and ``Parameters``.
+  /// 
   case other(String, Suffix? = nil, Parameters? = nil)
   case anything(Suffix? = nil, Parameters? = nil)
 }
