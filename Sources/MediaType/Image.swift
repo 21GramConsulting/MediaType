@@ -2,6 +2,31 @@ import Foundation
 
 /// Represents the `image` media type. See the
 /// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#image) for details.
+/// 
+/// You typically use ``Image`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let image = Image.png()
+/// let mediaType = MediaType.image(image) // Creates: image/png
+/// ```
+/// 
+/// You can use standard `switch` statement to access image values.
+/// 
+/// ```swift
+/// func isSupported(image: Image) -> Bool {
+///   switch image {
+///   case .png, .jpeg, .gif: return true
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(audio: .png()) // Returns: true
+/// isSupported(audio: .jpeg()) // Returns: true
+/// isSupported(audio: .gif()) // Returns: true
+/// isSupported(audio: .bmp()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Image {
   /// Represents the `aces` subtype.
   case aces(Suffix? = nil, Parameters? = nil)

@@ -2,6 +2,30 @@ import Foundation
 
 /// Represents the `video` media type. See the
 /// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#video) for details.
+/// 
+/// You typically use ``Video`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let video = Video.mp4()
+/// let mediaType = MediaType.video(video) // Creates: video/mp4
+/// ```
+/// 
+/// You can use standard `switch` statement to access video values.
+/// 
+/// ```swift
+/// func isSupported(video: Video) -> Bool {
+///   switch video {
+///   case .mp4, .H264: return true
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(audio: .mp4()) // Returns: true
+/// isSupported(audio: .H264()) // Returns: true
+/// isSupported(audio: .vc1()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Video {
   /// Represents the `1d-interleaved-parityfec` subtype.
   case _1dInterleavedParityfec(Suffix? = nil, Parameters? = nil)

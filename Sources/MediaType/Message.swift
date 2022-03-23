@@ -2,6 +2,30 @@ import Foundation
 
 /// Represents the `message` media type. See the
 /// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#message) for details.
+/// 
+/// You typically use ``Message`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let message = Message.http()
+/// let mediaType = MediaType.message(message) // Creates: message/http
+/// ```
+/// 
+/// You can use standard `switch` statement to access message values.
+/// 
+/// ```swift
+/// func isSupported(message: Message) -> Bool {
+///   switch message {
+///   case .http, .rfc822: return true
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(audio: .http()) // Returns: true
+/// isSupported(audio: .rfc822()) // Returns: true
+/// isSupported(audio: .sip()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Message {
   /// Represents the `CPIM` subtype.
   case CPIM(Suffix? = nil, Parameters? = nil)

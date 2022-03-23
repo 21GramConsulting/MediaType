@@ -2,6 +2,30 @@ import Foundation
 
 /// Represents the `text` media type. See the
 /// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#text) for details.
+/// 
+/// You typically use ``Text`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let text = Text.html()
+/// let mediaType = MediaType.text(text) // Creates: text/html
+/// ```
+/// 
+/// You can use standard `switch` statement to access text values.
+/// 
+/// ```swift
+/// func isSupported(text: Text) -> Bool {
+///   switch text {
+///   case .html, .css: return true
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(audio: .html()) // Returns: true
+/// isSupported(audio: .css()) // Returns: true
+/// isSupported(audio: .javascript()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Text {
   /// Represents the `1d-interleaved-parityfec` subtype.
   case _1dInterleavedParityfec(Suffix? = nil, Parameters? = nil)

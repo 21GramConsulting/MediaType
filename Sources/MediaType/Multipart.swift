@@ -2,6 +2,30 @@ import Foundation
 
 /// Represents the `multipart` media type. See the
 /// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart) for details.
+/// 
+/// You typically use ``Multipart`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let multipart = Multipart.formData()
+/// let mediaType = MediaType.multipart(multipart) // Creates: multipart/form-data
+/// ```
+/// 
+/// You can use standard `switch` statement to access multipart values.
+/// 
+/// ```swift
+/// func isSupported(multipart: Multipart) -> Bool {
+///   switch multipart {
+///   case .formData, .mixed: return true
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(audio: .formData()) // Returns: true
+/// isSupported(audio: .mixed()) // Returns: true
+/// isSupported(audio: .voiceMessage()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Multipart {
   /// Represents the `alternative` subtype.
   case alternative(Suffix? = nil, Parameters? = nil)

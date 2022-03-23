@@ -2,6 +2,31 @@ import Foundation
 
 /// Represents the `audio` media type. See the
 /// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#audio) for details.
+/// 
+/// You typically use ``Audio`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let audio = Audio.ac3(nil, ["rate": 32000])
+/// let mediaType = MediaType.audio(audio) // Creates: audio/ac3;rate=32000
+/// ```
+/// 
+/// You can use standard `switch` statement to access audio values.
+/// 
+/// ```swift
+/// func isSupported(audio: Audio) -> Bool {
+///   switch audio {
+///   case .ac3, .aac, .ogg: return true
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(audio: .ac3()) // Returns: true
+/// isSupported(audio: .aac()) // Returns: true
+/// isSupported(audio: .ogg()) // Returns: true
+/// isSupported(audio: .mpeg()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Audio {
   /// Represents the `1d-interleaved-parityfec` subtype.
   case _1dInterleavedParityfec(Suffix? = nil, Parameters? = nil)

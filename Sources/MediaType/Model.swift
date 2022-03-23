@@ -2,6 +2,30 @@ import Foundation
 
 /// Represents the `model` media type. See the
 /// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#model) for details.
+/// 
+/// You typically use ``Model`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let model = Model.step()
+/// let mediaType = MediaType.model(model) // Creates: model/step
+/// ```
+/// 
+/// You can use standard `switch` statement to access model values.
+/// 
+/// ```swift
+/// func isSupported(model: Model) -> Bool {
+///   switch model {
+///   case .step, .iges: return true
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(audio: .step()) // Returns: true
+/// isSupported(audio: .iges()) // Returns: true
+/// isSupported(audio: .mesh()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Model {
   /// Represents the `3mf` subtype.
   case _3mf(Suffix? = nil, Parameters? = nil)
