@@ -2,6 +2,32 @@ import Foundation
 
 /// Represents the `application` media type. See the
 /// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#application) for details.
+/// 
+/// You typically use ``Application`` as a ``MediaType``.
+/// 
+/// ```swift
+/// let application = Application.atom(.xml, ["charset": "utf-8"])
+/// let mediaType = MediaType.application(application) // Creates: application/atom+xml;charset=utf-8
+/// ```
+/// 
+/// You can use standard `switch` statement to access application values.
+/// 
+/// ```swift
+/// func isSupported(application: Application) -> Bool {
+///   switch application {
+///   case .senml(.cbor, _), .senml(.json, _), .senml(.xml, _): return true
+///   default: return false
+///   }
+/// }
+/// 
+/// isSupported(application: .senml(.cbor)) // Returns: true
+/// isSupported(application: .senml(.json)) // Returns: true
+/// isSupported(application: .senml(.xml)) // Returns: true
+/// isSupported(application: .senml(.zip)) // Returns: false
+/// isSupported(application: .json()) // Returns: false
+/// ```
+/// 
+/// - SeeAlso: ``MediaType``
 public enum Application {
   /// Represents the `1d-interleaved-parityfec` subtype.
   case _1dInterleavedParityfec(Suffix? = nil, Parameters? = nil)
