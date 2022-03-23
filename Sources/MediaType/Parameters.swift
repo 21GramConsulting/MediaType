@@ -14,9 +14,9 @@ import Foundation
 /// are also supported. The following examples are equivalent:
 ///
 /// ```swift
-/// let mediaType = MediaType.audio(.ac3(nil, ["rate": 32_000])) // is equivalent to
-///
 /// let mediaType: MediaType = "audio/ac3;rate=32000"  // is equivalent to
+///
+/// let mediaType = MediaType.audio(.ac3(nil, ["rate": 32_000])) // is equivalent to
 ///
 /// let rawMediaType = "audio/ac3;rate=32000"
 /// let mediaType = MediaType(rawValue: rawMediaType)

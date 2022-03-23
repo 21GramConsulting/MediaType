@@ -7,29 +7,29 @@ import Foundation
 /// media type instances simply using string literals.
 ///
 /// ```swift
-/// MediaType.application(.json()) // is equivalent to
-/// let mediaType: MediaType = "application/json"
+/// let mediaType: MediaType = "application/json" // is equivalent to
+/// MediaType.application(.json())
 /// ```
 ///
 /// Media type suffixes and parameters are supported both via string literals and ``MediaType`` cases.
 ///
 /// ```swift
-/// MediaType.application(.atom(nil, ["charset": "utf-8"])) // is equivalent to
-/// let mediaType: MediaType = "application/atom; charset=utf-8"
+/// let mediaType: MediaType = "application/atom; charset=utf-8" // is equivalent to
+/// MediaType.application(.atom(nil, ["charset": "utf-8"]))
 ///
-/// MediaType.application(.atom(.xml)) // is equivalent to
-/// let mediaType: MediaType = "application/atom+xml"
+/// let mediaType: MediaType = "application/atom+xml" // is equivalent to
+/// MediaType.application(.atom(.xml))
 ///
-/// MediaType.application(.atom(.xml, ["charset": "utf-8"])) // is equivalent to
-/// let mediaType: MediaType = "application/atom+xml; charset=utf-8"
+/// let mediaType: MediaType = "application/atom+xml; charset=utf-8" // is equivalent to
+/// MediaType.application(.atom(.xml, ["charset": "utf-8"]))
 /// ```
 ///
 /// You can create media type trees using either the string literal syntax, or using the `other` case of a particular
 /// media type.
 ///
 /// ```swift
-/// MediaType.application(.other("vnd.efi.img")) // is equivalent to
-/// "application/vnd.efi.img"
+/// "application/vnd.efi.img" // is equivalent to
+/// MediaType.application(.other("vnd.efi.img"))
 /// ```
 public enum MediaType {
   /// Represents the `application` media type.
