@@ -110,14 +110,9 @@ For example, you can request the list of available products in JSON from an imag
 var request = URLRequest(url: URL(string: "https://example-store.com/products")!)
 let contentType: MediaType = "application/json"
 
-request.setValue(
-  "Content-Type",
-  forHTTPHeaderField: "\(contentType)"
-) // is equivalent to
-request.setValue(
-  "Content-Type",
-  forHTTPHeaderField: contentType.description
-)
+// The following two statements are equivalent
+request.setValue("Content-Type", forHTTPHeaderField: "\(contentType)")
+request.setValue("Content-Type", forHTTPHeaderField: contentType.description)
 
 let (_, response) = try await URLSession.shared.data(for: request)
 ```
@@ -128,9 +123,7 @@ This means you can use ``MediaType``s in sets or dictionaries. For example, you 
 application supports like so:
 
 ```swift
-let supportedImages: Set<MediaType> = [
-  .image(.png()), .image(.gif()), .image(.jpeg())
-]
+let supportedImages: Set<MediaType> = ["image/png", "image/gif", "image/jpeg"]
 ```
 
 ### Comparing Media Types

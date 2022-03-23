@@ -16,7 +16,7 @@ import Foundation
 /// func isSupported(font: Font) -> Bool {
 ///   switch font {
 ///   case .woff, .woff2: return true
-///   case .ttf(_, let parameters): return !(parameters ?? [:]).isEmpty
+///   case .ttf(_, let parameters?): return !parameters.isEmpty
 ///   default: return false
 ///   }
 /// }

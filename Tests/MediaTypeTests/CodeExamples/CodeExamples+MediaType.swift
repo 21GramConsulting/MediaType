@@ -80,4 +80,9 @@ extension CodeExamples {
     XCTAssertFalse(isSupported("application/atom"))
     XCTAssertFalse(isSupported("application/atom;charset=utf-8"))
   }
+
+  func test_supported_media_types() {
+    let supportedImages: Set<MediaType> = ["image/png", "image/gif", "image/jpeg"]
+    XCTAssertEqual(supportedImages, [.image(.png()), .image(.jpeg()), .image(.gif())])
+  }
 }
