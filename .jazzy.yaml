@@ -8,6 +8,3 @@ source_host_url: https://github.com/21GramConsulting/MediaType
 title: MediaType Docs
 
 undocumented_text: ""
-
-# TODO: Fix the search capability.
-disable_search: true
