@@ -27,21 +27,37 @@ import Foundation
 /// }
 /// ```
 public enum Suffix {
+  /// Represents the `xml` suffix.
   case xml
+  /// Represents the `json` suffix.
   case json
+  /// Represents the `ber` suffix.
   case ber
+  /// Represents the `cbor` suffix.
   case cbor
+  /// Represents the `der` suffix.
   case der
+  /// Represents the `fastinfoset` suffix.
   case fastinfoset
+  /// Represents the `wbxml` suffix.
   case wbxml
+  /// Represents the `zip` suffix.
   case zip
+  /// Represents the `tlv` suffix.
   case tlv
+  /// Represents the `json-seq` suffix.
   case jsonSeq
+  /// Represents the `sqlite3` suffix.
   case sqlite3
+  /// Represents the `jwt` suffix.
   case jwt
+  /// Represents the `gzip` suffix.
   case gzip
+  /// Represents the `cbor-seq` suffix.
   case cborSeq
+  /// Represents the `zstd` suffix.
   case zstd
+  /// Represents a custom suffix.
   case other(CustomStringConvertible)
 }
 
