@@ -1,5 +1,7 @@
 import Foundation
 
+/// Represents the `message` media type. See the
+/// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#message) for details.
 public enum Message {
   /// Represents the `CPIM` subtype.
   case CPIM(Suffix? = nil, Parameters? = nil)

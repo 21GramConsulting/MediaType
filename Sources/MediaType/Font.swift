@@ -1,5 +1,7 @@
 import Foundation
 
+/// Represents the `font` media type. See the
+/// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#font) for details.
 public enum Font {
   /// Represents the `collection` subtype.
   case collection(Suffix? = nil, Parameters? = nil)

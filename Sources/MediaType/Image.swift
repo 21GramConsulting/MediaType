@@ -1,5 +1,7 @@
 import Foundation
 
+/// Represents the `image` media type. See the
+/// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#image) for details.
 public enum Image {
   /// Represents the `aces` subtype.
   case aces(Suffix? = nil, Parameters? = nil)

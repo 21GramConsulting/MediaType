@@ -1,5 +1,7 @@
 import Foundation
 
+/// Represents the `multipart` media type. See the
+/// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart) for details.
 public enum Multipart {
   /// Represents the `alternative` subtype.
   case alternative(Suffix? = nil, Parameters? = nil)

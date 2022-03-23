@@ -1,5 +1,7 @@
 import Foundation
 
+/// Represents the `model` media type. See the
+/// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#model) for details.
 public enum Model {
   /// Represents the `3mf` subtype.
   case _3mf(Suffix? = nil, Parameters? = nil)

@@ -25,6 +25,10 @@ export const mediaDocumentations = {
     },
     application: {
         typeDoc: {
+            description: [
+                "Represents the `application` media type. See the",
+                "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#application) for details."
+            ],
             otherCase: [
                 "```swift",
                 "// TODO: Provide examples.",
@@ -42,6 +46,10 @@ export const mediaDocumentations = {
     },
     audio: {
         typeDoc: {
+            description: [
+                "Represents the `audio` media type. See the",
+                "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#audio) for details."
+            ],
             otherCase: [
                 "```swift",
                 "// TODO: Provide examples.",
@@ -59,6 +67,10 @@ export const mediaDocumentations = {
     },
     font: {
         typeDoc: {
+            description: [
+                "Represents the `font` media type. See the",
+                "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#font) for details.",
+            ],
             otherCase: [
                 "```swift",
                 "// TODO: Provide examples.",
@@ -76,6 +88,10 @@ export const mediaDocumentations = {
     },
     image: {
         typeDoc: {
+            description: [
+                "Represents the `image` media type. See the",
+                "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#image) for details."
+            ],
             otherCase: [
                 "```swift",
                 "// TODO: Provide examples.",
@@ -94,6 +110,10 @@ export const mediaDocumentations = {
     },
     message: {
         typeDoc: {
+            description: [
+                "Represents the `message` media type. See the",
+                "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#message) for details."
+            ],
             otherCase: [
                 "```swift",
                 "// TODO: Provide examples.",
@@ -111,6 +131,10 @@ export const mediaDocumentations = {
     },
     model: {
         typeDoc: {
+            description: [
+                "Represents the `model` media type. See the",
+                "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#model) for details."
+            ],
             otherCase: [
                 "```swift",
                 "// TODO: Provide examples.",
@@ -128,6 +152,10 @@ export const mediaDocumentations = {
     },
     multipart: {
         typeDoc: {
+            description: [
+                "Represents the `multipart` media type. See the",
+                "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart) for details."
+            ],
             otherCase: [
                 "```swift",
                 "// TODO: Provide examples.",
@@ -146,6 +174,10 @@ export const mediaDocumentations = {
     },
     text: {
         typeDoc: {
+            description: [
+                "Represents the `text` media type. See the",
+                "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#text) for details."
+            ],
             otherCase: [
                 "```swift",
                 "// TODO: Provide examples.",
@@ -163,6 +195,10 @@ export const mediaDocumentations = {
     },
     video: {
         typeDoc: {
+            description: [
+                "Represents the `video` media type. See the",
+                "[official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#video) for details."
+            ],
             otherCase: [
                 "```swift",
                 "// TODO: Provide examples.",

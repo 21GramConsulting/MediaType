@@ -1,5 +1,7 @@
 import Foundation
 
+/// Represents the `application` media type. See the
+/// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#application) for details.
 public enum Application {
   /// Represents the `1d-interleaved-parityfec` subtype.
   case _1dInterleavedParityfec(Suffix? = nil, Parameters? = nil)

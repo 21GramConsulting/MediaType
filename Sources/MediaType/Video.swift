@@ -1,5 +1,7 @@
 import Foundation
 
+/// Represents the `video` media type. See the
+/// [official documentation](https://www.iana.org/assignments/media-types/media-types.xhtml#video) for details.
 public enum Video {
   /// Represents the `1d-interleaved-parityfec` subtype.
   case _1dInterleavedParityfec(Suffix? = nil, Parameters? = nil)

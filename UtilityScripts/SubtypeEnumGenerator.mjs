@@ -68,6 +68,7 @@ types
         fileName: pascalCase.concat('.swift'),
         code: `import Foundation
 
+${toDocumentation(mediaDocumentations[lowerCase].typeDoc.description, 0)}
 public enum ${pascalCase} {
 ${
             mediaRecords
