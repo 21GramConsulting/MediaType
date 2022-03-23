@@ -13,7 +13,8 @@ export function toDocumentation(lines, indentation) {
 export const mediaDocumentations = {
     generic: {
         typeDoc: {
-            otherCase: ["Represents a subtype that does not fit in the other cases or is currently not officially defined.",
+            otherCase: [
+                "Represents a subtype that does not fit in the other cases or is currently not officially defined.",
                 "",
                 "You can use this case to define an arbitrary, unregistered subtype with the given name or",
                 "to represent a subtype in the non standard tree, e.g. vendor tree or personal tree.",
@@ -30,7 +31,8 @@ export const mediaDocumentations = {
                 "```"
             ]
         },
-        caseDoc: ["Represents the `application` media type.",
+        caseDoc: [
+            "Represents the `application` media type.",
             "",
             "Represents binary data. Common examples: `application/json`, `application/octet-stream`.",
             "",
@@ -46,7 +48,8 @@ export const mediaDocumentations = {
                 "```"
             ]
         },
-        caseDoc: ["Represents the `audio` media type.",
+        caseDoc: [
+            "Represents the `audio` media type.",
             "",
             "Represents audible data. Common examples: `audio/ac3`, `audio/mpeg`.",
             "",
@@ -62,7 +65,8 @@ export const mediaDocumentations = {
                 "```"
             ]
         },
-        caseDoc: ["Represents the `font` media type.",
+        caseDoc: [
+            "Represents the `font` media type.",
             "",
             "Represents font or typeface data. Common examples: `font/woff`, `font/ttf`.",
             "",
@@ -78,7 +82,8 @@ export const mediaDocumentations = {
                 "```"
             ]
         },
-        caseDoc: ["Represents the `image` media type.",
+        caseDoc: [
+            "Represents the `image` media type.",
             "",
             "Represents image or graphical data. This includes bitmap and vector images, along with animated image formats.",
             "Common examples: `image/jpeg`, `image/apng`.",
@@ -95,7 +100,8 @@ export const mediaDocumentations = {
                 "```"
             ]
         },
-        caseDoc: ["Represents the `message` media type.",
+        caseDoc: [
+            "Represents the `message` media type.",
             "",
             "Represents embedded message data. Common examples: `message/rfc882`, `message/http`.",
             "",
@@ -111,7 +117,8 @@ export const mediaDocumentations = {
                 "```"
             ]
         },
-        caseDoc: ["Represents the `model` media type.",
+        caseDoc: [
+            "Represents the `model` media type.",
             "",
             "Represents 3D modelling data. Common examples: `model/step`, `model/3mf`.",
             "",
@@ -127,7 +134,8 @@ export const mediaDocumentations = {
                 "```"
             ]
         },
-        caseDoc: ["Represents the `multipart` media type.",
+        caseDoc: [
+            "Represents the `multipart` media type.",
             "",
             "Represents data formed from multiple components, which may have their individual media types.",
             "Common examples: `multipart/form-data`, `multipart/encrypted`.",
@@ -144,7 +152,8 @@ export const mediaDocumentations = {
                 "```"
             ]
         },
-        caseDoc: ["Represents the `text` media type.",
+        caseDoc: [
+            "Represents the `text` media type.",
             "",
             "Represents textual only data. Common examples: `text/css`, `text/html`.",
             "",
@@ -160,7 +169,8 @@ export const mediaDocumentations = {
                 "```"
             ]
         },
-        caseDoc: ["Represents the `video` media type.",
+        caseDoc: [
+            "Represents the `video` media type.",
             "",
             "Represents video data. Common examples: `video/mp4`, `video/H264`.",
             "",
