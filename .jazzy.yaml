@@ -1,10 +1,13 @@
 output: docs/generated
 
-author: 21Gram Consulting
-author_url: https://21gram.consulting
+author: 21Gram
+author_url: https://21gram.hu
 
 source_host_url: https://github.com/21GramConsulting/MediaType
 
 title: MediaType Docs
 
 undocumented_text: ""
+
+# TODO: Fix the search capability.
+disable_search: true
