@@ -67,7 +67,7 @@ MediaType.application(.other("myApp", .json))
 
 ## Using Media Types
 
-You can use regular `swift` statements to test for media types and get access to their components. The following example
+You can use regular `switch` statements to test for media types and get access to their components. The following example
 shows various ways to treat a media type.
 
 ```swift
