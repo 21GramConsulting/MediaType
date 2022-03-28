@@ -8,3 +8,5 @@ source_host_url: https://github.com/21GramConsulting/MediaType
 title: Swift MediaType Docs
 
 undocumented_text: ""
+
+theme: jony
